@@ -548,8 +548,7 @@ entries_dict = redis.get_dictionary(connection, entry_redis_key)
 ```
 You should leverage the pipeline() feature if you are going to be calling more than one (non 2D numpy array) value from Redis. Pipelines are a subclass of the base Redis class that provide support for buffering multiple commands to the server in a single request. They can be used to dramatically increase the performance of groups of commands by reducing the number of back-and-forth TCP packets between the client and server. In the example above there is only 1 in the array, but you can get any number of values you want, in order of requested, given the keys.
 ##### MySQL
-(TBD) But you may use MySQL for the cool connector available [here](https://github.com/cuappdev/appdev.py/blob/master/appdev/connectors/mysql_connector.py)
-
+(IN PROGRESS) But you may use MySQL for the cool connector available [here](https://github.com/cuappdev/appdev.py/blob/master/appdev/connectors/mysql_connector.py)
 
 ## Step-By-Step Guide
 ### 1. Cloning the repository from Git
@@ -564,7 +563,7 @@ To install, go [here](https://virtualenv.pypa.io/en/stable/installation/) or for
 # Anaconda is causing problems
 /usr/local/bin/pip2.7 install virtualenv
 # My virtual environment here will be called: venv
-virtualenv venv
+virtualenv venv. The python version is 2.7
 # Activate the environment
 source venv/bin/activate
 # Pip install AppDev specific dependencies for Redis / MySQL connectors
@@ -610,6 +609,8 @@ python app.py
 At this point the app should be running on [http://localhost:5000/](http://localhost:5000/). Navigate to that URL in your browser.
 ### 6. Push to heroku
 I have included the Procile which leverages gunicorn which you can read more about [here](https://devcenter.heroku.com/articles/python-gunicorn) for deployment.
+If you get errors finding modules on Heroku this is because you have not defined a `runtime.txt` file that specifies `python2.7`. It seems that Heroku defaults to 3.6 now.
+
 To setup heroku and push this app to there you will run the following:
 First you must install the heroku-cli; the installation instructions can be found [here](https://devcenter.heroku.com/articles/heroku-cli)
 After, with your github located at the remote origin you will run the following commands to push to your heroku app.
@@ -634,7 +635,9 @@ heroku ps:scale web=1
 You may now navigate to `https://<YOUR_WEBSITE_NAME>.herokuapp.com` and see your app in production. From now on, you can continue to push to Heroku and have a easy and well-managed dev flow into production.
 ### 7. Setting up Redis on localhost for you to interact with for pre-processing
 **TODO**
-### 8. Setting up App in Amazon Elastic Computing Cloud (EC2) /Elastic Beanstalk (EB) with Redis
+### 8. Setting up App in Amazon Elastic Computing Cloud (EC2) with Redis (USING Amazon ElastiCache)
+**TODO**
+### 9. Docker + Kubernetes
 **TODO**
 
 ## Getting Started
