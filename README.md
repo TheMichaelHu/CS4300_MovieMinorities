@@ -69,13 +69,13 @@ The utility scripts at the top level include the following:
 ```bash
 config.py # describes different environments that app runs in
 manage.py # holds functionality for migrating your database (changing its schema)
-run.py    # runs the app on a port
+app.py    # runs the app on a port
 ```
 
 The entire functional backend of a `Flask` app is housed in a parent module called `app`.  You can create this by creating a directory `app` and populating it with an `__init__.py` file.  Then, inside that `app` directory, you can create modules that describe the resources of your app.  These modules should be as de-coupled and reusable as possible.  For example, let's say I need a bunch of user authentication logic described by a couple of endpoints and helper functions.  These might be useful in another `Flask` app and can be comfortably separated from other functionality.  As a result, I would make a module called `accounts` inside my app directory.  Each module (including `app`) should also have a `templates` directory if you plan on adding any `HTML` views to your app.   
 
 #### Template
-The use of templates here is specifically for the purpose of mimicing the structure of an MVC application. In this application I have seperated the system into two seperate templates: accounts and irsystem, since some of you might need to leverage the database for user/session log flow so you would only use the irsystem template. The irsystem is what you will be manipulating for the purposes of your information retrevial. If you look at the file `search_controller.py` you can see that we are rendering the view with data being passed in. This data will the results from your IR system which you will customize accordingly. You may make more models/controllers for organization purposes. 
+The use of templates here is specifically for the purpose of mimicing the structure of an MVC application. In this application I have seperated the system into two seperate templates: accounts and irsystem, since some of you might need to leverage the database for user/session log flow so you would only use the irsystem template. The irsystem is what you will be manipulating for the purposes of your information retrevial. If you look at the file `search_controller.py` you can see that we are rendering the view with data being passed in. This data will the results from your IR system which you will customize accordingly. You may make more models/controllers for organization purposes.
 
 ### Database Setup
 
@@ -87,12 +87,12 @@ Once you have `Postgres` setup and have your `$PATH` configured accordingly, run
 # Enter postgres command line interface
 $ psql
 # Create your database
-CREATE DATABASE my_app_db;
+CREATE DATABASE chatalytics;
 # Quit out
 \q
 ```
 
-The above creates the actual database that will be used for this application and the name of the database is `my_app_db` which you can change, but make sure to change the .env and in your production app accordingly which I will talk about lower in this guide. 
+The above creates the actual database that will be used for this application and the name of the database is `chatalytics` which you can change, but make sure to change the .env and in your production app accordingly which I will talk about lower in this guide.
 
 Rather than writing raw-SQL for this application, I have chosen to utilize [`SQLAlchemy`](http://flask-sqlalchemy.pocoo.org/2.1/) (specifically, `Flask-SQLAlchemy`) as a database `Object-Relational-Model` (`ORM`, for short).  In addition, for the purposes of serialization (turning these database entities into organized [`JSONs`](http://www.json.org/) that we can send over the wire) and deserialization (turning a `JSON` into a entity once again), I have chosen to use [`Marshmallow`](https://marshmallow-sqlalchemy.readthedocs.io/en/latest/) (specifically, `marshmallow-SQLAlchemy`).
 
@@ -189,7 +189,7 @@ As mentioned in the above code, your `.env` file will be where you hold variable
 # Set the environment type of the app (see config.py)
 export APP_SETTINGS=config.DevelopmentConfig
 # Set the DB url to a local database for development
-export DATABASE_URL=postgresql://localhost/my_app_db
+export DATABASE_URL=postgresql://localhost/chatalytics
 ````
 
 As you can see above in the example, I reference a specific configuration class (`DevelopmentConfig`), meaning I plan on working in my development environment.  I also have my database URL. Both of which are used heavily in the app. In local mode you will be maniuplating the .env file but in production you will be manipulating the Config Variables in your Heroku instance or you will modify the .env files in your AWS EC2/EB application.
@@ -198,7 +198,7 @@ As you can see above in the example, I reference a specific configuration class 
 
 ### Flask App Setup
 
-Up until now, we haven't been able to run our server. 
+Up until now, we haven't been able to run our server.
 
 The configurations of the `Flask` app are contained in `./app/__init__.py`.  The file should look like this:
 
@@ -240,7 +240,7 @@ Let's unpack this file piece by piece.  The top initializes `Gevent`, [a corouti
 
 Since we have involved `Socket.IO` and `Gevent`, you wil see it in requirements.txt
 
-Finally, in order to actually start our server, you will run the  `run.py` script.  This script can be placed at the root of our project:
+Finally, in order to actually start our server, you will run the  `app.py` script.  This script can be placed at the root of our project:
 
 ``` python
 from app import app, socketio
@@ -255,7 +255,7 @@ if __name__ == "__main__":
 Now, at the root of your application, you can run:
 
 ``` bash
-python run.py
+python app.py
 ```
 
 Your server is now running!
@@ -283,7 +283,7 @@ We must create our module within `app`, such that it contains the following stru
     ├── __init__.py
     ├── session.py
     └── user.py
-``` 
+```
 
 Let's start with `./app/accounts/__init__.py`.  This file contains a couple of lines of information specifying the `Flask Blueprint` information of this module, as well import `controllers`:
 
@@ -445,24 +445,24 @@ python manage.py db upgrade
 
 Now if you connect to your `Postgres` database, you should see two new tables, `users` and `sessions`!  The migration also creates an index on foreign-key `user_id` in `sessions`, for fast access of sessions by their owning user's `id`.  
 
-That's it for models. 
+That's it for models.
 
 ### Additional Features Added
-In addition to the flask application I have added some useful encoding features that can be leveraged by your application. 
+In addition to the flask application I have added some useful encoding features that can be leveraged by your application.
 Because we leverage numpy arrays all the time when calculating doc-by-vocab matricies I have included some encoding techniques for 2D numpy matricies which I will review soon.
 #### Recommendations:
-If you are using Heroku or AWS EC2/EB you have a limited number of RAM and in-memory space to store your json data. As such it is recommended that you leverage SVDs on your doc-by-vocab matricies to reduce the dimensionality of your data. Because text-data is ALWAYS dimensionally reducible you should leverage the techniques covered in class in your application. To have fast responses and limited logic I would recommend to pre-process all of your data structures and numpy arrays and store them in some storage system. Two storage systems that I would recommend include: Amazon S3 and Redis. 
+If you are using Heroku or AWS EC2/EB you have a limited number of RAM and in-memory space to store your json data. As such it is recommended that you leverage SVDs on your doc-by-vocab matricies to reduce the dimensionality of your data. Because text-data is ALWAYS dimensionally reducible you should leverage the techniques covered in class in your application. To have fast responses and limited logic I would recommend to pre-process all of your data structures and numpy arrays and store them in some storage system. Two storage systems that I would recommend include: Amazon S3 and Redis.
 ##### Amazon S3
 After setting up an AWS account and buying some space on your S3 server you can easily put data into your S3 bucket with this simple command:
 ``` bash
 curl --verbose -A "<PASSWORD>" -T <FILE_NAME.EXTENSION> https://s3.amazonaws.com/<YOUR_LOCATION>
 ```
-I would recommend storing all your datastructures in json files and pushing those jsons to S3 in your pre-processing stages, and pulling from S3 at run-time be leveraging the encoding techniques that I have included in `app.irsystem.models.helpers`. 
+I would recommend storing all your datastructures in json files and pushing those jsons to S3 in your pre-processing stages, and pulling from S3 at run-time be leveraging the encoding techniques that I have included in `app.irsystem.models.helpers`.
 ``` python
 class NumpyEncoder(json.JSONEncoder):
 
     def default(self, obj):
-        """If input object is an ndarray it will be converted into a dict 
+        """If input object is an ndarray it will be converted into a dict
         holding dtype, shape and the data, base64 encoded.
         """
         if isinstance(obj, np.ndarray):
@@ -478,7 +478,7 @@ class NumpyEncoder(json.JSONEncoder):
                         shape=obj.shape)
         # Let the base class default method raise the TypeError
         return json.JSONEncoder(self, obj)
-        
+
 def json_numpy_obj_hook(dct):
     """Decodes a previously encoded numpy ndarray with proper shape and dtype.
     :param dct: (dict) json encoded ndarray
@@ -494,21 +494,21 @@ I will show you how to use these encoding techniques below:
 ``` python
 from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 from app.irsystem.models.helpers import json_numpy_obj_hook
-# Dump numpy array into a json file 
+# Dump numpy array into a json file
 json.dump(NUMPY_ARRAY_NAME, open('NUMPY_ARRAY_NAME.json', 'w'), cls=NumpyEncoder)
 # Read numpy array from a json file (where FILE_NAME is an S3 location or local file)
 NUMPY_ARRAY_NAME = json.load(FILE_NAME, object_hook=json_numpy_obj_hook, encoding='utf8')
 ```
 ##### Redis
-Redis is an in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. In this application I will be leveraging the python bindings provided by [redis-py](https://github.com/andymccurdy/redis-py) which allow for me to interact with the available redis cluster using python. You can read more about Redis and its useful for ML applications via its in-memory nature [here](https://redis.io/documentation). 
-You can setup your redis cluster using either the Ansible script provided [here](https://github.com/cuappdev/devOps/tree/master/redis/vm) or the Kubernetes Helm chart provided [here](https://github.com/cuappdev/devOps/tree/master/redis/kubernetes). The importance of using the above setup logic is to include the redis-ml support for matrix manipulation. 
-After deploying your cluster to your appropriate port (i.e. 127.0.0.1:6379). 
+Redis is an in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster. In this application I will be leveraging the python bindings provided by [redis-py](https://github.com/andymccurdy/redis-py) which allow for me to interact with the available redis cluster using python. You can read more about Redis and its useful for ML applications via its in-memory nature [here](https://redis.io/documentation).
+You can setup your redis cluster using either the Ansible script provided [here](https://github.com/cuappdev/devOps/tree/master/redis/vm) or the Kubernetes Helm chart provided [here](https://github.com/cuappdev/devOps/tree/master/redis/kubernetes). The importance of using the above setup logic is to include the redis-ml support for matrix manipulation.
+After deploying your cluster to your appropriate port (i.e. 127.0.0.1:6379).
 Check if redis-server is up by running and getting PONG as a result, **hehe :)**
 ``` bash
 $ redis-cli ping
 PONG
 ```
-You can modify the Redis DB by running: 
+You can modify the Redis DB by running:
 ``` bash
 $ redis-cli
 redis 127.0.0.1:6379> ping
@@ -523,7 +523,7 @@ At this point in time you are able to use the RedisConnector provided by CuAppDe
 from appdev.connectors import MySQLConnector, RedisConnector
 redis = RedisConnector('entry_checkpoint')
 ```    
-The normal TCP socket based connection will be available by calling: 
+The normal TCP socket based connection will be available by calling:
 ``` python
 connection = redis._single_connect()
 ```
@@ -546,7 +546,7 @@ redis.dump_dictionary(connection, {entry_redis_key: entries})
 entries = redis.get_matrix(get_matrix,"example_numpy")
 entries_dict = redis.get_dictionary(connection, entry_redis_key)
 ```
-You should leverage the pipeline() feature if you are going to be calling more than one (non 2D numpy array) value from Redis. Pipelines are a subclass of the base Redis class that provide support for buffering multiple commands to the server in a single request. They can be used to dramatically increase the performance of groups of commands by reducing the number of back-and-forth TCP packets between the client and server. In the example above there is only 1 in the array, but you can get any number of values you want, in order of requested, given the keys. 
+You should leverage the pipeline() feature if you are going to be calling more than one (non 2D numpy array) value from Redis. Pipelines are a subclass of the base Redis class that provide support for buffering multiple commands to the server in a single request. They can be used to dramatically increase the performance of groups of commands by reducing the number of back-and-forth TCP packets between the client and server. In the example above there is only 1 in the array, but you can get any number of values you want, in order of requested, given the keys.
 ##### MySQL
 (TBD) But you may use MySQL for the cool connector available [here](https://github.com/cuappdev/appdev.py/blob/master/appdev/connectors/mysql_connector.py)
 
@@ -560,7 +560,7 @@ cd CS4300_Flask_template
 ### 2. Setting up your virtual environment
 To install, go [here](https://virtualenv.pypa.io/en/stable/installation/) or for dead-simple usage go [here](https://virtualenv.pypa.io/en/stable/installation/)
 ```bash
-# I would recommend to install virtualenv with Mac's built-in version of python because 
+# I would recommend to install virtualenv with Mac's built-in version of python because
 # Anaconda is causing problems
 /usr/local/bin/pip2.7 install virtualenv
 # My virtual environment here will be called: venv
@@ -578,15 +578,15 @@ pip install <MODULE_NAME>
 pip freeze > requirements.txt
 ```
 ### 3. Ensuring environment variables are present
-You will now be setting up autoenv so that everytime you enter the directory all enviromental variables are set immeditaly. 
-As such you must have autoenv installed which means that you must be inside of the virtualenv environment we created above. 
+You will now be setting up autoenv so that everytime you enter the directory all enviromental variables are set immeditaly.
+As such you must have autoenv installed which means that you must be inside of the virtualenv environment we created above.
 ``` bash
-# Override cd by adding this to your .?rc file (? = bash, zsh, fish, etc), 
+# Override cd by adding this to your .?rc file (? = bash, zsh, fish, etc),
 # according to your current CLI. I'll use bash in this example:
 $ echo "source `which activate`" >> ~/.bashrc
 # Reload your shell
 $ source ~/.bashrc
-# You should have a .env file, if not touch .env and add the 
+# You should have a .env file, if not touch .env and add the
 # approriate APP_SETTINGS And DATABASE_URL linking you to your local postgresDB
 # After running this you should get the APP_SETTINGS by running echo
 $ echo $APP_SETTINGS
@@ -598,18 +598,18 @@ First, either install the PostgresApp if you are using a Mac [here](https://post
 ``` bash
 # Enter postgres command line interface
 $ psql
-# Create your database which I will call my_app_db in this example, but you can change accordingly
-CREATE DATABASE my_app_db;
+# Create your database which I will call chatalytics in this example, but you can change accordingly
+CREATE DATABASE chatalytics;
 # Quit out
 \q
 ```
 ### 5. Check to see if app runs fine by running in localhost:
 ``` bash
-python run.py
+python app.py
 ```
 At this point the app should be running on [http://localhost:5000/](http://localhost:5000/). Navigate to that URL in your browser.
 ### 6. Push to heroku
-I have included the Procile which leverages gunicorn which you can read more about [here](https://devcenter.heroku.com/articles/python-gunicorn) for deployment. 
+I have included the Procile which leverages gunicorn which you can read more about [here](https://devcenter.heroku.com/articles/python-gunicorn) for deployment.
 To setup heroku and push this app to there you will run the following:
 First you must install the heroku-cli; the installation instructions can be found [here](https://devcenter.heroku.com/articles/heroku-cli)
 After, with your github located at the remote origin you will run the following commands to push to your heroku app.
@@ -623,15 +623,15 @@ $ heroku create <YOUR_WEBSITE_NAME>
 $ git push heroku master
 ```
 Before being able to interact with this application you will go to your Heroku dashboard and find your app.
-This will probably be here: `https://dashboard.heroku.com/apps/<YOUR_WEBSITE_NAME>`. 
-On that page you will need to modify your environmental variabls (remember your .env??) by navigating to 
+This will probably be here: `https://dashboard.heroku.com/apps/<YOUR_WEBSITE_NAME>`.
+On that page you will need to modify your environmental variabls (remember your .env??) by navigating to
 `https://dashboard.heroku.com/apps/<YOUR_WEBSITE_NAME>/settings`, clicking `Reveal Config Vars` and in left box below DATABASE_URL write:
 `APP_SETTINGS` and in the box to the right write: `config.ProductionConfig`. In essence you are writing `export APP_SETTINGS=config.ProductionConfig` in .env using Heroku's UI.
 You lastly will run:
 ``` bash
 heroku ps:scale web=1
 ```
-You may now navigate to `https://<YOUR_WEBSITE_NAME>.herokuapp.com` and see your app in production. From now on, you can continue to push to Heroku and have a easy and well-managed dev flow into production. 
+You may now navigate to `https://<YOUR_WEBSITE_NAME>.herokuapp.com` and see your app in production. From now on, you can continue to push to Heroku and have a easy and well-managed dev flow into production.
 ### 7. Setting up Redis on localhost for you to interact with for pre-processing
 **TODO**
 ### 8. Setting up App in Amazon Elastic Computing Cloud (EC2) /Elastic Beanstalk (EB) with Redis
@@ -644,12 +644,12 @@ To being interacting with the service, modify the app/irsystem/controllers/searc
 
 The view is seen in app/irsystem/templates/search.html and the data is hardcoded to be range(0,5) right now, but that is what you will modify for your system.
 
-Ensure that you swap out my dummy Project Name and NetID field for your group. 
+Ensure that you swap out my dummy Project Name and NetID field for your group.
 
 You can check out the example herokuapp: [here](https://thawing-crag-43231.herokuapp.com/)
 
 ## Deploy to EC2 Quick
-Welcome to the world of automation. Get ready to be blown away :) 
+Welcome to the world of automation. Get ready to be blown away :)
 
 To get started we must install `Vagrant` [here](https://www.vagrantup.com/docs/installation/)
 
@@ -677,14 +677,14 @@ default                    : ok=16   changed=12   unreachable=0    failed=0
 
 Now navigate to `http://192.168.33.10/` and you will see the app loaded up!
 
-Let's deploy this AWS now! 
+Let's deploy this AWS now!
 
 First step is to launch an EC2 instance.
 
-This EC2 instance should be using `Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-7c22b41c` as an AMI. 
+This EC2 instance should be using `Ubuntu Server 14.04 LTS (HVM), SSD Volume Type - ami-7c22b41c` as an AMI.
 This AMI will be the same type of OS that we used for our VM.
 
-I would recommend that you choose the `t2.micro`, which is a small, free tier-eligible instance type. 
+I would recommend that you choose the `t2.micro`, which is a small, free tier-eligible instance type.
 
 Make your security group one with these configs:
 
@@ -694,9 +694,9 @@ Make your security group one with these configs:
 |   22  |    tcp   | 0.0.0.0/0, ::/0 |
 | 443   |    tcp   | 0.0.0.0/0, ::/0 |
 
-After, launching download the the key-pair and name it `a4keypair`. 
+After, launching download the the key-pair and name it `a4keypair`.
 
-Place the `a4keypair.pem` inside the vagrant folder. 
+Place the `a4keypair.pem` inside the vagrant folder.
 
 Ensure, that your vagrant folder looks like this:
 
@@ -716,7 +716,7 @@ and putting that into the hosts file. So the hosts file should look like this, w
 Insure that you had the the private key by running `ssh-keygen`:
 
 ```bash
-$ ssh-keygen 
+$ ssh-keygen
 enerating public/private rsa key pair.
 Enter file in which to save the key (/Users/<YOUR_USERNAME>/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
