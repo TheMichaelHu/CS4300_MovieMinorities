@@ -1,3 +1,26 @@
+# Chatalytics
+
+## Setup
+Go through the original setup instructions first more or less
+
+### Additional setup
+We're using [React]("https://reactjs.org/") so there's some additional stuff to do:
+
+First, install [yarn]("https://yarnpkg.com/lang/en/docs/install/"), there's nothing stopping you from using NPM instead...but yarn has *emojis*.
+
+Next, start the webpack server that will handle compiling our React code into something the browser can actually understand.
+```
+cd frontend
+yarn dev
+```
+
+Finally, in a separate tab, start the flask server
+```
+source venv/bin/activate
+python app.py
+```
+While working on the frontend stuff, you'll need to hard reload (ctrl-shift-r) to get any updates you make.
+
 # CS4300 - Flask Template
 ## Notes
 This Flask app template is intended to get you started with your project and launch it on Heroku, and assumes no prior experience with web development (but some patience).  If you have any questions dont hesistate to ask the TAs or come to OH. In this README I will include an overview section with information on the flask app architecture and a step-by-step guide to loading up your app in dev and production (in Heroku) with instructions for (optional) EC2/EB add-ons addcoming soon. This README was written by Ilan Filonenko with help from Joseph Antonakakis.
@@ -619,7 +642,7 @@ $ heroku auth:login
 Enter your Heroku credentials:
 Email: <YOUR EMAIL>
 Password: <YOUR PASSWORD>
-# This create logic might be deprecated so 
+# This create logic might be deprecated so
 # navigate to Heroku Dashboard and create app manually
 $ heroku create <YOUR_WEBSITE_NAME>
 $ git push heroku master
