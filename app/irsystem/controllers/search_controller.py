@@ -1,4 +1,4 @@
-from . import *  
+from . import *
 from app.irsystem.models.helpers import *
 # from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 
@@ -20,4 +20,4 @@ def search():
 	else:
 		output_message = "Your search: " + query
 		data = range(5)
-	return render_template('search.html', name=project_name, netids=netids, output_message=output_message, data=data)
+	return render_template('index.html', name=project_name, netids=netids, output_message=output_message, data=data)
