@@ -11,6 +11,7 @@ First, install [yarn](https://yarnpkg.com/lang/en/docs/install/), there's nothin
 Next, start the webpack server that will handle compiling our React code into something the browser can actually understand.
 ```
 cd frontend
+yarn install
 yarn dev
 ```
 
