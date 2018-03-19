@@ -4,9 +4,9 @@
 Go through the original setup instructions first more or less
 
 ### Additional setup
-We're using [React]("https://reactjs.org/") so there's some additional stuff to do:
+We're using [React](https://reactjs.org/) so there's some additional stuff to do:
 
-First, install [yarn]("https://yarnpkg.com/lang/en/docs/install/"), there's nothing stopping you from using NPM instead...but yarn has *emojis*.
+First, install [yarn](https://yarnpkg.com/lang/en/docs/install/), there's nothing stopping you from using NPM instead...but yarn has *emojis*.
 
 Next, start the webpack server that will handle compiling our React code into something the browser can actually understand.
 ```
