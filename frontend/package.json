@@ -17,6 +17,6 @@
   },
   "scripts": {
     "dev": "webpack -w --mode development",
-    "postinstall": "webpack --mode production"
+    "build": "webpack --mode production"
   }
 }
