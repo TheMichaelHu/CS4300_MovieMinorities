@@ -45,5 +45,6 @@ requests==2.13.0
 scikit-learn==0.18.1
 six==1.10.0
 SQLAlchemy==1.0.13
+Unidecode==1.0.22
 Werkzeug==0.11.9
 WTForms==2.1
