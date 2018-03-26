@@ -24,13 +24,13 @@ While working on the frontend stuff, you'll need to hard reload (ctrl-shift-r) t
 
 ## Data Scraping/Processing
 ### Transcripts
-Movie transcripts can be downloaded using (this script)[https://github.com/j2kun/imsdb_download_all_scripts]. Running this script will produce a `scripts` directory. Copy the contents of this directory to `tools/data/scripts`.
+Movie transcripts can be downloaded using [this script](https://github.com/j2kun/imsdb_download_all_scripts). Running this script will produce a `scripts` directory. Copy the contents of this directory to `tools/data/scripts`.
 ```
 mv [path to imsdb script]/scripts [path to this repo]/tools/data/
 ```
 
 ### Movie Actors
-We use a dataset from Kaggle to get movie metadata. Download the two datasets from (this Kaggle comp)[https://www.kaggle.com/tmdb/tmdb-movie-metadata/data] and extract them to `tools/data`.
+We use a dataset from Kaggle to get movie metadata. Download the two datasets from [this Kaggle comp](https://www.kaggle.com/tmdb/tmdb-movie-metadata/data) and extract them to `tools/data`.
 There is a jupyter notebook to process this data: `tools/get_valid_actors.ipynb`. Run this notebook to get `tools/data/movies.csv` a subset of movie credits we have transcripts for, and `tools/data/actors.txt`, the actors in those movies.
 
 ### Actor Ethnicities
