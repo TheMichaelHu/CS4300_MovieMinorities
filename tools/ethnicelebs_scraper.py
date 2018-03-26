@@ -3,8 +3,9 @@ import urllib2
 from bs4 import BeautifulSoup as bs
 import csv
 import unicodedata
+import socket
 
-START = 21
+START = 1
 END = 33
 BATCH_SIZE = 5
 OUTPUT_FILE = "./data/ethnicelebs.csv"
@@ -17,9 +18,6 @@ curr_actor = 0
 
 def main():
     global actors
-    # f = open(OUTPUT_FILE, 'wb+')
-    # f.close()
-
     with open(ACTORS_FILE) as f:
         actors = sorted(f.read().splitlines())
 
@@ -35,7 +33,7 @@ def main():
 
 
 def batched_write(links):
-    with open(OUTPUT_FILE, 'ab') as f:
+    with open(OUTPUT_FILE, 'ab+') as f:
         for i in range(len(links)):
             if i % 10 == 0:
                 print("%d of %d" % (i, len(links)))
@@ -43,10 +41,13 @@ def batched_write(links):
             link = links[i]
             req = urllib2.Request(link, headers={'User-Agent': "Daenerys Targaryen, first of her name"})
             try:
-                page = urllib2.urlopen(req)
+                page = urllib2.urlopen(req, timeout=5)
             except urllib2.HTTPError as e:
-                print(e)
-                raise(e)
+                print("Encountered error for", link)
+                continue
+            except socket.timeout as e:
+                print("Timed out")
+                continue
             soup = bs(page, "html.parser")
 
             actor = handle_unicode(soup.find("h1", attrs={"class": "entry-title"}).get_text())

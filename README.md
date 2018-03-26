@@ -22,6 +22,22 @@ python app.py
 ```
 While working on the frontend stuff, you'll need to hard reload (ctrl-shift-r) to get any updates you make.
 
+## Data Scraping/Processing
+### Transcripts
+Movie transcripts can be downloaded using (this script)[https://github.com/j2kun/imsdb_download_all_scripts]. Running this script will produce a `scripts` directory. Copy the contents of this directory to `tools/data/scripts`.
+```
+mv [path to imsdb script]/scripts [path to this repo]/tools/data/
+```
+
+### Movie Actors
+We use a dataset from Kaggle to get movie metadata. Download the two datasets from (this Kaggle comp)[https://www.kaggle.com/tmdb/tmdb-movie-metadata/data] and extract them to `tools/data`.
+There is a jupyter notebook to process this data: `tools/get_valid_actors.ipynb`. Run this notebook to get `tools/data/movies.csv` a subset of movie credits we have transcripts for, and `tools/data/actors.txt`, the actors in those movies.
+
+### Actor Ethnicities
+Data from `ethnicelebs.com` is scraped using `tools/ethnicelebs_scraper.py`, which tries to find actors in `tools/data/actors.txt` and append them to `tools/data/ethnicelebs.csv`.  Because this takes about an hour to run, we track the resulting `csv` file.
+
+Actors from new movies can be added by editing `actors.txt` and removing actors we already have. (TODO: add logic to read `tools/data/ethnicelebs.csv` to avoid fetching duplicate author)
+
 # CS4300 - Flask Template
 ## Notes
 This Flask app template is intended to get you started with your project and launch it on Heroku, and assumes no prior experience with web development (but some patience).  If you have any questions dont hesistate to ask the TAs or come to OH. In this README I will include an overview section with information on the flask app architecture and a step-by-step guide to loading up your app in dev and production (in Heroku) with instructions for (optional) EC2/EB add-ons addcoming soon. This README was written by Ilan Filonenko with help from Joseph Antonakakis.
