@@ -1,5 +1,5 @@
 from __future__ import print_function
-import urllib
+import urllib2
 from bs4 import BeautifulSoup as bs
 import csv
 import unicodedata
