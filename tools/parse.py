@@ -10,7 +10,7 @@ def parse_transcript(filename):
     opt = []
     transcript = []
 
-    text_file = open("scripts/" + filename, "r")
+    text_file = open("~/CS4300_MovieMinorities/tools/data/scripts/" + filename, "r")
     lines = text_file.readlines()
     for l in lines:
         li = l.strip(' \n\t\r')
