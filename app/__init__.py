@@ -26,6 +26,14 @@ app.register_blueprint(irsystem)
 # Initialize app w/SocketIO
 socketio.init_app(app)
 
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    print(path)
+    return render_template('index.html')
+
+
 # HTTP error handling
 @app.errorhandler(404)
 def not_found(error):

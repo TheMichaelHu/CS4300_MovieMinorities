@@ -2,11 +2,10 @@ import React from "react";
 import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
+import Paper from 'material-ui/Paper';
 import { HeaderVc } from "./header_view_controller";
 import { Section } from "./section";
 import { SearchBar } from "./search_bar";
-
-import { grey900 } from 'material-ui/styles/colors';
 
 import '../styles/home_view_controller';
 
@@ -18,12 +17,14 @@ export class HomeVc extends React.Component {
           <HeaderVc />
         </div>
         <div className="home-content">
-          <div className="hero">
+          <Paper className="hero">
             <h1 className="hero-text">
               Something about demographics
             </h1>
-            <SearchBar />
-          </div>
+            <div className="search-wrapper">
+              <SearchBar />
+            </div>
+          </Paper>
           <Section title="What is this?">
             <p>A project, idk.</p>
           </Section>

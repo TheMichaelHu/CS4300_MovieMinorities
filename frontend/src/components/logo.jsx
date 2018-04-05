@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 
 import '../styles/logo';
 
-export class Logo extends React.Component {
+export class Logo extends React.PureComponent {
   render() {
     return (
-      <div className="logo" onClick={this.props.onClick}>
+      <div className="logo">
         <h3>Movie Minorities</h3>
       </div>
     );
   }
 }
-
-Logo.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};

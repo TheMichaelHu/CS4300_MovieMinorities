@@ -7,3 +7,12 @@ body {
   color: white;
   font-size: 21px;
 }
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}

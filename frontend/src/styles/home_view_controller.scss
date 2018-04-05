@@ -2,14 +2,21 @@
   .logo-wrapper {
     position: fixed;
     width: 100%;
+    z-index: 1000;
   }
 
   .hero {
-    height: 70vh;
+    height: 100vh;
+    background-color: grey;
 
     .hero-text {
       margin: 0;
       padding-top: 25vh;
+      text-align: center;
+    }
+
+    .search-wrapper {
+      padding-top: 7vh;
       text-align: center;
     }
   }
