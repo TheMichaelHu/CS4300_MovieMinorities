@@ -1,0 +1,16 @@
+.home-vc {
+  .logo-wrapper {
+    position: fixed;
+    width: 100%;
+  }
+
+  .hero {
+    height: 70vh;
+
+    .hero-text {
+      margin: 0;
+      padding-top: 25vh;
+      text-align: center;
+    }
+  }
+}
