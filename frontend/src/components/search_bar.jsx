@@ -5,31 +5,30 @@ import AutoComplete from 'material-ui/AutoComplete';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as mmActions from '../actions/mm_actions';
+
 import '../styles/search_bar';
 
-export class SearchBar extends React.Component {
+class _SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      titles: [],
-    };
 
     this.handleUpdateInput = this.handleUpdateInput.bind(this);
     this.getSearchUrl = this.getSearchUrl.bind(this);
   }
 
   handleUpdateInput(value) {
-    this.setState({
-      titles: [
-        value,
-        value + value,
-        value + value + value,
-      ],
-    });
+    this.props.mmActions.setSearch(value);
   }
 
   getSearchUrl() {
-    return "/movies?q=foo";
+    return `/movies?q=${this.props.search}`;
+  }
+
+  filterSearch(searchText, key) {
+    return key.toLowerCase().includes(searchText.toLowerCase());
   }
 
   render() {
@@ -40,8 +39,11 @@ export class SearchBar extends React.Component {
             style={{width: "100%"}}
             fullWidth
             hintText="Search for a movie"
-            dataSource={this.state.titles}
+            dataSource={this.props.titles}
             onUpdateInput={this.handleUpdateInput}
+            searchText={this.props.search}
+            filter={this.filterSearch}
+            maxSearchResults={10}
           />
         </div>
         <Link to={this.getSearchUrl()}>
@@ -53,3 +55,27 @@ export class SearchBar extends React.Component {
     );
   }
 }
+
+_SearchBar.propTypes = {
+  mmActions: PropTypes.object,
+  search: PropTypes.string,
+  titles: PropTypes.arrayOf(PropTypes.string),
+};
+
+function mapStateToProps(state) {
+  return {
+    search: state.search,
+    titles: state.titles,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    mmActions: bindActionCreators(mmActions, dispatch)
+  };
+}
+
+export const SearchBar = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_SearchBar);

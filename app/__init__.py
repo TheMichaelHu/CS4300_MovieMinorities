@@ -4,7 +4,7 @@ monkey.patch_all()
 
 # Imports
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
 
@@ -17,20 +17,28 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 # DB
 db = SQLAlchemy(app)
 
-# Import + Register Blueprints
-from app.accounts import accounts as accounts
-app.register_blueprint(accounts)
-from app.irsystem import irsystem as irsystem
-app.register_blueprint(irsystem)
-
 # Initialize app w/SocketIO
 socketio.init_app(app)
+
+DATA_DIR = "./app/data/"
+
+
+# Routes
+@app.route('/movie_titles')
+def get_movie_titles():
+    titles_file = DATA_DIR + "movies.txt"
+    if not os.path.isfile(titles_file):
+        return jsonify({"titles": []})
+
+    with open(titles_file) as f:
+        titles = f.readlines()
+        titles = [x.strip() for x in titles]
+    return jsonify({"titles": titles})
 
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    print(path)
     return render_template('index.html')
 
 
