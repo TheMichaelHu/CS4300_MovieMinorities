@@ -14,11 +14,27 @@ export class MovieVc extends React.Component {
     super(props);
     this.state = {
       movie: {
-        title: "Star War Treks: Stardust Crusaders with the Stars",
-        description: "dio dio dio dio dio",
-        imgUrl: "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+        title: "",
+        description: "",
+        imgUrl: "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+        slug: "",
       },
     };
+  }
+
+  componentWillMount() {
+    if (this.props.router.match.params.id) {
+      fetch(`/movie_data/${this.props.router.match.params.id}`, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(json => this.setState({movie: json.movie}));
+    }
   }
 
   render() {
