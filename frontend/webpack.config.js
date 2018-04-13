@@ -4,9 +4,9 @@ const path = require('path');
 const config = {
     entry: './src/app.js',
     output: {
-        path: path.resolve(__dirname, '../app/static'),
-        publicPath: '/static/',
-        filename: 'js/bundle.js'
+      path: path.resolve(__dirname, '../app/static'),
+      publicPath: '/static/',
+      filename: 'js/bundle.js'
     },
     devServer: {
       historyApiFallback: true,
@@ -15,16 +15,28 @@ const config = {
       }
     },
     module: {
-        rules: [
+      rules: [
+        {
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            use: 'babel-loader'
+        },
+        {
+          test: /\.scss$/,
+          use: [
             {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                use: 'babel-loader'
+              loader: "style-loader"
+            }, {
+              loader: "css-loader"
+            }, {
+              loader: "sass-loader"
             }
-        ]
+          ]
+        }
+      ]
     },
     resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx', '.scss']
     }
 };
 module.exports = config;
