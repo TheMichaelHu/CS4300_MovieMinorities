@@ -1,12 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from 'react-router-dom';
-import { ChatalyticsApp } from "./components/chatalytics_app";
+import { MovieMinoritiesApp } from "./components/mm_app";
+
+import { Provider } from 'react-redux';
+
+import mmStore from './stores/mm_store';
+
+const store = mmStore();
 
 var mountNode = document.getElementById("app");
 ReactDOM.render(
   <BrowserRouter>
-    <ChatalyticsApp />
+    <Provider store={store}>
+      <MovieMinoritiesApp />
+    </Provider>
   </BrowserRouter>,
   mountNode
 );

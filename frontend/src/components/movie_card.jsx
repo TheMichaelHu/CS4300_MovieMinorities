@@ -34,7 +34,7 @@ export class MovieCard extends React.PureComponent {
   renderCard() {
     if (this.props.clickable) {
       return (
-        <Link to="/movie/1">
+        <Link to={`/movie/${this.props.movie.slug}`}>
           {this.renderContents()}
         </Link>
       );

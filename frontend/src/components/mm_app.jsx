@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Route, Switch } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -14,7 +15,16 @@ import { BrowseVc } from "./browse_view_controller";
 import { MovieVc } from "./movie_view_controller";
 import { Footer } from "./footer";
 
-export class ChatalyticsApp extends React.Component {
+import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom'
+import {bindActionCreators} from 'redux';
+import * as mmActions from '../actions/mm_actions';
+
+export class _MovieMinoritiesApp extends React.Component {
+  componentWillMount() {
+    this.props.mmActions.fetchTitles();
+  }
+
   renderContent() {
     return (
       <div>
@@ -66,3 +76,22 @@ export class ChatalyticsApp extends React.Component {
     );
   }
 }
+
+_MovieMinoritiesApp.propTypes = {
+  mmActions: PropTypes.object,
+};
+
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    mmActions: bindActionCreators(mmActions, dispatch)
+  };
+}
+
+export const MovieMinoritiesApp = withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_MovieMinoritiesApp));

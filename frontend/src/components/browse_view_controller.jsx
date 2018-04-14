@@ -15,29 +15,47 @@ export class BrowseVc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: [
-        {
-          title: "Star War Treks: Stardust Crusaders with the Stars",
-          description: "dio dio dio dio dio",
-          imgUrl: "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg"
-        },
-        {
-          title: "Spamilton Goes to Spamalot 1",
-          description: "tis a silly place",
-          imgUrl: "https://ia.media-imdb.com/images/M/MV5BN2IyNTE4YzUtZWU0Mi00MGIwLTgyMmQtMzQ4YzQxYWNlYWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg"
-        },
-        {
-          title: "Spamilton Goes to Spamalot 2",
-          description: "tis a silly place",
-          imgUrl: "https://ia.media-imdb.com/images/M/MV5BN2IyNTE4YzUtZWU0Mi00MGIwLTgyMmQtMzQ4YzQxYWNlYWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg"
-        },
-        {
-          title: "Spamilton Goes to Spamalot 3",
-          description: "tis a silly place",
-          imgUrl: "https://ia.media-imdb.com/images/M/MV5BN2IyNTE4YzUtZWU0Mi00MGIwLTgyMmQtMzQ4YzQxYWNlYWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg"
-        }
-      ],
+      movies: [],
     };
+  }
+
+  componentWillMount() {
+    if (this.props.router.location.search) {
+      fetch(`/search${this.props.router.location.search}`, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(json => this.setState({movies: json.results}));
+    } else {
+      fetch(`/search`, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(json => this.setState({movies: json.results}));
+    }
+  }
+
+  renderMovies() {
+    if (!this.state.movies) {
+      return (
+        <p>
+          No movies found!
+        </p>
+      );
+    }
+    return (
+      <MovieCardCollection movies={this.state.movies} />
+    );
   }
 
   render() {
