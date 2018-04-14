@@ -48,11 +48,19 @@
         
             var tag = "#viz";
 
-            // jsonMod, categories, categoryColors
+             jsonMod, categories, categoryColors
              var jsonMod = {
                     "by_movie": [["Male", 0.02], ["Female", 0.39], ["Dubious", 0.59]], 
                     "by_line": [["Male", 0.22], ["Female", 0.16], ["Dubious", 0.61]] 
                         };
+            
+            
+//                var jsonMod = {
+//                    "by_movie": [["White", 1]], 
+//                    "by_line": [["White", 1]] 
+//                            };
+            
+    
                 
             var categories = ["By movie", "By line"];
             var categoryColors = ["#03353e", "#0294a5"];
@@ -102,8 +110,6 @@
                         flag++;
                     }
 
-                    // console.log(jsonData);
-
                     // data join
                     bars = svg.selectAll("#rect" + ind)
                     .data(jsonData)
@@ -113,7 +119,7 @@
                     .attr("class", "tooltip")
                     .style("opacity", 0);
 
-
+                    // tool tip
                     bars.append("rect")
                     .attr("width", barWidth)
                     .attr("height", function(d, i) { return yScale(jsonData[i][1]); })
@@ -127,7 +133,7 @@
                         div.transition()
                         .duration(200)
                         .style("opacity", .9);
-                        div.html(d[1])
+                        div.html(Number(d[1] * 100) + "%")
                         .style("left", rectX + "px")
                         .style("top", rectY - 10 + "px");
                     })
@@ -160,25 +166,29 @@
                 var pushTextY = 180;
 
                 var legendBarSize = 10;
-
-                bars
-                .append("text")
-                .filter(function (d, i) { return i < categories.length } )
-                .text( function(d, i) { return categories[i]; } )
-                .attr("x", function(d, i) { return pushTextX + interBarSpace * (jsonData.length + 1); })
-                .attr("y", function(d, i) { return pushTextY + 20 * i; })
-                .attr("fill", "black")
-                .style("font-size", 14);
-
-                bars
-                .append("rect")
-                .filter(function (d, i) { return i < categories.length } )
-                .attr("width", legendBarSize)
-                .attr("height", legendBarSize)
-                .attr("x", function(d, i) { return pushTextX + interBarSpace * (jsonData.length + 1) - 15; })
-                .attr("y", function(d, i) { return pushTextY + 20 * i - 10; })
-                .attr("fill", function(d, i) {return categoryColors[i]; })
-                .style("font-size", 14);
+                
+                
+                categories.forEach( function(d, ind) {
+                                        
+                    bars
+                    .append("text")
+                    .text( function(d) { return categories[ind]; } )
+                    .attr("x", function(d) { return pushTextX + interBarSpace * (jsonData.length + 1); })
+                    .attr("y", function(d) { return pushTextY + 20 * ind; })
+                    .attr("fill", "black")
+                    .style("font-size", 14);
+                    
+                    
+                    bars
+                    .append("rect")
+                    .attr("width", legendBarSize)
+                    .attr("height", legendBarSize)
+                    .attr("x", function(d) { return pushTextX + interBarSpace * (jsonData.length + 1) - 15; })
+                    .attr("y", function(d) { return pushTextY + 20 * ind - 10; })
+                    .attr("fill", function(d) {return categoryColors[ind]; })
+                    .style("font-size", 14);
+                           
+                } );
                 
             }
             
