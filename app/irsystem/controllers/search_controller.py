@@ -11,13 +11,14 @@ netids = [
     "Raghav Batra: rb698",
 ]
 
+
 @irsystem.route('/', methods=['GET'])
 def search():
-	query = request.args.get('search')
-	if not query:
-		data = []
-		output_message = ''
-	else:
-		output_message = "Your search: " + query
-		data = range(5)
-	return render_template('index.html', name=project_name, netids=netids, output_message=output_message, data=data)
+    query = request.args.get('search')
+    if not query:
+        data = []
+        output_message = ''
+    else:
+        output_message = "Your search: " + query
+        data = range(5)
+    return render_template('index.html', name=project_name, netids=netids, output_message=output_message, data=data)
