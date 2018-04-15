@@ -16,11 +16,12 @@ export class MetadataChart extends React.PureComponent {
    }
 
   createChart() {
+    if (!this.props.movie) {
+      return null;
+    }
+
     const node = this.node;
-    const jsonMod =
-        {"by_line": {"other": 0.15, "female": 0.6, "male": 0.25},
-         "by_movie": {"other": 0.38, "female": 0.25, "male": 0.38}
-        };
+    const jsonMod = this.props.movie.distribution_metadata.gender_dist;
     const categories = ["By movie", "By line"];
     const categoryColors = ["#03353e", "#0294a5"];
 
@@ -134,3 +135,7 @@ export class MetadataChart extends React.PureComponent {
     );
   }
 }
+
+MetadataChart.propTypes = {
+  movie: PropTypes.object,
+};

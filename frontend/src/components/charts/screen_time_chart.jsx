@@ -16,11 +16,12 @@ export class ScreenTimeChart extends React.PureComponent {
    }
 
   createChart() {
-    const node = this.node;
-    const jsonMod = {
-      "Bill Paxton": {"screen_time": 0.05, "actor_id": "26", "race": "White", "gender": "male", "char_name": "Lovett"}, "James Garrett": {"screen_time": 0.05, "actor_id": "141", "race": "N/A", "gender": "other", "char_name": "Reporter"}, "Ron Donachie": {"screen_time": 0.05, "actor_id": "103", "race": "N/A", "gender": "male", "char_name": "Master at arms"}, "Lewis Abernathy": {"screen_time": 0.05, "actor_id": "32", "race": "N/A", "gender": "other", "char_name": "Bodine"}, "Kate Winslet": {"screen_time": 0.55, "actor_id": "20", "race": "White", "gender": "female", "char_name": "Old rose"}, "Bernard Fox": {"screen_time": 0.15, "actor_id": "39", "race": "N/A", "gender": "male", "char_name": "Colonel gracie"}, "Suzy Amis": {"screen_time": 0.05, "actor_id": "31", "race": "N/A", "gender": "female", "char_name": "Lizzy"}, "Brendan Connolly": {"screen_time": 0.05, "actor_id": "129", "race": "N/A", "gender": "other", "char_name": "Steward barnes"}
-    };
+    if (!this.props.movie) {
+      return null;
+    }
 
+    const node = this.node;
+    const jsonMod = this.props.movie.char_metadata;
     const arr_entries = Object.entries(jsonMod);
     let entries = [];
 
@@ -139,3 +140,7 @@ export class ScreenTimeChart extends React.PureComponent {
     );
   }
 }
+
+ScreenTimeChart.propTypes = {
+  movie: PropTypes.object,
+};

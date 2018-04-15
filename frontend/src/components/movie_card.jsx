@@ -34,6 +34,10 @@ export class MovieCard extends React.PureComponent {
   }
 
   renderCard() {
+    if (!this.props.movie) {
+      return null;
+    }
+    
     if (this.props.clickable) {
       return (
         <Link to={`/movie/${this.props.movie.slug}`}>
@@ -55,7 +59,7 @@ export class MovieCard extends React.PureComponent {
 }
 
 MovieCard.propTypes = {
-  movie: PropTypes.object.isRequired,
+  movie: PropTypes.object,
   graphs: PropTypes.bool,
   clickable: PropTypes.bool,
 };

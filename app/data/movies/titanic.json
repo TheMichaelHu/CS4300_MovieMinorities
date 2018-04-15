@@ -601,48 +601,24 @@
     },
     "distribution_metadata": {
         "gender_dist": {
-            "by_line": [
-                [
-                    "Male",
-                    0.25
-                ],
-                [
-                    "Female",
-                    0.6
-                ],
-                [
-                    "Other",
-                    0.15
-                ]
-            ],
-            "by_movie": [
-                [
-                    "Male",
-                    0.38
-                ],
-                [
-                    "Female",
-                    0.25
-                ],
-                [
-                    "Other",
-                    0.38
-                ]
-            ]
+            "by_line": {
+                "female": 0.6,
+                "male": 0.25,
+                "other": 0.15
+            },
+            "by_movie": {
+                "female": 0.25,
+                "male": 0.38,
+                "other": 0.38
+            }
         },
         "race_dist": {
-            "by_line": [
-                [
-                    "White",
-                    1.0
-                ]
-            ],
-            "by_movie": [
-                [
-                    "White",
-                    1.0
-                ]
-            ]
+            "by_line": {
+                "white": 1.0
+            },
+            "by_movie": {
+                "white": 1.0
+            }
         },
         "stereotype_dist": {
             "by_line": [
