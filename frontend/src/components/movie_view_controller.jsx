@@ -14,10 +14,12 @@ export class MovieVc extends React.Component {
     super(props);
     this.state = {
       movie: {
-        title: "",
-        description: "",
-        imgUrl: "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg",
-        slug: "",
+        movie_metadata: {
+          name: "",
+          synopsis: "",
+          poster_image_url: "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          slug: "",
+        }
       },
     };
   }
@@ -33,7 +35,7 @@ export class MovieVc extends React.Component {
         }
       })
       .then(response => response.json())
-      .then(json => this.setState({movie: json.movie}));
+      .then(json => this.setState({movie: json}));
     }
   }
 
@@ -45,7 +47,7 @@ export class MovieVc extends React.Component {
         </div>
         <div className="movie-content">
           <Paper className="hero">
-            <MovieCard movie={this.state.movie} />
+            <MovieCard movie={this.state.movie.movie_metadata} />
           </Paper>
           <Section title="Graphs">
             <p>Lots of graphs</p>

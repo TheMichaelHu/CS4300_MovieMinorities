@@ -7,6 +7,7 @@ import os
 from flask import Flask, render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
+import json
 
 # Configure app
 socketio = SocketIO()
@@ -20,13 +21,13 @@ db = SQLAlchemy(app)
 # Initialize app w/SocketIO
 socketio.init_app(app)
 
-DATA_DIR = "./app/data/"
+DATA_DIR = "./app/data"
 
 
 # Routes
 @app.route('/movie_titles')
 def get_movie_titles():
-    titles_file = DATA_DIR + "movies.txt"
+    titles_file = DATA_DIR + "/movies.txt"
     if not os.path.isfile(titles_file):
         return jsonify({"titles": []})
 
@@ -39,44 +40,29 @@ def get_movie_titles():
 @app.route('/search')
 def search_movies():
     query = request.args.get('q')
-    movies = [
-        {
-          "title": "Star War Treks: Stardust Crusaders with the Stars",
-          "description": "dio dio dio dio dio",
-          "imgUrl": "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg",
-          "slug": "imma-slug",
-        },
-        {
-          "title": "%s 1" % query,
-          "description": "tis a silly place",
-          "imgUrl": "https://ia.media-imdb.com/images/M/MV5BN2IyNTE4YzUtZWU0Mi00MGIwLTgyMmQtMzQ4YzQxYWNlYWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
-          "slug": "imma-slug",
-        },
-        {
-          "title": "%s 2" % query,
-          "description": "tis a silly place",
-          "imgUrl": "https://ia.media-imdb.com/images/M/MV5BN2IyNTE4YzUtZWU0Mi00MGIwLTgyMmQtMzQ4YzQxYWNlYWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
-          "slug": "imma-slug",
-        },
-        {
-          "title": "%s 3" % query,
-          "description": "tis a silly place",
-          "imgUrl": "https://ia.media-imdb.com/images/M/MV5BN2IyNTE4YzUtZWU0Mi00MGIwLTgyMmQtMzQ4YzQxYWNlYWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
-          "slug": "imma-slug",
-        }
-    ]
+
+    # MH: stubbed document ranking based on query (need tf-idf)
+    ranking = ["titanic"] * 20
+
+    # MH: TODO: get rid of json.loads. Only needed for editting results
+    movies = [json.loads(get_movie(slug)) for slug in ranking]
+
+    # MH: some result edits for funsies
+    movies[0]["movie_metadata"]["name"] = "Definitely %s" % query
+    movies[0]["movie_metadata"]["synopsis"] = "This is totally the movie you're looking for."
+    for i in range(1, len(movies)):
+        movies[i]["movie_metadata"]["name"] = "Probably Not %s %d" % (query, i)
+
     return jsonify({"results": movies})
 
 
-@app.route('/movie_data/<movie>')
-def get_movie(movie):
-    movie = {
-      "title": "%s test" % movie,
-      "description": "tis a silly place",
-      "imgUrl": "https://ia.media-imdb.com/images/M/MV5BN2IyNTE4YzUtZWU0Mi00MGIwLTgyMmQtMzQ4YzQxYWNlYWE2XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
-      "slug": "imma-slug",
-    }
-    return jsonify({"movie": movie})
+@app.route('/movie_data/<movie_slug>')
+def get_movie(movie_slug):
+    # MH: stubbing out slug until we support more movies
+    movie_slug = "titanic"
+    with open("%s/movies/%s.json" % (DATA_DIR, movie_slug)) as f:
+        data = f.read()
+    return data
 
 
 @app.route('/', defaults={'path': ''})

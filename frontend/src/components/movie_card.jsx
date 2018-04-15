@@ -16,14 +16,16 @@ export class MovieCard extends React.PureComponent {
   }
 
   renderContents() {
+    const fallback = "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg";
+
     return (
       <div className="row">
         <div className="col-xs-3">
-          <img src={this.props.movie.imgUrl} />
+          <img src={this.props.movie.poster_image_url || fallback} />
         </div>
         <div className="col-xs-9">
-          <p>{this.props.movie.title}</p>
-          <p>{this.props.movie.description}</p>
+          <p>{this.props.movie.name}</p>
+          <p>{this.props.movie.synopsis}</p>
           <br />
           {this.renderGraphs()}
         </div>
@@ -53,7 +55,7 @@ export class MovieCard extends React.PureComponent {
 }
 
 MovieCard.propTypes = {
-  movie: PropTypes.objectOf(PropTypes.string).isRequired,
+  movie: PropTypes.object.isRequired,
   graphs: PropTypes.bool,
   clickable: PropTypes.bool,
 };

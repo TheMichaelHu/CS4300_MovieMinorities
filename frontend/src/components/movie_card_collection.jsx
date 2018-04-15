@@ -13,8 +13,8 @@ export class MovieCardCollection extends React.Component {
             <MovieCard
               graphs
               clickable
-              movie={movie}
-              key={movie.title}
+              movie={movie.movie_metadata}
+              key={movie.name}
             />
           ))
         }
