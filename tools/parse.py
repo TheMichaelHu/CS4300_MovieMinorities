@@ -1,53 +1,58 @@
 import re
 
 SCRIPT_PATH = "./data/scripts/V-for-Vendetta.txt"
-
-
 def parse_transcript(filename):
+
     spaces_regex = re.compile("^(\s*).*")
     location_regex = re.compile("^\s*(INT\.|EXT\.)")
     line_list = []
-    options = [0] * 100
-    opt = []
     transcript = []
+    characters = []
+    characters2 = []
 
-    text_file = open(filename, "r")
+    text_file = open("scripts/" + filename, "r")
     lines = text_file.readlines()
-    for l in lines:
-        li = l.strip(' \n\t\r')
-        if li != "":
-            spmatch = spaces_regex.search(l)
-            spaces_number = len(spmatch.group(1))
-            options[spaces_number] += 1
-            line_list.append((li, spaces_number))
-    for i in range(0, 50):
-        if options[i] >= 20:
-            opt.append(i)
-    print(opt)
     text_file.close()
 
-    speaker = ""
-    utterance = ""
+    num_lines = 0;
+    for l in lines:
+        li = l.strip(' \n\t\r')
+        if li != "" and num_lines != 0:
+            c = re.sub(r'\([^()]*\)', '', li).strip(' \n\t\r')
+            if (c in characters) and (c not in characters2):
+                characters2.append(c)
+            if c.isupper() and ("INT." not in l) and ("EXT." not in l) and ("OMITTED" not in l) and ("ANOTHER ANGLE" not in l) and ("THE END" not in l) and ("END CREDITS" not in l) and ("FADE OUT" not in l) and (":" not in l) and ("!" not in l) and ("?" not in l) and ('"' not in l) and (not c.endswith(".")) and (c not in characters):
+                characters.append(c)
+        elif li != "": 
+            num_lines = 1
+
+    speaker = "";
+    utterance = "";
+    still_speaking = True
+    second_time = False
 
     for l in lines:
         li = l.strip(' \n\t\r')
-        if li != "":
-            spmatch = spaces_regex.search(l)
-            spaces_number = len(spmatch.group(1))
-            if spaces_number == opt[2]:
-                if utterance != "" and speaker != "":
-                    transcript.append(
-                        {'speaker': speaker, 'utterance': utterance.strip()})
+        if li != "": 
+            ch = re.sub(r'\([^()]*\)', '', li).strip(' \n\t\r')
+            if ch == "":
+                ch = ""
+            elif ch in characters2:
+                if utterance != "" and speaker != ch and speaker != "":
+                    second_time = False
+                    transcript.append({'speaker': speaker, 'utterance': utterance.strip()})
                     utterance = ""
-                speaker = re.sub(r'\([^()]*\)', '', li).strip(' \n\t\r')
-            elif spaces_number == opt[1]:
+                elif speaker == ch:
+                    second_time = True
+                speaker = ch;
+                still_speaking = True
+            elif still_speaking == True and speaker != "":
                 utterance += " " + li
-            else:
-                if utterance != "" and speaker != "":
-                    transcript.append(
-                        {'speaker': speaker, 'utterance': utterance.strip()})
-                    utterance = ""
-                    speaker = ""
+                second_time = False
+        elif utterance == "":
+            still_speaking = True
+        elif utterance != "" and second_time == False:
+            still_speaking = False
 
     return transcript
 
