@@ -7,6 +7,9 @@ import { HeaderVc } from "./header_view_controller";
 import { Section } from "./section";
 import { MovieCard } from "./movie_card";
 
+import { MetadataChart } from "./charts/metadata_chart";
+import { ScreenTimeChart } from "./charts/screen_time_chart";
+
 import '../styles/movie_view_controller';
 
 export class MovieVc extends React.Component {
@@ -49,11 +52,11 @@ export class MovieVc extends React.Component {
           <Paper className="hero">
             <MovieCard movie={this.state.movie.movie_metadata} />
           </Paper>
-          <Section title="Graphs">
-            <p>Lots of graphs</p>
-          </Section>
-          <Section title="Graphs">
-            <p>Lots of graphs</p>
+          <Section title="Charts">
+            <div className="charts-wrapper">
+              <MetadataChart />
+              <ScreenTimeChart />
+            </div>
           </Section>
         </div>
       </div>

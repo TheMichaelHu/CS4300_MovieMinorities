@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AutoComplete from 'material-ui/AutoComplete';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
@@ -44,6 +44,7 @@ class _SearchBar extends React.Component {
             searchText={this.props.search}
             filter={this.filterSearch}
             maxSearchResults={10}
+            onNewRequest={() => this.props.history.push(this.getSearchUrl())}
           />
         </div>
         <Link to={this.getSearchUrl()}>
@@ -78,4 +79,4 @@ function mapDispatchToProps(dispatch) {
 export const SearchBar = connect(
   mapStateToProps,
   mapDispatchToProps
-)(_SearchBar);
+)(withRouter(_SearchBar));

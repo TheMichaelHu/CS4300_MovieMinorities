@@ -1,4 +1,4 @@
-# Chatalytics
+# Movie Minorities
 
 ## Setup
 Go through the original setup instructions first more or less

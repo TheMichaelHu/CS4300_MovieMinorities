@@ -14,7 +14,7 @@ export class MovieCardCollection extends React.Component {
               graphs
               clickable
               movie={movie.movie_metadata}
-              key={movie.name}
+              key={movie.movie_metadata.name}
             />
           ))
         }
