@@ -135,7 +135,7 @@ export class ScreenTimeChart extends React.PureComponent {
   render() {
     return (
       <div className="screen-time-chart">
-        <svg ref={node => this.node = node} width={500} height={500} />
+        <svg ref={node => this.node = node} />
       </div>
     );
   }

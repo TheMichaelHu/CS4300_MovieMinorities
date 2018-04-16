@@ -8,6 +8,7 @@ from flask import Flask, render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
 import json
+import boto3
 
 # Configure app
 socketio = SocketIO()
@@ -59,9 +60,14 @@ def search_movies():
 @app.route('/movie_data/<movie_slug>')
 def get_movie(movie_slug):
     # MH: stubbing out slug until we support more movies
-    movie_slug = "titanic"
-    with open("%s/movies/%s.json" % (DATA_DIR, movie_slug)) as f:
-        data = f.read()
+    movie_slug = "avatar"
+    if app.config["DEVELOPMENT"]:
+        with open("%s/movies/%s.json" % (DATA_DIR, movie_slug)) as f:
+            data = f.read()
+    else:
+        s3 = boto3.resource('s3', aws_access_key_id=app.config["AWS_ACCESS_KEY_ID"], aws_secret_access_key=app.config["AWS_SECRET_ACCESS_KEY"])
+        obj = s3.Object("cs4300-movies", "movies/%s.json" % movie_slug)
+        data = obj.get()['Body'].read().decode('utf-8')
     return data
 
 

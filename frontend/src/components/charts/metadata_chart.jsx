@@ -29,13 +29,13 @@ export class MetadataChart extends React.PureComponent {
     const svgWidth = 500;
     const svgHeight = 500;
     const svg = d3.select(node)
-    .attr("width", svgWidth)
-    .attr("height", svgHeight)
-    .attr("class", "bar");
+      .attr("width", svgWidth)
+      .attr("height", svgHeight)
+      .attr("class", "bar");
     const maxOffset = 0.9 * 400; // 360
     const yScale = d3.scaleLinear()
-    .domain([0, 1])
-    .range([0, maxOffset]);
+      .domain([0, 1])
+      .range([0, maxOffset]);
     let pushX = 120;
     const pushY = 60;
     const interBarSpace = 60;
@@ -130,7 +130,7 @@ export class MetadataChart extends React.PureComponent {
   render() {
     return (
       <div className="metadata-chart">
-        <svg ref={node => this.node = node} width={500} height={500} />
+        <svg ref={node => this.node = node} />
       </div>
     );
   }

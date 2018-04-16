@@ -4,6 +4,7 @@ migrations
 vagrant/.vagrant
 vagrant/site.retry
 vagrant/a4keypair.pem
+app/data/movies/*.json
 
 yarn-error.log
 node_modules
