@@ -28,7 +28,7 @@ export class MovieCard extends React.PureComponent {
     }
 
     return (
-      <div className="row">
+      <div className="row row-no-padding">
         <div className="col-xs-3">
           <img className="poster-img" src={imgUrl} />
         </div>
