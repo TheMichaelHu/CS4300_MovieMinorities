@@ -9,6 +9,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
 import json
 import boto3
+from ranker import rank_movies
 
 # Configure app
 socketio = SocketIO()
@@ -41,18 +42,16 @@ def get_movie_titles():
 @app.route('/search')
 def search_movies():
     query = request.args.get('q')
-
-    # MH: stubbed document ranking based on query (need tf-idf)
-    ranking = ["titanic"] * 20
+    ranking = rank_movies(query)[:10]
 
     # MH: TODO: get rid of json.loads. Only needed for editting results
     movies = [json.loads(get_movie(slug)) for slug in ranking]
 
     # MH: some result edits for funsies
-    movies[0]["movie_metadata"]["name"] = "Definitely %s" % query
-    movies[0]["movie_metadata"]["synopsis"] = "This is totally the movie you're looking for."
-    for i in range(1, len(movies)):
-        movies[i]["movie_metadata"]["name"] = "Probably Not %s %d" % (query, i)
+    # movies[0]["movie_metadata"]["name"] = "Definitely %s" % query
+    # movies[0]["movie_metadata"]["synopsis"] = "This is totally the movie you're looking for."
+    # for i in range(1, len(movies)):
+    #     movies[i]["movie_metadata"]["name"] = "Probably Not %s %d" % (query, i)
 
     return jsonify({"results": movies})
 
@@ -60,7 +59,6 @@ def search_movies():
 @app.route('/movie_data/<movie_slug>')
 def get_movie(movie_slug):
     # MH: stubbing out slug until we support more movies
-    movie_slug = "avatar"
     if app.config["DEVELOPMENT"]:
         with open("%s/movies/%s.json" % (DATA_DIR, movie_slug)) as f:
             data = f.read()

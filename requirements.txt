@@ -51,6 +51,7 @@ redis==2.10.5
 requests==2.13.0
 s3transfer==0.1.13
 scikit-learn==0.18.1
+scipy==1.0.1
 six==1.10.0
 SQLAlchemy==1.0.13
 Unidecode==1.0.22
