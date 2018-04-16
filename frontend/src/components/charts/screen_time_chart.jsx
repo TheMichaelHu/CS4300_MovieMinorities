@@ -36,7 +36,7 @@ export class ScreenTimeChart extends React.PureComponent {
     const len = Object.keys(jsonMod).length;
 
     const svgWidth = 500;
-    const svgHeight = 1000;
+    const svgHeight = 500;
 
     const svg = d3.select(node)
     .attr("width", svgWidth)

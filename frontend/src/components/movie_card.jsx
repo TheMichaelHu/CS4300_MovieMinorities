@@ -11,15 +11,20 @@ export class MovieCard extends React.PureComponent {
     }
 
     return (
-      <p>[Some example graphs and stuff]</p>
+      <p></p>
     );
   }
 
   renderContents() {
     const fallback = "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg";
-    let imgUrl = this.props.movie.poster_image_url
+    let imgUrl = this.props.movie.poster_image_url;
     if (!imgUrl || imgUrl === "N/A") {
       imgUrl = fallback;
+    }
+
+    let synopsis = this.props.movie.synopsis;
+    if (this.props.clickable) {
+      synopsis = this.truncate_txt(synopsis);
     }
 
     return (
@@ -28,13 +33,25 @@ export class MovieCard extends React.PureComponent {
           <img className="poster-img" src={imgUrl} />
         </div>
         <div className="col-xs-9">
-          <p>{this.props.movie.name}</p>
-          <p>{this.props.movie.synopsis}</p>
+          <h2 className="title">{this.props.movie.name}</h2>
+          <hr align="left" width="90%" />
+          <h4 className="synopsis">{synopsis}</h4>
           <br />
           {this.renderGraphs()}
         </div>
       </div>
     );
+  }
+
+  truncate_txt(text) {
+    const limit = 300;
+    let trunc_text = text.slice(0, limit);
+    let curr = limit;
+    while (curr < text.length && text[curr] !== " ") {
+      trunc_text += text[curr];
+      curr += 1;
+    }
+    return trunc_text + "...";
   }
 
   renderCard() {

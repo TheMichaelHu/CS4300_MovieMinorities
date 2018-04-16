@@ -28,21 +28,21 @@ export class FilterBar extends React.PureComponent {
           value={this.state.val1}
           onChange={this.handleChange("val1")}
         >
-          <MenuItem value={1} primaryText="Never" />
-          <MenuItem value={2} primaryText="Every Night" />
-          <MenuItem value={3} primaryText="Weeknights" />
-          <MenuItem value={4} primaryText="Weekends" />
-          <MenuItem value={5} primaryText="Weekly" />
+          <MenuItem value={1} primaryText="Sort by" />
+          <MenuItem value={2} primaryText="Popularity" />
+          <MenuItem value={3} primaryText="Bias" />
+          <MenuItem value={4} primaryText="Fake" />
+          <MenuItem value={5} primaryText="News" />
         </DropDownMenu>
         <DropDownMenu
           value={this.state.val2}
           onChange={this.handleChange("val2")}
         >
-          <MenuItem value={1} primaryText="Custom width" />
-          <MenuItem value={2} primaryText="Every Night" />
-          <MenuItem value={3} primaryText="Weeknights" />
-          <MenuItem value={4} primaryText="Weekends" />
-          <MenuItem value={5} primaryText="Weekly" />
+          <MenuItem value={1} primaryText="Genre" />
+          <MenuItem value={2} primaryText="Action" />
+          <MenuItem value={3} primaryText="Romance" />
+          <MenuItem value={4} primaryText="Comedy" />
+          <MenuItem value={5} primaryText="Fake News" />
         </DropDownMenu>
       </Paper>
     );

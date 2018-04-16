@@ -55,9 +55,13 @@ export class MovieVc extends React.Component {
             {this.renderMovieCard()}
           </Paper>
           <Section title="Charts">
-            <div className="charts-wrapper">
-              <MetadataChart movie={this.state.movie} />
-              <ScreenTimeChart movie={this.state.movie} />
+            <div className="charts-wrapper row">
+              <div className="col-xs-12 col-md-6">
+                <MetadataChart movie={this.state.movie} />
+              </div>
+              <div className="col-xs-12 col-md-6">
+                <ScreenTimeChart movie={this.state.movie} />
+              </div>
             </div>
           </Section>
         </div>
