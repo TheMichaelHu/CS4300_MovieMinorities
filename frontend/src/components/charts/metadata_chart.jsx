@@ -79,7 +79,6 @@ export class MetadataChart extends React.PureComponent {
             div.html(Math.round(Number(d[1] * 100) * 100) / 100 + "%")
               .style("left", rectX + "px")
               .style("top", rectY - 10 + "px");
-            console.log(div);
           })
           .on("mouseout", d => {
             div.transition()

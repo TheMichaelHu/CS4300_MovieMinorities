@@ -16,7 +16,7 @@ export class MovieCard extends React.PureComponent {
   }
 
   renderContents() {
-    const fallback = "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg";
+    const fallback = "https://images-na.ssl-images-amazon.com/images/G/01/imdb/images/nopicture/180x268/film-173410679._CB499558812_.png";
     let imgUrl = this.props.movie.poster_image_url;
     if (!imgUrl || imgUrl === "N/A") {
       imgUrl = fallback;
