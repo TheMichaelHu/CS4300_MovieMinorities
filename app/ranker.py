@@ -16,6 +16,9 @@ def calc_cossim(query_vec, movie_vec):
 
 
 def rank_movies(query):
+    if not query:
+        return [movie["slug"] for movie in movies]
+
     query_vec = tfidf_vec.transform([query]).toarray()[0]
     scores = np.apply_along_axis(lambda x: calc_cossim(query_vec, x), 1, doc_by_vocab)
     ranking = [movies[index]["slug"] for index in np.argsort(-scores)]
