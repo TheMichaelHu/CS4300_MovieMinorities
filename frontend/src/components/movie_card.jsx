@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-// import '../styles/logo';
+import '../styles/movie_card';
 
 export class MovieCard extends React.PureComponent {
   renderGraphs() {
@@ -17,11 +17,15 @@ export class MovieCard extends React.PureComponent {
 
   renderContents() {
     const fallback = "https://ia.media-imdb.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_UX182_CR0,0,182,268_AL_.jpg";
+    let imgUrl = this.props.movie.poster_image_url
+    if (!imgUrl || imgUrl === "N/A") {
+      imgUrl = fallback;
+    }
 
     return (
       <div className="row">
         <div className="col-xs-3">
-          <img src={this.props.movie.poster_image_url || fallback} />
+          <img className="poster-img" src={imgUrl} />
         </div>
         <div className="col-xs-9">
           <p>{this.props.movie.name}</p>
@@ -37,7 +41,7 @@ export class MovieCard extends React.PureComponent {
     if (!this.props.movie) {
       return null;
     }
-    
+
     if (this.props.clickable) {
       return (
         <Link to={`/movie/${this.props.movie.slug}`}>
