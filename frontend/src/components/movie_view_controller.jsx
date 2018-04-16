@@ -17,6 +17,7 @@ export class MovieVc extends React.Component {
     super(props);
     this.state = {
       movie: null,
+      loading: true,
     }
   }
 
@@ -31,7 +32,7 @@ export class MovieVc extends React.Component {
         }
       })
       .then(response => response.json())
-      .then(json => this.setState({movie: json}));
+      .then(json => this.setState({movie: json, loading: false}));
     }
   }
 
@@ -44,27 +45,41 @@ export class MovieVc extends React.Component {
     );
   }
 
+  renderMovieContent() {
+    if (this.state.loading) {
+      return (
+        <div className="loading-screen" style={{height: "100vh", textAlign: "center"}}>
+          <div className="fa fa-circle-notch fa-spin fa-5x" style={{paddingTop: "20vh"}} />
+        </div>
+      );
+    }
+
+    return (
+      <div className="movie-content">
+        <Paper className="hero">
+          {this.renderMovieCard()}
+        </Paper>
+        <Section title="Charts">
+          <div className="charts-wrapper row">
+            <div className="col-xs-12 col-md-6">
+              <MetadataChart movie={this.state.movie} />
+            </div>
+            <div className="col-xs-12 col-md-6">
+              <ScreenTimeChart movie={this.state.movie} />
+            </div>
+          </div>
+        </Section>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="movie-vc">
         <div className="logo-wrapper">
           <HeaderVc search />
         </div>
-        <div className="movie-content">
-          <Paper className="hero">
-            {this.renderMovieCard()}
-          </Paper>
-          <Section title="Charts">
-            <div className="charts-wrapper row">
-              <div className="col-xs-12 col-md-6">
-                <MetadataChart movie={this.state.movie} />
-              </div>
-              <div className="col-xs-12 col-md-6">
-                <ScreenTimeChart movie={this.state.movie} />
-              </div>
-            </div>
-          </Section>
-        </div>
+        {this.renderMovieContent()}
       </div>
     );
   }
