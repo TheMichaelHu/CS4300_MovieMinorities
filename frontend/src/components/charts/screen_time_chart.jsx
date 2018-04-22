@@ -45,8 +45,10 @@ export class ScreenTimeChart extends React.PureComponent {
 
     const maxOffset = 0.9 * 600;
     const yScale = d3.scaleLinear().domain([0, 1]).range([0, maxOffset]);
+    const yScaleCopy = d3.scaleLinear().domain([0, 1]).range([maxOffset, 0]);
+
     let pushX = 100;
-    const pushY = 125;
+    const pushY = 240;
     const interBarSpace = 60;
     const barWidth = 40;
     let ctr = 0;
@@ -72,7 +74,7 @@ export class ScreenTimeChart extends React.PureComponent {
       .attr("y", (d, i) => { return pushY + yScale(yMax) - yScale(entries[i][1]); })
       .attr("fill", categoryColors[ctr])
       .on("mouseover", function(d) {
-          var rect = d3.select(this)._groups[0][0] + 10;
+          var rect = d3.select(this)._groups[0][0];
           var rectX = Number(rect.attributes["x"].nodeValue);
           var rectY = Number(rect.attributes["y"].nodeValue);
           div.transition()
@@ -80,7 +82,12 @@ export class ScreenTimeChart extends React.PureComponent {
             .style("opacity", .9);
           div.html(Math.round(Number(d[1] * 100) * 100) / 100 + "%")
             .style("left", rectX + "px")
-            .style("top", rectY - 10 + "px");
+            .style("top", rectY - 10 + "px")
+            .style("height", "40px")
+            .style("width", "40px")
+            .style("font-size", "18px")
+            .style("font-weight", "300")
+            .style("color", "black");
       })
       .on("mouseout", d => {
         div.transition()
@@ -97,10 +104,10 @@ export class ScreenTimeChart extends React.PureComponent {
     bars
       .append("text")
       .text( (d, i) => { return entries[i][0]; } )
-      .attr("x", (d, i) => { return pushX + interBarSpace * i - 20; })
+      .attr("x", (d, i) => { return pushX + interBarSpace * i - 70; })
       .attr("y", (d, i) => { return pushY + yScale(yMax) - yScale(entries[i][1]) - 10; })
       .attr("transform", (d, i) => {
-          var x = pushX + interBarSpace * i - 20;
+          var x = pushX + interBarSpace * i - 70;
           var y = pushY + yScale(yMax) - yScale(entries[i][1]) - 10;
           return "rotate(-90," + x + "," + y + ")";
       })
@@ -116,15 +123,15 @@ export class ScreenTimeChart extends React.PureComponent {
 
     svg.append('g')
     .attr("id", "g_x")
-    .attr('transform', 'translate(' + (pushX - 100) + ', 10) scale(0.75, 0.75)')
-    .style("font-size", 18)
+    .attr('transform', 'translate(' + (pushX - 140) + ',' + (pushY - 110) + ') scale(0.75, 0.75)')
+    .style('font-size', 18)
     .call(yAxis);
 
     categories.forEach((d, ind) => {
       bars
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 20; })
+        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 100; })
         .attr("y", d => { return pushTextY + 25 * ind; })
         .attr("fill", "black")
         .style("font-size", 18);
@@ -133,7 +140,7 @@ export class ScreenTimeChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 45; })
+        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 130; })
         .attr("y", d => { return pushTextY + 25 * ind - 15; })
         .attr("fill", d => {return categoryColors[ind]; })
         .style("font-size", 18);
