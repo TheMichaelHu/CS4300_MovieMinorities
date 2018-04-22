@@ -9,7 +9,7 @@ import { MovieCardCollection } from "./movie_card_collection";
 
 import { grey900 } from 'material-ui/styles/colors';
 
-// import '../styles_1/home_view_controller';
+// import '../styles/home_view_controller';
 
 export class BrowseVc_1 extends React.Component {
   constructor(props) {

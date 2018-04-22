@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../../styles_1/charts/screen_time_chart';
+import '../../styles/charts/screen_time_chart';
 
 export class ScreenTimeChart extends React.PureComponent {
   constructor(props){

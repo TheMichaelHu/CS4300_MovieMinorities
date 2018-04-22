@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../styles_1/logo';
+import '../styles/logo';
 
 export class Logo extends React.PureComponent {
   render() {

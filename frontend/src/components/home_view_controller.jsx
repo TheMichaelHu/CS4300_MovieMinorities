@@ -18,9 +18,14 @@ export class HomeVc extends React.Component {
         </div>
         <div className="home-content">
           <Paper className="hero">
-            <h1 className="hero-text">
-              Dig Deeper into Movie Demographics
-            </h1>
+            <div className="hero-text">
+              <h1>
+                Movie Minorities
+              </h1>
+              <h2>
+                Dig Deeper into Demographics
+              </h2>
+            </div>
             <div className="search-wrapper">
               <SearchBar />
             </div>

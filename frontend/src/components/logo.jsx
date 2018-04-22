@@ -7,7 +7,7 @@ export class Logo extends React.PureComponent {
   render() {
     return (
       <div className="logo">
-        <h3>Movie Minorities</h3>
+        <h3>MM</h3>
       </div>
     );
   }

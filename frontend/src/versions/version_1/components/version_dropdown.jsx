@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as mmActions from '../actions/mm_actions';
 
-// import '../styles_1/search_bar';
+// import '../styles/search_bar';
 
 export class _VersionDropdown extends React.PureComponent {
   constructor(props) {
@@ -20,7 +20,7 @@ export class _VersionDropdown extends React.PureComponent {
   handleChange(event, index, value) {
     this.props.mmActions.setVersion(value);
   }
-  
+
   render() {
     return (
       <div className="version-selector" style={{display: "inline"}}>

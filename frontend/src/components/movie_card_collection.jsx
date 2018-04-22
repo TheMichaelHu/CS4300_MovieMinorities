@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { MovieCard } from "./movie_card";
 import FontIcon from 'material-ui/FontIcon';
 
+import '../styles/movie_card_collection';
+
 export class MovieCardCollection extends React.Component {
   render() {
     if (this.props.movies.length == 0) {

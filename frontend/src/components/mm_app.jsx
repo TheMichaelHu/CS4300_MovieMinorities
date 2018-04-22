@@ -15,9 +15,9 @@ import { HomeVc } from "./home_view_controller";
 import { BrowseVc } from "./browse_view_controller";
 import { MovieVc } from "./movie_view_controller";
 
-import { HomeVc_1 } from "../components_1/home_view_controller";
-import { BrowseVc_1 } from "../components_1/browse_view_controller";
-import { MovieVc_1 } from "../components_1/movie_view_controller";
+import { HomeVc_1 } from "../versions/version_1/components/home_view_controller";
+import { BrowseVc_1 } from "../versions/version_1/components/browse_view_controller";
+import { MovieVc_1 } from "../versions/version_1/components/movie_view_controller";
 
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom'
@@ -40,7 +40,7 @@ export class _MovieMinoritiesApp extends React.Component {
     }
 
     return (
-      <div>
+      <div className={`version-${this.props.version}`}>
         <Switch>
           <Route
             exact

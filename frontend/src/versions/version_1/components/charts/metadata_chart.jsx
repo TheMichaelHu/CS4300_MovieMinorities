@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../../styles_1/charts/metadata_chart';
+import '../../styles/charts/metadata_chart';
 
 export class MetadataChart extends React.PureComponent {
   constructor(props){

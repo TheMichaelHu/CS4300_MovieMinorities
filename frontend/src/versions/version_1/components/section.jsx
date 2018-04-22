@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../styles_1/section';
+import '../styles/section';
 
 export class Section extends React.PureComponent {
   render() {

@@ -10,7 +10,7 @@ import { MovieCard } from "./movie_card";
 import { MetadataChart } from "./charts/metadata_chart";
 import { ScreenTimeChart } from "./charts/screen_time_chart";
 
-import '../styles_1/movie_view_controller';
+import '../styles/movie_view_controller';
 
 export class MovieVc_1 extends React.Component {
   constructor(props) {

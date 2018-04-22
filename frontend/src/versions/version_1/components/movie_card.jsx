@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import '../styles_1/movie_card';
+import '../styles/movie_card';
 
 export class MovieCard extends React.PureComponent {
   renderGraphs() {

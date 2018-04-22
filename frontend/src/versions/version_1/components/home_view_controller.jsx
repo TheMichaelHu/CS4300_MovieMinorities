@@ -7,7 +7,7 @@ import { HeaderVc } from "./header_view_controller";
 import { Section } from "./section";
 import { SearchBar } from "./search_bar";
 
-import '../styles_1/home_view_controller';
+import '../styles/home_view_controller';
 
 export class HomeVc_1 extends React.Component {
   render() {
