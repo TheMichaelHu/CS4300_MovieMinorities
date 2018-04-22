@@ -109,7 +109,7 @@ export class MetadataChart extends React.PureComponent {
 
     svg.append('g')
     .attr("id", "g_x")
-    .attr('transform', 'translate(' + (pushX - 100) + ', 120) scale(0.75, 0.75)')
+    .attr('transform', 'translate(' + (pushX - 100) + ',' + (pushY - 135) + ') scale(0.75, 0.75)')
     .call(yAxis);
 
 
