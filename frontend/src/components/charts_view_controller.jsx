@@ -9,10 +9,10 @@ export class ChartsVc extends React.PureComponent {
   renderMultiCol() {
     return (
       <div className="charts-wrapper row">
-        <div className="col-xs-12 col-md-6">
+        <div className="col-xs-12 col-md-5">
           <MetadataChart movie={this.props.movie} />
         </div>
-        <div className="col-xs-12 col-md-6">
+        <div className="col-xs-12 col-md-7">
           <ScreenTimeChart movie={this.props.movie} />
         </div>
       </div>
