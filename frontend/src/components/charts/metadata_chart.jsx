@@ -70,7 +70,7 @@ export class MetadataChart extends React.PureComponent {
         // tool tip
         bars.append("rect")
           .attr("width", barWidth)
-          .attr("height", (d, i) => { return yScale(entries[i][1][1]); })
+          .attr("height", (d, i) => { return yScale(entries[i][1]); })
           .attr("x",  (d, i) => { return pushX + interBarSpace * i; })
           .attr("y", (d, i) => { return pushY + 190 + yScale(yMax[1]) - yScale(entries[i][1][1]); })
           .attr("fill", categoryColors[ctr])
@@ -82,7 +82,7 @@ export class MetadataChart extends React.PureComponent {
             div.transition()
               .duration(200)
               .style("opacity", .9);
-            div.html(Math.round(Number(d[1][1] * 100) * 100) / 100 + "%")
+            div.html(Math.round(Number(d[1] * 100) * 100) / 100 + "%")
               .style("left", rectX + "px")
               .style("top", rectY - 10 + "px")
               .style("height", "40px")
@@ -105,9 +105,9 @@ export class MetadataChart extends React.PureComponent {
 
     bars
       .append("text")
-      .text((d, i) => { return entries[i][1][0]; } )
+      .text((d, i) => { return entries[i][1]; } )
       .attr("x",(d, i) => { return pushX - 50 + interBarSpace * i; })
-      .attr("y",(d, i) => { return pushY + 190 + yScale(yMax[1]) + 20; })
+      .attr("y",(d, i) => { return pushY + 190 + yScale(yMax) + 20; })
       .attr("fill", "black")
       .style("font-size", 18);
 
