@@ -117,7 +117,7 @@ export class MetadataChart extends React.PureComponent {
       bars
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", d => { return pushTextX - 100 interBarSpace * (entries.length + 1); })
+        .attr("x", d => { return pushTextX - 100 + interBarSpace * (entries.length + 1); })
         .attr("y", d => { return pushTextY + 25 * ind; })
         .attr("fill", "black")
         .style("font-size", 18);
