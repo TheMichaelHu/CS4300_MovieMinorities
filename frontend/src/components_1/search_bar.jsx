@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as mmActions from '../actions/mm_actions';
 
-import '../styles/search_bar';
+import '../styles_1/search_bar';
 
 class _SearchBar extends React.Component {
   constructor(props) {

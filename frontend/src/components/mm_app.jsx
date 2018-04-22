@@ -9,11 +9,15 @@ import {
   grey50, grey400, grey800, grey900,
 } from 'material-ui/styles/colors';
 import { fade } from 'material-ui/utils/colorManipulator';
+import { Footer } from "./footer";
 
 import { HomeVc } from "./home_view_controller";
 import { BrowseVc } from "./browse_view_controller";
 import { MovieVc } from "./movie_view_controller";
-import { Footer } from "./footer";
+
+import { HomeVc_1 } from "../components_1/home_view_controller";
+import { BrowseVc_1 } from "../components_1/browse_view_controller";
+import { MovieVc_1 } from "../components_1/movie_view_controller";
 
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom'
@@ -26,22 +30,31 @@ export class _MovieMinoritiesApp extends React.Component {
   }
 
   renderContent() {
+    let Home = HomeVc;
+    let Browse = BrowseVc;
+    let Movie = MovieVc;
+    if (this.props.version == 1) {
+      Home = HomeVc_1;
+      Browse = BrowseVc_1;
+      Movie = MovieVc_1;
+    }
+
     return (
       <div>
         <Switch>
           <Route
             exact
             path="/"
-            component={router => <HomeVc router={router} />}
+            component={router => <Home router={router} />}
           />
           <Route
             exact
             path="/movies"
-            component={router => <BrowseVc router={router} />}
+            component={router => <Browse router={router} />}
           />
           <Route
             path="/movie/:id"
-            component={router => <MovieVc router={router} />}
+            component={router => <Movie router={router} />}
           />
         </Switch>
         <Footer />
@@ -79,10 +92,13 @@ export class _MovieMinoritiesApp extends React.Component {
 
 _MovieMinoritiesApp.propTypes = {
   mmActions: PropTypes.object,
+  version: PropTypes.number,
 };
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    version: state.version,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

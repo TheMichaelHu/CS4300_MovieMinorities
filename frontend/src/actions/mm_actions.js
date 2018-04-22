@@ -22,3 +22,7 @@ export function fetchTitles() {
 export function setSearch(search) {
   return {type: types.SET_SEARCH, search};
 }
+
+export function setVersion(version) {
+  return {type: types.SET_VERSION, version};
+}

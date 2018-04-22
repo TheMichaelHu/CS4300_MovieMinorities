@@ -1,0 +1,13 @@
+.movie-card {
+  margin: 5px 0;
+  background-color: #222;
+
+  .poster-img {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .charts-wrapper {
+    min-height: 70vh;
+  }
+}
