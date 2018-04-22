@@ -5,7 +5,7 @@ import numpy as np
 
 DATA_DIR = "./app/data"
 
-ranker = pickle.load(open(DATA_DIR + "/tf_idf.pkl", "r"))
+ranker = pickle.load(open(DATA_DIR + "/tf_idf.pkl", "rb"))
 doc_by_vocab, movies, tfidf_vec = ranker["tf-idf"], ranker["movies"], ranker["transformer"]
 
 
