@@ -35,20 +35,20 @@ export class ScreenTimeChart extends React.PureComponent {
     // length is 2
     const len = Object.keys(jsonMod).length;
 
-    const svgWidth = 500;
-    const svgHeight = 500;
+    const svgWidth = 750;
+    const svgHeight = 750;
 
     const svg = d3.select(node)
     .attr("width", svgWidth)
     .attr("height", svgHeight)
     .attr("class", "bar");
 
-    const maxOffset = 0.9 * 400; // 360
+    const maxOffset = 0.9 * 600;
     const yScale = d3.scaleLinear().domain([0, 1]).range([0, maxOffset]);
-    let pushX = 120;
-    const pushY = 180;
-    const interBarSpace = 30;
-    const barWidth = 20;
+    let pushX = 100;
+    const pushY = 125;
+    const interBarSpace = 60;
+    const barWidth = 40;
     let ctr = 0;
     const flag = 0;
 
@@ -72,7 +72,7 @@ export class ScreenTimeChart extends React.PureComponent {
       .attr("y", (d, i) => { return pushY + yScale(yMax) - yScale(entries[i][1]); })
       .attr("fill", categoryColors[ctr])
       .on("mouseover", function(d) {
-          var rect = d3.select(this)._groups[0][0]
+          var rect = d3.select(this)._groups[0][0] + 10;
           var rectX = Number(rect.attributes["x"].nodeValue);
           var rectY = Number(rect.attributes["y"].nodeValue);
           div.transition()
@@ -92,43 +92,51 @@ export class ScreenTimeChart extends React.PureComponent {
     ctr++;
 
     // x-axis titles
-    pushX = 120;
+    pushX = 200;
 
     bars
       .append("text")
       .text( (d, i) => { return entries[i][0]; } )
-      .attr("x", (d, i) => { return pushX + interBarSpace * i + 15; })
-      .attr("y", (d, i) => { return pushY + yScale(yMax) - yScale(entries[i][1]) - 5; })
+      .attr("x", (d, i) => { return pushX + interBarSpace * i - 20; })
+      .attr("y", (d, i) => { return pushY + yScale(yMax) - yScale(entries[i][1]) - 10; })
       .attr("transform", (d, i) => {
-          var x = pushX + interBarSpace * i + 15;
-          var y = pushY + yScale(yMax) - yScale(entries[i][1]) - 5;
+          var x = pushX + interBarSpace * i - 20;
+          var y = pushY + yScale(yMax) - yScale(entries[i][1]) - 10;
           return "rotate(-90," + x + "," + y + ")";
       })
       .attr("fill", "black")
-      .style("font-size", 14);
+      .style("font-size", 18);
 
     // legend
-    const pushTextX = 120;
-    const pushTextY = 180;
-    const legendBarSize = 10;
+    const pushTextX = pushX;
+    const pushTextY = pushY;
+    const legendBarSize = 20;
+
+    const yAxis = d3.axisRight(yScaleCopy);
+
+    svg.append('g')
+    .attr("id", "g_x")
+    .attr('transform', 'translate(' + (pushX - 100) + ', 10) scale(0.75, 0.75)')
+    .style("font-size", 18)
+    .call(yAxis);
 
     categories.forEach((d, ind) => {
       bars
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1); })
-        .attr("y", d => { return pushTextY + 20 * ind; })
+        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 20; })
+        .attr("y", d => { return pushTextY + 25 * ind; })
         .attr("fill", "black")
-        .style("font-size", 14);
+        .style("font-size", 18);
 
       bars
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 15; })
-        .attr("y", d => { return pushTextY + 20 * ind - 10; })
+        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 45; })
+        .attr("y", d => { return pushTextY + 25 * ind - 15; })
         .attr("fill", d => {return categoryColors[ind]; })
-        .style("font-size", 14);
+        .style("font-size", 18);
     });
   }
 

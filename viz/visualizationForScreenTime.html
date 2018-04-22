@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-	
+
 	<head>
 		<title> Visualization </title>
-		
+
 			<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
 			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 			<script src="https://d3js.org/d3.v4.min.js"></script>
@@ -11,12 +11,12 @@
 			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 
 			<style>
-                
-				body {  
+
+				body {
                     font-size: 8;
                     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                     }
-                
+
                 div.tooltip {
                     position: absolute;
                     text-align: center;
@@ -29,50 +29,52 @@
                     border-radius: 2px;
                     pointer-events: none;
                 }
-                
+
                 /* .hist { border: solid black 2px; } */
-				
+
 			</style>
 
-			
+
 	</head>
-	
+
 	<body>
-        
+
         <div id = "viz">
-        
-        
+
+
         </div>
-		
+
 		<script>
-        
+
+
+		// createBarGraphsForScreenTime(jsonMod, categories, categoryColors, 150, 150)
+
             var tag = "#viz";
 
              // jsonMod, categories, categoryColors
-            
-            var jsonMod = {"Bill Paxton": {"screen_time": 0.05, "actor_id": "26", "race": "White", "gender": "male", "char_name": "Lovett"}, "James Garrett": {"screen_time": 0.05, "actor_id": "141", "race": "N/A", "gender": "other", "char_name": "Reporter"}, "Ron Donachie": {"screen_time": 0.05, "actor_id": "103", "race": "N/A", "gender": "male", "char_name": "Master at arms"}, "Lewis Abernathy": {"screen_time": 0.05, "actor_id": "32", "race": "N/A", "gender": "other", "char_name": "Bodine"}, "Kate Winslet": {"screen_time": 0.55, "actor_id": "20", "race": "White", "gender": "female", "char_name": "Old rose"}, "Bernard Fox": {"screen_time": 0.15, "actor_id": "39", "race": "N/A", "gender": "male", "char_name": "Colonel gracie"}, "Suzy Amis": {"screen_time": 0.05, "actor_id": "31", "race": "N/A", "gender": "female", "char_name": "Lizzy"}, "Brendan Connolly": {"screen_time": 0.05, "actor_id": "129", "race": "N/A", "gender": "other", "char_name": "Steward barnes"}}
-            
-            
+
+            var jsonMod = {"James Garrett": {"screen_time": 0.05, "actor_id": "141", "race": "N/A", "gender": "other", "char_name": "Reporter"}, "Ron Donachie": {"screen_time": 0.05, "actor_id": "103", "race": "N/A", "gender": "male", "char_name": "Master at arms"}, "Lewis Abernathy": {"screen_time": 0.05, "actor_id": "32", "race": "N/A", "gender": "other", "char_name": "Bodine"}, "Kate Winslet": {"screen_time": 0.55, "actor_id": "20", "race": "White", "gender": "female", "char_name": "Old rose"}, "Bernard Fox": {"screen_time": 0.15, "actor_id": "39", "race": "N/A", "gender": "male", "char_name": "Colonel gracie"}, "Suzy Amis": {"screen_time": 0.05, "actor_id": "31", "race": "N/A", "gender": "female", "char_name": "Lizzy"}, "Brendan Connolly": {"screen_time": 0.05, "actor_id": "129", "race": "N/A", "gender": "other", "char_name": "Steward barnes"}}
+
             arr_entries = Object.entries(jsonMod);
             entries = [];
-            
+
             for (var actors in arr_entries) {
                 entries.push([arr_entries[actors][0], arr_entries[actors][1]["screen_time"]]);
             };
-            
+
             // console.log(entries);
 
             var categories = ["Screen Time"];
             var categoryColors = ["darkorange"];
-             
-            var createBarGraphsForScreenTime = function (jsonMod, categories, categoryColors) {
-                
+
+            var createBarGraphsForScreenTime = function (jsonMod, categories, categoryColors, pushX, pushY) {
+
                 // length is 2
                 var len = Object.keys(jsonMod).length;
                 console.log(len);
 
-                var svgWidth = 500;
-                var svgHeight = 1000;
+                var svgWidth = 750;
+                var svgHeight = 750;
 
                 var svg = d3.select(tag)
                 .append("svg")
@@ -80,7 +82,7 @@
                 .attr("height", svgHeight)
                 .attr("class", "bar");
 
-                var maxOffset = 0.9 * 400; // 360
+                var maxOffset = 0.9 * 600;
 
                 // scale
                 var yScale = d3.scaleLinear()
@@ -88,16 +90,21 @@
                 // percentage between 0 and 1
                 .range([0, maxOffset]);
 
-                var pushX = 120;
-                var pushY = 180;
+								var yScaleCopy = d3.scaleLinear()
+								.domain([0, 1])
+								// percentage between 0 and 1
+								.range([maxOffset, 0]);
 
-                var interBarSpace = 30;
-                var barWidth = 20;
+                // var pushX = 120;
+                // var pushY = 180;
+
+                var interBarSpace = 60;
+                var barWidth = 40;
 
                 var ctr = 0;
 
                 var flag = 0;
-                var bars; 
+                var bars;
 
                 // plot bars
 
@@ -121,7 +128,7 @@
                     .attr("fill", categoryColors[ctr])
                     .on("mouseover", function(d) {
                         var rect = d3.select(this)._groups[0][0]
-                        var rectX = Number(rect.attributes["x"].nodeValue);
+                        var rectX = Number(rect.attributes["x"].nodeValue) + 10;
                         var rectY = Number(rect.attributes["y"].nodeValue);
                         div.transition()
                         .duration(200)
@@ -140,60 +147,63 @@
 
                     ctr++;
 
-                ;
-
                 // x-axis titles
-                pushX = 120;
 
                 bars
                 .append("text")
                 .text( function(d, i) { return entries[i][0]; } )
-                .attr("x", function(d, i) { return pushX + interBarSpace * i + 15; })
-                .attr("y", function(d, i) { return pushY + yScale(yMax) - yScale(entries[i][1]) - 5; })
+                .attr("x", function(d, i) { return pushX + interBarSpace * i - 20; })
+                .attr("y", function(d, i) { return pushY + yScale(yMax) - yScale(entries[i][1]) - 10; })
                 .attr("transform", function(d, i) {
-                    var x = pushX + interBarSpace * i + 15;
-                    var y = pushY + yScale(yMax) - yScale(entries[i][1]) - 5;
-                  
+                    var x = pushX + interBarSpace * i - 20;
+                    var y = pushY + yScale(yMax) - yScale(entries[i][1]) - 10;
+
                     return "rotate(-90," + x + "," + y + ")";
-                }) 
+                })
                 .attr("fill", "black")
-                .style("font-size", 14);
+                .style("font-size", 18);
 
                 // legend
 
-                var pushTextX = 120;
-                var pushTextY = 180;
+                var pushTextX = pushX;
+                var pushTextY = pushY;
 
-                var legendBarSize = 10;
-                
-                
-                categories.forEach( function(d, ind) {
-                    
+                var legendBarSize = 20;
+
+								var yAxis = d3.axisRight(yScaleCopy);
+
+								svg.append('g')
+								.attr("id", "g_x")
+								.attr('transform', 'translate(' + (pushX - 100) + ', 10) scale(0.75, 0.75)')
+								.style("font-size", 18)
+								.call(yAxis);
+
+								categories.forEach( function(d, ind) {
+
                     bars
                     .append("text")
                     .text( function(d) { return categories[ind]; } )
-                    .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1); })
-                    .attr("y", function(d) { return pushTextY + 20 * ind; })
+                    .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1) - 20; })
+                    .attr("y", function(d) { return pushTextY + 25 * ind; })
                     .attr("fill", "black")
-                    .style("font-size", 14);
-                    
-                    
+                    .style("font-size", 18);
+
+
                     bars
                     .append("rect")
                     .attr("width", legendBarSize)
                     .attr("height", legendBarSize)
-                    .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1) - 15; })
-                    .attr("y", function(d) { return pushTextY + 20 * ind - 10; })
+                    .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1) - 45; })
+                    .attr("y", function(d) { return pushTextY + 25 * ind - 15; })
                     .attr("fill", function(d) {return categoryColors[ind]; })
-                    .style("font-size", 14);
-                           
-                } );
-                
-            }
-            
-        
+                    .style("font-size", 18);
+
+            });
+
+					}
+
 		</script>
-		
+
 		<br> <br>
 
 	</body>

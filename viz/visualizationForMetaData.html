@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-	
+
 	<head>
 		<title> Visualization </title>
-		
+
 			<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
 			<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
 			<script src="https://d3js.org/d3.v4.min.js"></script>
@@ -11,12 +11,12 @@
 			<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 
 			<style>
-                
-				body {  
+
+				body {
                     font-size: 8;
                     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                     }
-                
+
                 div.tooltip {
                     position: absolute;
                     text-align: center;
@@ -29,44 +29,46 @@
                     border-radius: 2px;
                     pointer-events: none;
                 }
-                
+
                 /* .hist { border: solid black 2px; } */
-				
+
 			</style>
 
-			
+
 	</head>
-	
+
 	<body>
-        
+
         <div id = "viz">
-        
-        
+
+
         </div>
-		
+
 		<script>
-        
+
+	// createBarGraphsForMetadata(jsonMod, categories, categoryColors, 250, 260)
+
             var tag = "#viz";
 
              // jsonMod, categories, categoryColors
-            
-            var jsonMod = 
-                {"by_line": {"other": 0.15, "female": 0.6, "male": 0.25}, 
-                 "by_movie": {"other": 0.38, "female": 0.25, "male": 0.38}
+
+            var jsonMod =
+                {"by_line": {"female":0.5, "male": 0.3, "other": 0.15},
+                 "by_movie": {"female":0.5, "male": 0.5, "other": 0.38}
                 };
-             
-                
+
+
             var categories = ["By movie", "By line"];
             var categoryColors = ["#03353e", "#0294a5"];
-             
-            var createBarGraphsForMetadata = function (jsonMod, categories, categoryColors) {
-                
+
+            var createBarGraphsForMetadata = function (jsonMod, categories, categoryColors, pushX, pushY) {
+
                 // length is 2
                 var len = Object.keys(jsonMod).length;
                 // console.log(len);
 
-                var svgWidth = 500;
-                var svgHeight = 500;
+                var svgWidth = 750; // change
+                var svgHeight = 750; // change
 
                 var svg = d3.select(tag)
                 .append("svg")
@@ -74,7 +76,7 @@
                 .attr("height", svgHeight)
                 .attr("class", "bar");
 
-                var maxOffset = 0.9 * 400; // 360
+                var maxOffset = 0.9 * 600;
 
                 // scale
                 var yScale = d3.scaleLinear()
@@ -82,16 +84,21 @@
                 // percentage between 0 and 1
                 .range([0, maxOffset]);
 
-                var pushX = 120;
-                var pushY = 60;
+								var yScaleCopy = d3.scaleLinear()
+								.domain([0, 1])
+								// percentage between 0 and 1
+								.range([maxOffset, 0]);
 
-                var interBarSpace = 60;
-                var barWidth = 20;
+                // var pushX = 120;
+                // var pushY = 60;
+
+                var interBarSpace = 100;
+                var barWidth = 35; // change
 
                 var ctr = 0;
 
                 var flag = 0;
-                var bars; 
+                var bars;
 
                 // plot bars
 
@@ -99,7 +106,7 @@
 
                     // console.log(ind);
                     var jsonData = jsonMod[ind];
-                    
+
                     var entries = Object.entries(jsonData);
                     console.log(entries);
 
@@ -126,7 +133,7 @@
                     .attr("fill", categoryColors[ctr])
                     .on("mouseover", function(d) {
                         var rect = d3.select(this)._groups[0][0]
-                        var rectX = Number(rect.attributes["x"].nodeValue);
+                        var rectX = Number(rect.attributes["x"].nodeValue) + 10;
                         var rectY = Number(rect.attributes["y"].nodeValue);
                         div.transition()
                         .duration(200)
@@ -148,52 +155,61 @@
                 };
 
                 // x-axis titles
-                pushX = 120;
 
                 bars
                 .append("text")
                 .text( function(d, i) { return entries[i][0]; } )
-                .attr("x", function(d, i) { return pushX + interBarSpace * i; })
+                .attr("x", function(d, i) { return pushX - 50 + interBarSpace * i; })
                 .attr("y", function(d, i) { return pushY - 5 + yScale(yMax) + 20; })
                 .attr("fill", "black")
                 .style("font-size", 14);
 
                 // legend
 
-                var pushTextX = 120;
-                var pushTextY = 180;
+                var pushTextX = 270;
+                var pushTextY = 300;
 
-                var legendBarSize = 10;
-                
-                
+                var legendBarSize = 20;
+
+								var yAxis = d3.axisRight(yScaleCopy);
+
+								svg.append('g')
+								.attr("id", "g_x")
+								.attr('transform', 'translate(' + (pushX - 125) + ', 25) scale(0.75, 0.75)')
+								.style("font-size", 18)
+								.call(yAxis);
+
+
                 categories.forEach( function(d, ind) {
-                                   
-                    
+
+
                     bars
                     .append("text")
                     .text( function(d) { return categories[ind]; } )
-                    .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1); })
-                    .attr("y", function(d) { return pushTextY + 20 * ind; })
+                    .attr("x", function(d) { return pushTextX - 150 + interBarSpace * (entries.length + 1); }) // change
+                    .attr("y", function(d) { return pushTextY + 25 * ind; })
                     .attr("fill", "black")
-                    .style("font-size", 14);
-                    
-                    
+                    .style("font-size", 18);
+
+
                     bars
                     .append("rect")
                     .attr("width", legendBarSize)
                     .attr("height", legendBarSize)
-                    .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1) - 15; })
-                    .attr("y", function(d) { return pushTextY + 20 * ind - 10; })
+                    .attr("x", function(d) { return pushTextX - 150 + interBarSpace * (entries.length + 1) - 25; }) // change
+                    .attr("y", function(d) { return pushTextY + 25 * ind - 15; })
                     .attr("fill", function(d) {return categoryColors[ind]; })
-                    .style("font-size", 14);
-                           
+                    .style("font-size", 18);
+
                 } );
-                
+
+
+
             }
-            
-        
+
+
 		</script>
-		
+
 		<br> <br>
 
 	</body>
