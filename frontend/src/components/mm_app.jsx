@@ -14,6 +14,8 @@ import { Footer } from "./footer";
 import { HomeVc } from "./home_view_controller";
 import { BrowseVc } from "./browse_view_controller";
 import { MovieVc } from "./movie_view_controller";
+import { BrowseCompareVc } from "./browse_compare_view_controller";
+import { CompareVc } from "./compare_view_controller";
 
 import { HomeVc_1 } from "../versions/version_1/components/home_view_controller";
 import { BrowseVc_1 } from "../versions/version_1/components/browse_view_controller";
@@ -33,10 +35,14 @@ export class _MovieMinoritiesApp extends React.Component {
     let Home = HomeVc;
     let Browse = BrowseVc;
     let Movie = MovieVc;
+    let BrowseCompare = BrowseCompareVc;
+    let Compare = CompareVc;
     if (this.props.version == 1) {
       Home = HomeVc_1;
       Browse = BrowseVc_1;
       Movie = MovieVc_1;
+      BrowseCompare = HomeVc_1;
+      Compare = HomeVc_1;
     }
 
     return (
@@ -55,6 +61,14 @@ export class _MovieMinoritiesApp extends React.Component {
           <Route
             path="/movie/:id"
             component={router => <Movie router={router} />}
+          />
+          <Route
+            path="/compare/:id1/:id2"
+            component={router => <Compare router={router} />}
+          />
+          <Route
+            path="/compare/:id"
+            component={router => <BrowseCompare router={router} />}
           />
         </Switch>
         <Footer />

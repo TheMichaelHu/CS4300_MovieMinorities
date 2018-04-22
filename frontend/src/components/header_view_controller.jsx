@@ -13,7 +13,7 @@ export class HeaderVc extends React.Component {
     if (!this.props.search) {
       return null;
     }
-    return (<SearchBar />);
+    return (<SearchBar path={this.props.path} />);
   }
 
   renderLogo() {
@@ -31,7 +31,7 @@ export class HeaderVc extends React.Component {
           <VersionDropdown />
         </div>
         <div className="col-xs-6">
-          <Link to="/movies" style={{float: "right"}}>
+          <Link to={this.props.path} style={{float: "right"}}>
             <FlatButton label="Browse All" />
           </Link>
         </div>
@@ -58,6 +58,7 @@ export class HeaderVc extends React.Component {
           iconStyleRight={{margin: 0, paddingTop: 13}}
           zDepth={0}
         />
+        {this.props.children}
         <div className="filters-wrapper">
           {this.renderFilters()}
         </div>
@@ -69,9 +70,11 @@ export class HeaderVc extends React.Component {
 HeaderVc.propTypes = {
   search: PropTypes.bool,
   filter: PropTypes.bool,
+  path: PropTypes.string,
 };
 
 HeaderVc.defaultProps = {
   search: false,
   filter: false,
+  path: "/movies",
 };

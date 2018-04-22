@@ -23,7 +23,7 @@ class _SearchBar extends React.Component {
   }
 
   getSearchUrl() {
-    return `/movies?q=${this.props.search}`;
+    return `${this.props.path}?q=${this.props.search}`;
   }
 
   filterSearch(searchText, key) {
@@ -60,6 +60,11 @@ _SearchBar.propTypes = {
   mmActions: PropTypes.object,
   search: PropTypes.string,
   titles: PropTypes.arrayOf(PropTypes.string),
+  path: PropTypes.string,
+};
+
+_SearchBar.defaultProps = {
+  path: "/movies",
 };
 
 function mapStateToProps(state) {

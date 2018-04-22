@@ -1,0 +1,17 @@
+.version-0 .browse-compare-vc {
+  .logo-wrapper {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    top: 0;
+  }
+
+  .logo-wrapper-hidden {
+    visibility: hidden;
+  }
+
+  .compare-txt {
+    padding-left: 24px;
+    font-size: 16px;
+  }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import FlatButton from 'material-ui/FlatButton';
 
 import '../styles/movie_card';
 
@@ -12,6 +13,20 @@ export class MovieCard extends React.PureComponent {
 
     return (
       <p></p>
+    );
+  }
+
+  renderCompareButton() {
+    if (!this.props.comparable) {
+      return null;
+    }
+
+    return (
+      <div className="compare-btn-wrapper">
+        <Link to={`/compare/${this.props.movie.slug}`}>
+          <FlatButton label="Compare" />
+        </Link>
+      </div>
     );
   }
 
@@ -28,12 +43,13 @@ export class MovieCard extends React.PureComponent {
     }
 
     return (
-      <div className="row row-no-padding">
+      <div className="movie-card-contents row row-no-padding">
         <div className="col-xs-3">
           <img className="poster-img" src={imgUrl} />
         </div>
         <div className="col-xs-9">
           <h2 className="title">{this.props.movie.name}</h2>
+          {this.renderCompareButton()}
           <hr align="left" width="90%" />
           <h4 className="synopsis">{synopsis}</h4>
           <br />
@@ -61,7 +77,7 @@ export class MovieCard extends React.PureComponent {
 
     if (this.props.clickable) {
       return (
-        <Link to={`/movie/${this.props.movie.slug}`}>
+        <Link to={`${this.props.path}/${this.props.movie.slug}`}>
           {this.renderContents()}
         </Link>
       );
@@ -81,11 +97,15 @@ export class MovieCard extends React.PureComponent {
 
 MovieCard.propTypes = {
   movie: PropTypes.object,
+  path: PropTypes.string,
   graphs: PropTypes.bool,
   clickable: PropTypes.bool,
+  comparable: PropTypes.bool,
 };
 
 MovieCard.defaultProps = {
   graphs: false,
   clickable: false,
+  comparable: false,
+  path: "/movies",
 }

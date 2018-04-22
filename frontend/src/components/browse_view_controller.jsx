@@ -9,7 +9,7 @@ import { MovieCardCollection } from "./movie_card_collection";
 
 import { grey900 } from 'material-ui/styles/colors';
 
-// import '../styles/home_view_controller';
+import '../styles/browse_view_controller';
 
 export class BrowseVc extends React.Component {
   constructor(props) {
@@ -62,6 +62,9 @@ export class BrowseVc extends React.Component {
     return (
       <div className="browse-vc">
         <div className="logo-wrapper">
+          <HeaderVc search filter />
+        </div>
+        <div className="logo-wrapper-hidden">
           <HeaderVc search filter />
         </div>
         <div className="browse-content">

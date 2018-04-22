@@ -8,20 +8,22 @@ import { Section } from "./section";
 import { MovieCard } from "./movie_card";
 import { ChartsVc } from "./charts_view_controller";
 
-import '../styles/movie_view_controller';
+import '../styles/compare_view_controller';
 
-export class MovieVc extends React.Component {
+export class CompareVc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: null,
-      loading: true,
+      movie1: null,
+      movie2: null,
+      loading1: true,
+      loading2: true,
     }
   }
 
   componentWillMount() {
-    if (this.props.router.match.params.id) {
-      fetch(`/movie_data/${this.props.router.match.params.id}`, {
+    if (this.props.router.match.params.id1) {
+      fetch(`/movie_data/${this.props.router.match.params.id1}`, {
         method: 'GET',
         mode: 'cors',
         credentials: 'include',
@@ -30,21 +32,40 @@ export class MovieVc extends React.Component {
         }
       })
       .then(response => response.json())
-      .then(json => this.setState({movie: json, loading: false}));
+      .then(json => this.setState({movie1: json, loading1: false}));
+    }
+    if (this.props.router.match.params.id2) {
+      fetch(`/movie_data/${this.props.router.match.params.id2}`, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(json => this.setState({movie2: json, loading2: false}));
     }
   }
 
   renderMovieCard() {
-    if (!this.state.movie) {
+    if (!this.state.movie1 || !this.state.movie2) {
       return null;
     }
     return (
-      <MovieCard movie={this.state.movie.movie_metadata} comparable />
+      <div className="row row-no-padding">
+        <div className="col-xs-6">
+          <MovieCard movie={this.state.movie1.movie_metadata} />
+        </div>
+        <div className="col-xs-6">
+          <MovieCard movie={this.state.movie2.movie_metadata} />
+        </div>
+      </div>
     );
   }
 
   renderMovieContent() {
-    if (this.state.loading) {
+    if (this.state.loading1 || this.state.loading2) {
       return (
         <div className="loading-screen" style={{height: "100vh", textAlign: "center"}}>
           <div className="fa fa-circle-notch fa-spin fa-5x" style={{paddingTop: "20vh"}} />
@@ -58,7 +79,14 @@ export class MovieVc extends React.Component {
           {this.renderMovieCard()}
         </Paper>
         <Section title="Charts">
-          <ChartsVc movie={this.state.movie} />
+          <div className="row row-no-padding">
+            <div className="col-xs-6">
+              <ChartsVc movie={this.state.movie1} single />
+            </div>
+            <div className="col-xs-6">
+              <ChartsVc movie={this.state.movie2} single />
+            </div>
+          </div>
         </Section>
       </div>
     );
@@ -76,10 +104,10 @@ export class MovieVc extends React.Component {
   }
 }
 
-MovieVc.propTypes = {
+CompareVc.propTypes = {
   router: PropTypes.objectOf(PropTypes.object),
 };
 
-MovieVc.defaultProps = {
+CompareVc.defaultProps = {
   router: {},
 };

@@ -1,5 +1,4 @@
 .version-0 .movie-card {
-  margin: 5px 0;
   background-color: #222;
 
   .poster-img {
@@ -9,5 +8,19 @@
 
   .charts-wrapper {
     min-height: 70vh;
+  }
+
+  .title {
+    display: inline;
+  }
+
+  .compare-btn-wrapper {
+    display: inline;
+    padding-left: 20px;
+    font-size: 25px;
+  }
+
+  .movie-card-contents {
+    padding: 20px 0;
   }
 }

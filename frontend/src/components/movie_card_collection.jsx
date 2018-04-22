@@ -24,6 +24,7 @@ export class MovieCardCollection extends React.Component {
               clickable
               movie={movie.movie_metadata}
               key={movie.movie_metadata.name}
+              path={this.props.path}
             />
           ))
         }
@@ -34,4 +35,9 @@ export class MovieCardCollection extends React.Component {
 
 MovieCardCollection.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  path: PropTypes.string,
 };
+
+MovieCardCollection.defaultProps = {
+  path: "/movie",
+}
