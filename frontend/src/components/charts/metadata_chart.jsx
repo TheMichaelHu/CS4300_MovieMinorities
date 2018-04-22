@@ -72,7 +72,7 @@ export class MetadataChart extends React.PureComponent {
           .attr("width", barWidth)
           .attr("height", (d, i) => { return yScale(entries[i][1]); })
           .attr("x",  (d, i) => { return pushX + interBarSpace * i; })
-          .attr("y", (d, i) => { return pushY + 190 + yScale(yMax) - yScale(entries[i][1]); })
+          .attr("y", (d, i) => { return pushY + 190 + yScale(yMax) - yScale(entries[i][0]); })
           .attr("fill", categoryColors[ctr])
           .on("mouseover", function(d) {
 
