@@ -26,20 +26,20 @@ export class MetadataChart extends React.PureComponent {
     const categoryColors = ["#03353e", "#0294a5"];
 
     const len = Object.keys(jsonMod).length;
-    const svgWidth = 500;
-    const svgHeight = 500;
+    const svgWidth = 750;
+    const svgHeight = 750;
     const svg = d3.select(node)
       .attr("width", svgWidth)
       .attr("height", svgHeight)
       .attr("class", "bar");
-    const maxOffset = 0.9 * 400; // 360
+    const maxOffset = 0.9 * 600;
     const yScale = d3.scaleLinear()
       .domain([0, 1])
       .range([0, maxOffset]);
-    let pushX = 120;
-    const pushY = 60;
-    const interBarSpace = 60;
-    const barWidth = 20;
+    let pushX = 100;
+    const pushY = 260;
+    const interBarSpace = 100;
+    const barWidth = 35;
     let ctr = 0;
     let flag = 0;
     let bars;
@@ -91,38 +91,45 @@ export class MetadataChart extends React.PureComponent {
     };
 
     // x-axis titles
-    pushX = 120;
 
     bars
       .append("text")
       .text((d, i) => { return entries[i][0]; } )
-      .attr("x",(d, i) => { return pushX + interBarSpace * i; })
+      .attr("x",(d, i) => { return pushX - 50 + interBarSpace * i; })
       .attr("y",(d, i) => { return pushY - 5 + yScale(yMax) + 20; })
       .attr("fill", "black")
-      .style("font-size", 14);
+      .style("font-size", 18);
 
     // legend
-    const pushTextX = 120;
-    const pushTextY = 180;
-    const legendBarSize = 10;
+    const pushTextX = 270;
+    const pushTextY = 300;
+    const legendBarSize = 20;
+
+    const yAxis = d3.axisRight(yScaleCopy);
+
+    svg.append('g')
+    .attr("id", "g_x")
+    .attr('transform', 'translate(' + (pushX - 100) + ', 120) scale(0.75, 0.75)')
+    .call(yAxis);
+
 
     categories.forEach((d, ind) => {
       bars
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1); })
-        .attr("y", d => { return pushTextY + 20 * ind; })
+        .attr("x", d => { return pushTextX - 100 interBarSpace * (entries.length + 1); })
+        .attr("y", d => { return pushTextY + 25 * ind; })
         .attr("fill", "black")
-        .style("font-size", 14);
+        .style("font-size", 18);
 
       bars
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 15; })
-        .attr("y", d => { return pushTextY + 20 * ind - 10; })
+        .attr("x", d => { return pushTextX - 100 + interBarSpace * (entries.length + 1) - 15; })
+        .attr("y", d => { return pushTextY + 25 * ind - 15; })
         .attr("fill", d => {return categoryColors[ind]; })
-        .style("font-size", 14);
+        .style("font-size", 18);
     });
   }
 
