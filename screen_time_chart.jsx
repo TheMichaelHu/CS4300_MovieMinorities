@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../../styles/charts/metadata_chart';
+import '../../styles/charts/screen_time_chart';
 
-export class MetadataChart extends React.PureComponent {
+export class ScreenTimeChart extends React.PureComponent {
   constructor(props){
       super(props)
       this.createChart = this.createChart.bind(this)
@@ -21,60 +21,58 @@ export class MetadataChart extends React.PureComponent {
     }
 
     const node = this.node;
-    const jsonMod = this.props.movie.distribution_metadata.gender_dist;
-    const categories = ["By movie", "By line"];
-    const categoryColors = ["#03353e", "#0294a5"];
+    const jsonMod = this.props.movie.char_metadata;
+    const arr_entries = Object.entries(jsonMod);
+    let entries = [];
 
+    for (let actors in arr_entries) {
+        entries.push([arr_entries[actors][0], arr_entries[actors][1]["screen_time"]]);
+    };
+
+    const categories = ["Screen Time"];
+    const categoryColors = ["darkorange"];
+
+    // length is 2
     const len = Object.keys(jsonMod).length;
+
     const svgWidth = 1000;
     const svgHeight = 1000;
+
     const svg = d3.select(node)
     .attr("width", svgWidth)
     .attr("height", svgHeight)
     .attr("class", "bar");
 
-
-    const maxOffset = 0.9 * 600;
+    var maxOffset = 0.9 * 600;
 
     // scale
-    const yScale = d3.scaleLinear()
+    var yScale = d3.scaleLinear()
     .domain([0, 1])
     // percentage between 0 and 1
     .range([0, maxOffset]);
 
-    const yScaleCopy = d3.scaleLinear()
+    var yScaleCopy = d3.scaleLinear()
     .domain([0, 1])
     // percentage between 0 and 1
     .range([maxOffset, 0]);
 
     // var pushX = 120;
-    // var pushY = 60;
+    // var pushY = 180;
 
-    const interBarSpace = 100;
-    const barWidth = 40;
+    var interBarSpace = 60;
+    var barWidth = 40;
 
-    const ctr = 0;
+    var ctr = 0;
 
-    const flag = 0;
-    const bars;
+    var flag = 0;
+    var bars;
 
     // plot bars
 
-    for (let ind in jsonMod) {
-
-        // console.log(ind);
-        const jsonData = jsonMod[ind];
-
-        const entries = Object.entries(jsonData);
-        console.log(entries);
-
-        if (flag == 0) {
-            var yMax = d3.max(entries, function (d, i) { return d[1]; });
-            flag++;
-        }
+      var yMax = d3.max(entries, function (d, i) { return d[1]; });
 
         // data join
-        bars = svg.selectAll("#rect" + ind)
+        bars = svg.selectAll("#rect")
         .data(entries)
         .enter();
 
@@ -110,23 +108,26 @@ export class MetadataChart extends React.PureComponent {
 
         ctr++;
 
-    };
-
     // x-axis titles
-    pushX = 270;
 
     bars
     .append("text")
     .text( function(d, i) { return entries[i][0]; } )
-    .attr("x", function(d, i) { return pushX + interBarSpace * i; })
-    .attr("y", function(d, i) { return pushY - 5 + yScale(yMax) + 20; })
+    .attr("x", function(d, i) { return pushX + interBarSpace * i - 20; })
+    .attr("y", function(d, i) { return pushY + yScale(yMax) - yScale(entries[i][1]) - 10; })
+    .attr("transform", function(d, i) {
+        let x = pushX + interBarSpace * i - 20;
+        let y = pushY + yScale(yMax) - yScale(entries[i][1]) - 10;
+
+        return "rotate(-90," + x + "," + y + ")";
+    })
     .attr("fill", "black")
     .style("font-size", 14);
 
     // legend
 
-    var pushTextX = 270;
-    var pushTextY = 300;
+    var pushTextX = pushX;
+    var pushTextY = pushY;
 
     var legendBarSize = 20;
 
@@ -134,17 +135,15 @@ export class MetadataChart extends React.PureComponent {
 
     svg.append('g')
     .attr("id", "g_x")
-    .attr('transform', 'translate(' + (pushX - 75) + ', 120) scale(0.75, 0.75)')
+    .attr('transform', 'translate(' + (pushX - 75) + ', 40) scale(0.75, 0.75)')
     .call(yAxis);
 
-
     categories.forEach( function(d, ind) {
-
 
         bars
         .append("text")
         .text( function(d) { return categories[ind]; } )
-        .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1); })
+        .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1) - 20; })
         .attr("y", function(d) { return pushTextY + 25 * ind; })
         .attr("fill", "black")
         .style("font-size", 18);
@@ -154,24 +153,24 @@ export class MetadataChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1) - 25; })
+        .attr("x", function(d) { return pushTextX + interBarSpace * (entries.length + 1) - 45; })
         .attr("y", function(d) { return pushTextY + 25 * ind - 15; })
         .attr("fill", function(d) {return categoryColors[ind]; })
         .style("font-size", 18);
 
-    } );
+      });
 
-  }
+}
 
   render() {
     return (
-      <div className="metadata-chart">
-        <svg ref={node => this.node = node} width={1000} height={1000} />
+      <div className="screen-time-chart">
+        <svg ref={node => this.node = node} />
       </div>
     );
   }
 }
 
-MetadataChart.propTypes = {
+ScreenTimeChart.propTypes = {
   movie: PropTypes.object,
 };
