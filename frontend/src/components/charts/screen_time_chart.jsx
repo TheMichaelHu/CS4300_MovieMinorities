@@ -44,8 +44,8 @@ export class ScreenTimeChart extends React.PureComponent {
     .attr("class", "bar");
 
     const maxOffset = 0.9 * 600;
-    const yScale = d3.scaleLinear().domain([0, 1]).range([0, maxOffset]);
-    const yScaleCopy = d3.scaleLinear().domain([0, 1]).range([maxOffset, 0]);
+    const yScale = d3.scaleLinear().domain([0, 1]).range([1, maxOffset]);
+    const yScaleCopy = d3.scaleLinear().domain([0, 1]).range([maxOffset, 1]);
 
     let pushX = 100;
     const pushY = 240;
@@ -71,7 +71,7 @@ export class ScreenTimeChart extends React.PureComponent {
       .attr("width", barWidth)
       .attr("height", (d, i) => {return yScale(entries[i][1]); })
       .attr("x", (d, i) => { return pushX + interBarSpace * i; })
-      .attr("y", (d, i) => { return pushY + yScale(yMax) - yScale(entries[i][1]); })
+      .attr("y", (d, i) => { return pushY + 150 + yScale(yMax) - yScale(entries[i][1]); })
       .attr("fill", categoryColors[ctr])
       .on("mouseover", function(d) {
           var rect = d3.select(this)._groups[0][0];
@@ -99,16 +99,16 @@ export class ScreenTimeChart extends React.PureComponent {
     ctr++;
 
     // x-axis titles
-    pushX = 200;
+    pushX = 200 - 10;
 
     bars
       .append("text")
       .text( (d, i) => { return entries[i][0]; } )
       .attr("x", (d, i) => { return pushX + interBarSpace * i - 70; })
-      .attr("y", (d, i) => { return pushY + yScale(yMax) - yScale(entries[i][1]) - 10; })
+      .attr("y", (d, i) => { return pushY + 130 + yScale(yMax) - yScale(entries[i][1]) - 10; })
       .attr("transform", (d, i) => {
           var x = pushX + interBarSpace * i - 70;
-          var y = pushY + yScale(yMax) - yScale(entries[i][1]) - 10;
+          var y = pushY + 130 + yScale(yMax) - yScale(entries[i][1]) - 10;
           return "rotate(-90," + x + "," + y + ")";
       })
       .attr("fill", "black")
