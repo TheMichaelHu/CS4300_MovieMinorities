@@ -50,7 +50,7 @@ export class ScreenTimeChart extends React.PureComponent {
     let pushX = 100;
     const pushY = 240;
     const interBarSpace = 60;
-    const barWidth = 40;
+    const barWidth = 30;
     let ctr = 0;
     const flag = 0;
 
