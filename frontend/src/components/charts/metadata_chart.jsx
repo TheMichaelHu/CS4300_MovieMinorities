@@ -22,8 +22,8 @@ export class MetadataChart extends React.PureComponent {
 
     const node = this.node;
     const jsonMod = this.props.movie.distribution_metadata.gender_dist;
-    const categories = ["By movie", "By line"];
-    const categoryColors = ["#03353e", "#0294a5"];
+    const categories = [ "By crew", "By movie", "By line"];
+    const categoryColors = ["#03353e", "#0294a5", "#0EBFE9"];
 
     const len = Object.keys(jsonMod).length;
     const svgWidth = 750;
@@ -33,28 +33,32 @@ export class MetadataChart extends React.PureComponent {
       .attr("height", svgHeight)
       .attr("class", "bar");
     const maxOffset = 0.9 * 600;
+
     const yScale = d3.scaleLinear()
       .domain([0, 1])
-      .range([0, maxOffset]);
+      .range([10, maxOffset]);
 
     const yScaleCopy = d3.scaleLinear()
     .domain([0, 1])
-    .range([maxOffset, 0]);
+    .range([maxOffset, 10]);
 
     let pushX = 100;
     const pushY = 260;
-    const interBarSpace = 100;
-    const barWidth = 35;
+    const interBarSpace = 120;
+    const barWidth = 30;
     let ctr = 0;
     let flag = 0;
     let bars;
 
-    console.log("Data", jsonMod);
+    // console.log("Data", jsonMod);
 
     // plot bars
     for (var ind in jsonMod) {
         var jsonData = jsonMod[ind];
         var entries = Object.entries(jsonData);
+
+        console.log(entries);
+
         if (flag == 0) {
             var yMax = d3.max(entries, (d, i) => { return d[1]; });
             flag++;
@@ -72,9 +76,9 @@ export class MetadataChart extends React.PureComponent {
         // tool tip
         bars.append("rect")
           .attr("width", barWidth)
-          .attr("height", (d, i) => { return yScale(entries[i][1][1]); })
-          .attr("x",  (d, i) => { return pushX + interBarSpace * i; })
-          .attr("y", (d, i) => { return pushY + 190 + yScale(yMax[1]) - yScale(entries[i][1][1]); })
+          .attr("height", (d, i) => { return yScale(entries[i][1]); })
+          .attr("x",  (d, i) => { return pushX + 15 + interBarSpace * i; })
+          .attr("y", (d, i) => { return pushY - 110 + yScale(yMax) - yScale(entries[i][1]); })
           .attr("fill", categoryColors[ctr])
           .on("mouseover", function(d) {
 
@@ -84,7 +88,7 @@ export class MetadataChart extends React.PureComponent {
             div.transition()
               .duration(200)
               .style("opacity", .9);
-            div.html(Math.round(Number(d[1][1] * 100) * 100) / 100 + "%")
+            div.html(Math.round(Number(d[1] * 100) * 100) / 100 + "%")
               .style("left", rectX + "px")
               .style("top", rectY - 10 + "px")
               .style("height", "40px")
@@ -107,9 +111,9 @@ export class MetadataChart extends React.PureComponent {
 
     bars
       .append("text")
-      .text((d, i) => { return entries[i][1][0]; } )
+      .text((d, i) => { return entries[i][0]; } )
       .attr("x",(d, i) => { return pushX - 50 + interBarSpace * i; })
-      .attr("y",(d, i) => { return pushY + 190 + yScale(yMax[1]) + 20; })
+      .attr("y",(d, i) => { return pushY + 190 + yScale(yMax) + 20; })
       .attr("fill", "black")
       .style("font-size", 18);
 
@@ -130,7 +134,7 @@ export class MetadataChart extends React.PureComponent {
       bars
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", d => { return pushTextX - 350 + interBarSpace * (entries.length + 1); })
+        .attr("x", d => { return pushTextX - 300 + interBarSpace * (entries.length + 1); })
         .attr("y", d => { return pushTextY - 80 + 25 * ind; })
         .attr("fill", "black")
         .style("font-size", 18);
@@ -139,7 +143,7 @@ export class MetadataChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return pushTextX - 360 + interBarSpace * (entries.length + 1) - 15; })
+        .attr("x", d => { return pushTextX - 310 + interBarSpace * (entries.length + 1) - 15; })
         .attr("y", d => { return pushTextY - 80 + 25 * ind - 15; })
         .attr("fill", d => {return categoryColors[ind]; })
         .style("font-size", 18);
