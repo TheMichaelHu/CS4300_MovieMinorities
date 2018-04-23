@@ -70,7 +70,7 @@ export class MetadataChart extends React.PureComponent {
         // tool tip
         bars.append("rect")
           .attr("width", barWidth)
-          .attr("height", (d, i) => { return yScale(entries[i][1][1]); })
+          .attr("height", (d, i) => { return yScale(Number(entries[i][1][1])); })
           .attr("x",  (d, i) => { return pushX + interBarSpace * i; })
           .attr("y", (d, i) => { return pushY + 190 + yScale(yMax[1]) - yScale(entries[i][1][1]); })
           .attr("fill", categoryColors[ctr])
@@ -111,7 +111,6 @@ export class MetadataChart extends React.PureComponent {
       .attr("fill", "black")
       .style("font-size", 18);
 
-    // legend
     const pushTextX = 270;
     const pushTextY = 300;
     const legendBarSize = 20;
@@ -124,7 +123,7 @@ export class MetadataChart extends React.PureComponent {
     .style('font-size', 18)
     .call(yAxis);
 
-
+    // legend
     categories.forEach((d, ind) => {
       bars
         .append("text")
