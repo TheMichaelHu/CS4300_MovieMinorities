@@ -49,6 +49,8 @@ export class MetadataChart extends React.PureComponent {
     let flag = 0;
     let bars;
 
+    console.log("Data", jsonMod);
+
     // plot bars
     for (var ind in jsonMod) {
         var jsonData = jsonMod[ind];
@@ -111,7 +113,6 @@ export class MetadataChart extends React.PureComponent {
       .attr("fill", "black")
       .style("font-size", 18);
 
-    // legend
     const pushTextX = 270;
     const pushTextY = 300;
     const legendBarSize = 20;
@@ -124,7 +125,7 @@ export class MetadataChart extends React.PureComponent {
     .style('font-size', 18)
     .call(yAxis);
 
-
+    // legend
     categories.forEach((d, ind) => {
       bars
         .append("text")
