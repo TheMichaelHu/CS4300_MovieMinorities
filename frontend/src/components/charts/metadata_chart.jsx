@@ -49,6 +49,8 @@ export class MetadataChart extends React.PureComponent {
     let flag = 0;
     let bars;
 
+    console.log("Data", jsonMod);
+
     // plot bars
     for (var ind in jsonMod) {
         var jsonData = jsonMod[ind];
@@ -57,8 +59,6 @@ export class MetadataChart extends React.PureComponent {
             var yMax = d3.max(entries, (d, i) => { return d[1]; });
             flag++;
         }
-
-        console.log("Entries", entries);
 
         // data join
         bars = svg.selectAll("#rect" + ind)
