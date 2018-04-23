@@ -114,7 +114,6 @@ export class ScreenTimeChart extends React.PureComponent {
       .attr("fill", "black")
       .style("font-size", 18);
 
-    // legend
     const pushTextX = pushX;
     const pushTextY = pushY;
     const legendBarSize = 20;
@@ -127,12 +126,13 @@ export class ScreenTimeChart extends React.PureComponent {
     .style('font-size', 18)
     .call(yAxis);
 
+    // legend
     categories.forEach((d, ind) => {
       bars
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 100; })
-        .attr("y", d => { return pushTextY + 25 * ind; })
+        .attr("x", d => { return interBarSpace * (entries.length + 1 ); })
+        .attr("y", d => { return 100; })
         .attr("fill", "black")
         .style("font-size", 18);
 
@@ -140,8 +140,8 @@ export class ScreenTimeChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return pushTextX + interBarSpace * (entries.length + 1) - 130; })
-        .attr("y", d => { return pushTextY + 25 * ind - 15; })
+        .attr("x", d => { return pushTextX - 310 + interBarSpace * (entries.length + 1) - 15; })
+        .attr("y", d => { return pushTextY - 80 + 25 * ind - 15; })
         .attr("fill", d => {return categoryColors[ind]; })
         .style("font-size", 18);
     });

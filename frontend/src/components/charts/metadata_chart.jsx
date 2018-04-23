@@ -36,11 +36,11 @@ export class MetadataChart extends React.PureComponent {
 
     const yScale = d3.scaleLinear()
       .domain([0, 1])
-      .range([10, maxOffset]);
+      .range([1, maxOffset]);
 
     const yScaleCopy = d3.scaleLinear()
     .domain([0, 1])
-    .range([maxOffset, 10]);
+    .range([maxOffset, 1]);
 
     let pushX = 100;
     const pushY = 260;
@@ -57,7 +57,7 @@ export class MetadataChart extends React.PureComponent {
         var jsonData = jsonMod[ind];
         var entries = Object.entries(jsonData);
 
-        console.log(entries);
+    // console.log(entries);
 
         if (flag == 0) {
             var yMax = d3.max(entries, (d, i) => { return d[1]; });
@@ -108,12 +108,11 @@ export class MetadataChart extends React.PureComponent {
     };
 
     // x-axis titles
-
     bars
       .append("text")
-      .text((d, i) => { return entries[i][0]; } )
-      .attr("x",(d, i) => { return pushX - 50 + interBarSpace * i; })
-      .attr("y",(d, i) => { return pushY + 190 + yScale(yMax) + 20; })
+      .text((d, i) => { console.log(entries[i][0]); return entries[i][0]; } )
+      .attr("x",(d, i) => { return pushX - 60 + interBarSpace * i; })
+      .attr("y",(d, i) => { return pushY - 100 + yScale(yMax) + 20; })
       .attr("fill", "black")
       .style("font-size", 18);
 
