@@ -1,0 +1,1020 @@
+{
+    "actor_metadata": {
+        "Adepero Oduye": {
+            "actor_id": 22,
+            "char_name": "Eliza"
+        },
+        "Alfre Woodard": {
+            "actor_id": 21,
+            "char_name": "Mistress Shaw"
+        },
+        "Andre Robinson": {
+            "actor_id": 145,
+            "char_name": "Slave Boy (uncredited)"
+        },
+        "Andre Shanks": {
+            "actor_id": 74,
+            "char_name": "Victim 1"
+        },
+        "Andy Dylan": {
+            "actor_id": 68,
+            "char_name": "Treach"
+        },
+        "Anwan Glover": {
+            "actor_id": 63,
+            "char_name": "Cape"
+        },
+        "Ashley Dyke": {
+            "actor_id": 40,
+            "char_name": "Anna"
+        },
+        "Austin Purnell": {
+            "actor_id": 72,
+            "char_name": "Bob"
+        },
+        "Benedict Cumberbatch": {
+            "actor_id": 9,
+            "char_name": "William Ford"
+        },
+        "Bill Camp": {
+            "actor_id": 45,
+            "char_name": "Radburn"
+        },
+        "Blake Burt": {
+            "actor_id": 122,
+            "char_name": "Upper Class Pedestrian (uncredited)"
+        },
+        "Bob Walker": {
+            "actor_id": 153,
+            "char_name": "Abolitionist Landowner (uncredited)"
+        },
+        "Brad Pitt": {
+            "actor_id": 3,
+            "char_name": "Samuel Bass"
+        },
+        "Bryan Batt": {
+            "actor_id": 24,
+            "char_name": "Judge Turner"
+        },
+        "Cameron Zeigler": {
+            "actor_id": 42,
+            "char_name": "Alonzo Northup"
+        },
+        "Caroline Grace Williamson": {
+            "actor_id": 154,
+            "char_name": "Ford Daughter (uncredited)"
+        },
+        "Carroll Burt": {
+            "actor_id": 123,
+            "char_name": "Lower Class Pedestrian (uncredited)"
+        },
+        "Chaz Smith": {
+            "actor_id": 149,
+            "char_name": "Cigar Smoker (uncredited)"
+        },
+        "Chiwetel Ejiofor": {
+            "actor_id": 6,
+            "char_name": "Solomon Northup"
+        },
+        "Chris Chalk": {
+            "actor_id": 46,
+            "char_name": "Clemens"
+        },
+        "Christopher Berry": {
+            "actor_id": 44,
+            "char_name": "Burch"
+        },
+        "Corrina Roshea": {
+            "actor_id": 146,
+            "char_name": "Slave Buyer (uncredited)"
+        },
+        "Craig Tate": {
+            "actor_id": 47,
+            "char_name": "John"
+        },
+        "Cynthia LeBlanc": {
+            "actor_id": 133,
+            "char_name": "Washington D.C. Pedestrian (uncredited)"
+        },
+        "Deneen Tyler": {
+            "actor_id": 69,
+            "char_name": "Phebe"
+        },
+        "Devin Maurice Evans": {
+            "actor_id": 79,
+            "char_name": "Slave Spiritual Singer 2"
+        },
+        "Devyn A. Tyler": {
+            "actor_id": 81,
+            "char_name": "Margaret Northup (adult)"
+        },
+        "Dickie Gravois": {
+            "actor_id": 51,
+            "char_name": "Overseer"
+        },
+        "Douglas M. Griffin": {
+            "actor_id": 58,
+            "char_name": "Sailor"
+        },
+        "Dwight Henry": {
+            "actor_id": 39,
+            "char_name": "Uncle Abram"
+        },
+        "Edward J. Clare": {
+            "actor_id": 125,
+            "char_name": "Restaurant Patron (uncredited)"
+        },
+        "Elton LeBlanc": {
+            "actor_id": 156,
+            "char_name": "Hotel Dining Patron (uncredited)"
+        },
+        "Emily D. Haley": {
+            "actor_id": 129,
+            "char_name": "Tea Seller (uncredited)"
+        },
+        "Erin Rementer": {
+            "actor_id": 144,
+            "char_name": "Ballroom Dancer (uncredited)"
+        },
+        "Garret Dillahunt": {
+            "actor_id": 10,
+            "char_name": "Armsby"
+        },
+        "Gerard 'Jerry' Lewis": {
+            "actor_id": 135,
+            "char_name": "Slave Guard (uncredited)"
+        },
+        "Gregory Bright": {
+            "actor_id": 71,
+            "char_name": "Edward"
+        },
+        "Haley Powell": {
+            "actor_id": 141,
+            "char_name": "Slave Girl (uncredited)"
+        },
+        "Haylie Creppel": {
+            "actor_id": 127,
+            "char_name": "Child in the Park (uncredited)"
+        },
+        "Isaiah Jackson": {
+            "actor_id": 77,
+            "char_name": "Zachary"
+        },
+        "J.D. Evermore": {
+            "actor_id": 67,
+            "char_name": "Chapin"
+        },
+        "JJ Coker": {
+            "actor_id": 126,
+            "char_name": "Mr. Bartholomew (uncredited)"
+        },
+        "James C. Victor": {
+            "actor_id": 64,
+            "char_name": "Buyer"
+        },
+        "Jarett Shorts": {
+            "actor_id": 148,
+            "char_name": "Hornboy (uncredited)"
+        },
+        "Jason Ament": {
+            "actor_id": 119,
+            "char_name": "Cooke (uncredited)"
+        },
+        "Jason Owen": {
+            "actor_id": 139,
+            "char_name": "Safty (uncredited)"
+        },
+        "Jay Huguley": {
+            "actor_id": 80,
+            "char_name": "Sheriff"
+        },
+        "Jim Johnson": {
+            "actor_id": 130,
+            "char_name": "Lower Class Pedestrian (uncredited)"
+        },
+        "John C. Klein": {
+            "actor_id": 132,
+            "char_name": "Lumber Mill Customer (uncredited)"
+        },
+        "John McConnell": {
+            "actor_id": 59,
+            "char_name": "Jonus Ray"
+        },
+        "Jon Arthur": {
+            "actor_id": 120,
+            "char_name": "Steamboat Crew 1st Mate (uncredited)"
+        },
+        "Joseph Randy Causin": {
+            "actor_id": 124,
+            "char_name": "Steamboat Crew (uncredited)"
+        },
+        "Justin Christopher Vaughn": {
+            "actor_id": 152,
+            "char_name": "Ezra (uncredited)"
+        },
+        "Justin Edward Davis": {
+            "actor_id": 128,
+            "char_name": "Saratoga Park Pedestrian (uncredited)"
+        },
+        "Katherine Jeanie Russell": {
+            "actor_id": 147,
+            "char_name": "Upper Class Pedestrian (uncredited)"
+        },
+        "Kelsey Scott": {
+            "actor_id": 41,
+            "char_name": "Anne Northup"
+        },
+        "Kelvin Harrison": {
+            "actor_id": 76,
+            "char_name": "Victim 2"
+        },
+        "Kevonte Mcdonald": {
+            "actor_id": 136,
+            "char_name": "Slave (uncredited)"
+        },
+        "Liza J. Bennett": {
+            "actor_id": 65,
+            "char_name": "Mistress Ford"
+        },
+        "Lupita Nyong'o": {
+            "actor_id": 25,
+            "char_name": "Patsey"
+        },
+        "Marc Macaulay": {
+            "actor_id": 57,
+            "char_name": "Captain"
+        },
+        "Marcus Lyle Brown": {
+            "actor_id": 60,
+            "char_name": "Jasper"
+        },
+        "Mark Joyce": {
+            "actor_id": 131,
+            "char_name": "Street Merchant (uncredited)"
+        },
+        "Michael Fassbender": {
+            "actor_id": 2,
+            "char_name": "Edwin Epps"
+        },
+        "Michael Kenneth Williams": {
+            "actor_id": 7,
+            "char_name": "Robert"
+        },
+        "Mister Mackey Jr.": {
+            "actor_id": 52,
+            "char_name": "Randall"
+        },
+        "Mustafa Harris": {
+            "actor_id": 70,
+            "char_name": "Sam"
+        },
+        "Myesha-Tiara": {
+            "actor_id": 138,
+            "char_name": "Edwin Epps's Slave (uncredited)"
+        },
+        "Nicole Collins": {
+            "actor_id": 66,
+            "char_name": "Rachel"
+        },
+        "Paul Dano": {
+            "actor_id": 8,
+            "char_name": "John Tibeats"
+        },
+        "Paul Giamatti": {
+            "actor_id": 19,
+            "char_name": "Theophilus Freeman"
+        },
+        "Quvenzhan\u00e9 Wallis": {
+            "actor_id": 28,
+            "char_name": "Margaret Northup"
+        },
+        "Richard Holden": {
+            "actor_id": 61,
+            "char_name": "Fitzgerald"
+        },
+        "Ritchie Montgomery": {
+            "actor_id": 137,
+            "char_name": "Roadman (uncredited)"
+        },
+        "Rob Steinberg": {
+            "actor_id": 62,
+            "char_name": "Parker"
+        },
+        "Sarah Paulson": {
+            "actor_id": 12,
+            "char_name": "Mary Epps"
+        },
+        "Scoot McNairy": {
+            "actor_id": 13,
+            "char_name": "Brown"
+        },
+        "Scott M. Jefferson": {
+            "actor_id": 75,
+            "char_name": "Master Shaw"
+        },
+        "Sean Paul Braud": {
+            "actor_id": 121,
+            "char_name": "Lynchman (uncredited)"
+        },
+        "Shawn Parsons": {
+            "actor_id": 140,
+            "char_name": "Road Man (uncredited)"
+        },
+        "Storm Reid": {
+            "actor_id": 53,
+            "char_name": "Emily"
+        },
+        "Taran Killam": {
+            "actor_id": 26,
+            "char_name": "Hamilton"
+        },
+        "Terrell Ransom Jr.": {
+            "actor_id": 143,
+            "char_name": "Slave Boy (uncredited)"
+        },
+        "Thomas Francis Murphy": {
+            "actor_id": 73,
+            "char_name": "Patroller"
+        },
+        "Timothy Wyant": {
+            "actor_id": 155,
+            "char_name": "Ford Lumber Buyer (uncredited)"
+        },
+        "Tom Proctor": {
+            "actor_id": 54,
+            "char_name": "Biddee"
+        },
+        "Tony Bentley": {
+            "actor_id": 43,
+            "char_name": "Mr. Moon"
+        },
+        "Topsy Chapman": {
+            "actor_id": 78,
+            "char_name": "Slave Spiritual Singer 1"
+        },
+        "Tre Tureaud": {
+            "actor_id": 151,
+            "char_name": "Saratoga Park Pedestrians (uncredited)"
+        },
+        "Tyler Soerries": {
+            "actor_id": 150,
+            "char_name": "Boy Playing in Park (uncredited)"
+        },
+        "Vivian Fleming-Alvarez": {
+            "actor_id": 56,
+            "char_name": "Mulatto Woman"
+        },
+        "Wayne P\u00e9re": {
+            "actor_id": 142,
+            "char_name": "Winslow (uncredited)"
+        },
+        "Willo Jean-Baptiste": {
+            "actor_id": 82,
+            "char_name": "Margaret's Husband"
+        }
+    },
+    "bechdel_metadata": {
+        "conversation": {},
+        "passes": false
+    },
+    "char_metadata": {
+        "Adepero Oduye": {
+            "actor_id": "22",
+            "char_name": "Eliza",
+            "gender": "Female",
+            "race": "N/A",
+            "screen_time": 0.02
+        },
+        "Alfre Woodard": {
+            "actor_id": "21",
+            "char_name": "Master shaw",
+            "gender": "Female",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Andy Dylan": {
+            "actor_id": "68",
+            "char_name": "Treach",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.03
+        },
+        "Austin Purnell": {
+            "actor_id": "72",
+            "char_name": "Bob",
+            "gender": "Female",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Benedict Cumberbatch": {
+            "actor_id": "9",
+            "char_name": "Mrs. ford",
+            "gender": "Male",
+            "race": "White",
+            "screen_time": 0.01
+        },
+        "Bill Camp": {
+            "actor_id": "45",
+            "char_name": "Radburn",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Brad Pitt": {
+            "actor_id": "3",
+            "char_name": "Bass",
+            "gender": "Male",
+            "race": "White",
+            "screen_time": 0.04
+        },
+        "Bryan Batt": {
+            "actor_id": "24",
+            "char_name": "Judge turner",
+            "gender": "Male",
+            "race": "White",
+            "screen_time": 0.01
+        },
+        "Cameron Zeigler": {
+            "actor_id": "42",
+            "char_name": "Alonzo",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Caroline Grace Williamson": {
+            "actor_id": "154",
+            "char_name": "Ford",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.05
+        },
+        "Chiwetel Ejiofor": {
+            "actor_id": "6",
+            "char_name": "Solomon",
+            "gender": "Male",
+            "race": "Black",
+            "screen_time": 0.28
+        },
+        "Chris Chalk": {
+            "actor_id": "46",
+            "char_name": "Clemens",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Christopher Berry": {
+            "actor_id": "44",
+            "char_name": "Burch",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Craig Tate": {
+            "actor_id": "47",
+            "char_name": "John",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Dwight Henry": {
+            "actor_id": "39",
+            "char_name": "Uncle abram",
+            "gender": "Female",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Garret Dillahunt": {
+            "actor_id": "10",
+            "char_name": "Armsby",
+            "gender": "Female",
+            "race": "White",
+            "screen_time": 0.02
+        },
+        "Gregory Bright": {
+            "actor_id": "71",
+            "char_name": "Edward",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Haylie Creppel": {
+            "actor_id": "127",
+            "char_name": "Winslow",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "J.D. Evermore": {
+            "actor_id": "67",
+            "char_name": "Chapin",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.02
+        },
+        "James C. Victor": {
+            "actor_id": "64",
+            "char_name": "Buyer",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Jay Huguley": {
+            "actor_id": "80",
+            "char_name": "Sheriff",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.02
+        },
+        "John McConnell": {
+            "actor_id": "59",
+            "char_name": "Clemens ray",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Kelsey Scott": {
+            "actor_id": "41",
+            "char_name": "Anne",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.02
+        },
+        "Liza J. Bennett": {
+            "actor_id": "65",
+            "char_name": "Mistress shaw",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Lupita Nyong'o": {
+            "actor_id": "25",
+            "char_name": "Patsey",
+            "gender": "Female",
+            "race": "N/A",
+            "screen_time": 0.03
+        },
+        "Marc Macaulay": {
+            "actor_id": "57",
+            "char_name": "Captain",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Michael Fassbender": {
+            "actor_id": "2",
+            "char_name": "Epps",
+            "gender": "Male",
+            "race": "White",
+            "screen_time": 0.13
+        },
+        "Michael Kenneth Williams": {
+            "actor_id": "7",
+            "char_name": "Robert",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Mister Mackey Jr.": {
+            "actor_id": "52",
+            "char_name": "Randall",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Mustafa Harris": {
+            "actor_id": "70",
+            "char_name": "Sam",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Paul Dano": {
+            "actor_id": "8",
+            "char_name": "Tibeats",
+            "gender": "Male",
+            "race": "White",
+            "screen_time": 0.03
+        },
+        "Paul Giamatti": {
+            "actor_id": "19",
+            "char_name": "Freeman",
+            "gender": "Male",
+            "race": "White",
+            "screen_time": 0.02
+        },
+        "Quvenzhan\u00e9 Wallis": {
+            "actor_id": "28",
+            "char_name": "Margaret",
+            "gender": "Female",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
+        "Richard Holden": {
+            "actor_id": "61",
+            "char_name": "Fitzgerald",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Rob Steinberg": {
+            "actor_id": "62",
+            "char_name": "Parker",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.02
+        },
+        "Sarah Paulson": {
+            "actor_id": "12",
+            "char_name": "Mistress epps",
+            "gender": "Female",
+            "race": "White",
+            "screen_time": 0.04
+        },
+        "Scoot McNairy": {
+            "actor_id": "13",
+            "char_name": "Brown",
+            "gender": "Male",
+            "race": "White",
+            "screen_time": 0.04
+        },
+        "Storm Reid": {
+            "actor_id": "53",
+            "char_name": "Emily",
+            "gender": "Female",
+            "race": "Black",
+            "screen_time": 0.0
+        },
+        "Taran Killam": {
+            "actor_id": "26",
+            "char_name": "Hamilton",
+            "gender": "Male",
+            "race": "White",
+            "screen_time": 0.03
+        },
+        "Thomas Francis Murphy": {
+            "actor_id": "73",
+            "char_name": "Patroller",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.0
+        },
+        "Tony Bentley": {
+            "actor_id": "43",
+            "char_name": "Mr. moon",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.0
+        }
+    },
+    "crew_metadata": {
+        "Adam Stockhausen": {
+            "crew_id": 1023711,
+            "job_name": "Production Design"
+        },
+        "Adruitha Lee": {
+            "crew_id": 1414984,
+            "job_name": "Hair Department Head"
+        },
+        "Alice Baker": {
+            "crew_id": 1040861,
+            "job_name": "Set Decoration"
+        },
+        "Alissa M. Kantrow": {
+            "crew_id": 1561051,
+            "job_name": "Production Supervisor"
+        },
+        "Andree Fortier": {
+            "crew_id": 1320552,
+            "job_name": "Costume Supervisor"
+        },
+        "Andy Shuttleworth": {
+            "crew_id": 1393449,
+            "job_name": "Steadicam Operator"
+        },
+        "Anthony Katagas": {
+            "crew_id": 60187,
+            "job_name": "Producer"
+        },
+        "Arnon Milchan": {
+            "crew_id": 376,
+            "job_name": "Producer"
+        },
+        "Bill Pohlad": {
+            "crew_id": 46588,
+            "job_name": "Producer"
+        },
+        "Bob Bates": {
+            "crew_id": 1490951,
+            "job_name": "Gaffer"
+        },
+        "Brad Pitt": {
+            "crew_id": 287,
+            "job_name": "Producer"
+        },
+        "Bryan Arenas": {
+            "crew_id": 1393441,
+            "job_name": "Dolby Consultant"
+        },
+        "Carl Counts": {
+            "crew_id": 1393433,
+            "job_name": "Art Department Coordinator"
+        },
+        "Carl Sprague": {
+            "crew_id": 1018480,
+            "job_name": "Set Designer"
+        },
+        "Catherine Wilson": {
+            "crew_id": 1393453,
+            "job_name": "Music Editor"
+        },
+        "Chris Flowers": {
+            "crew_id": 1463721,
+            "job_name": "Electrician"
+        },
+        "Dave Pultz": {
+            "crew_id": 1662137,
+            "job_name": "Color Timer"
+        },
+        "David Nash": {
+            "crew_id": 1336718,
+            "job_name": "Special Effects Coordinator"
+        },
+        "David Rotondo": {
+            "crew_id": 1393438,
+            "job_name": "Construction Coordinator"
+        },
+        "David Stein": {
+            "crew_id": 548849,
+            "job_name": "Art Direction"
+        },
+        "Dede Gardner": {
+            "crew_id": 20458,
+            "job_name": "Producer"
+        },
+        "Dena Matranga": {
+            "crew_id": 1393451,
+            "job_name": "Set Costumer"
+        },
+        "Dottie Starling": {
+            "crew_id": 1336716,
+            "job_name": "Visual Effects Supervisor"
+        },
+        "Doug Torres": {
+            "crew_id": 1662136,
+            "job_name": "Assistant Director"
+        },
+        "Elbert Irving IV": {
+            "crew_id": 1533019,
+            "job_name": "Visual Effects Coordinator"
+        },
+        "Ellen Heuer": {
+            "crew_id": 9441,
+            "job_name": "Foley"
+        },
+        "Eric Bergman": {
+            "crew_id": 1319968,
+            "job_name": "Post Production Supervisor"
+        },
+        "Eva Z. Cabrera": {
+            "crew_id": 1393455,
+            "job_name": "Script Supervisor"
+        },
+        "Francine Maisler": {
+            "crew_id": 6410,
+            "job_name": "Casting"
+        },
+        "Fran\u00e7ois Duhamel": {
+            "crew_id": 1177850,
+            "job_name": "Still Photographer"
+        },
+        "Hans Zimmer": {
+            "crew_id": 947,
+            "job_name": "Original Music Composer"
+        },
+        "Henry Auerbach": {
+            "crew_id": 1393442,
+            "job_name": "Dialogue Editor"
+        },
+        "Jaap Buitendijk": {
+            "crew_id": 1393448,
+            "job_name": "Still Photographer"
+        },
+        "Jason Sanford": {
+            "crew_id": 1393446,
+            "job_name": "Visual Effects Producer"
+        },
+        "Jeremy Kleiner": {
+            "crew_id": 967387,
+            "job_name": "Producer"
+        },
+        "Jim Wallis": {
+            "crew_id": 1393435,
+            "job_name": "Set Designer"
+        },
+        "Joe Walker": {
+            "crew_id": 999565,
+            "job_name": "Editor"
+        },
+        "John Ridley": {
+            "crew_id": 51679,
+            "job_name": "Executive Producer"
+        },
+        "Jude Erny": {
+            "crew_id": 1393434,
+            "job_name": "Scenic Artist"
+        },
+        "Katrina Schiller": {
+            "crew_id": 1393452,
+            "job_name": "Music Editor"
+        },
+        "Larry McConkey": {
+            "crew_id": 983118,
+            "job_name": "Steadicam Operator"
+        },
+        "Lauren Ritchie": {
+            "crew_id": 1336715,
+            "job_name": "Visual Effects Producer"
+        },
+        "Leslie Shatz": {
+            "crew_id": 56765,
+            "job_name": "Sound Designer"
+        },
+        "Lex D. Geddings": {
+            "crew_id": 1393447,
+            "job_name": "Stunt Coordinator"
+        },
+        "M. Gerard Sellers": {
+            "crew_id": 1393457,
+            "job_name": "Location Manager"
+        },
+        "Ma Kalaadevi Ananda": {
+            "crew_id": 1320551,
+            "job_name": "Makeup Department Head"
+        },
+        "Matthew Gatlin": {
+            "crew_id": 1340093,
+            "job_name": "Set Designer"
+        },
+        "Meagan Lewis": {
+            "crew_id": 1337656,
+            "job_name": "Casting"
+        },
+        "Michael A. Johnson": {
+            "crew_id": 1393440,
+            "job_name": "Leadman"
+        },
+        "Michael Buster": {
+            "crew_id": 1393456,
+            "job_name": "Dialect Coach"
+        },
+        "Michael S. Martin": {
+            "crew_id": 1393439,
+            "job_name": "Property Master"
+        },
+        "Mike McLaughlin": {
+            "crew_id": 1393450,
+            "job_name": "Gaffer"
+        },
+        "Monica Rene'e Anderson": {
+            "crew_id": 1292478,
+            "job_name": "Stand In"
+        },
+        "Nikki I Brown": {
+            "crew_id": 578721,
+            "job_name": "Makeup Artist"
+        },
+        "Patricia Norris": {
+            "crew_id": 5634,
+            "job_name": "Costume Design"
+        },
+        "Poland Perkins": {
+            "crew_id": 1393454,
+            "job_name": "Transportation Coordinator"
+        },
+        "Robert Jackson": {
+            "crew_id": 1393443,
+            "job_name": "Supervising Sound Editor"
+        },
+        "Ryan Collins": {
+            "crew_id": 1393444,
+            "job_name": "Supervising Sound Editor"
+        },
+        "Sean Bobbitt": {
+            "crew_id": 54926,
+            "job_name": "Camera Operator"
+        },
+        "Solomon Northup": {
+            "crew_id": 1286094,
+            "job_name": "Novel"
+        },
+        "Spooky Stevens": {
+            "crew_id": 1409837,
+            "job_name": "Unit Publicist"
+        },
+        "Steve McQueen": {
+            "crew_id": 72757,
+            "job_name": "Producer"
+        },
+        "Steven Ritzi": {
+            "crew_id": 1333222,
+            "job_name": "Stunt Coordinator"
+        },
+        "Taylor Weeks": {
+            "crew_id": 1393436,
+            "job_name": "Scenic Artist"
+        },
+        "Tessa Ross": {
+            "crew_id": 465,
+            "job_name": "Executive Producer"
+        },
+        "Tim LeDoux": {
+            "crew_id": 1393445,
+            "job_name": "Visual Effects Supervisor"
+        },
+        "Walter Schneider": {
+            "crew_id": 1393437,
+            "job_name": "Set Designer"
+        },
+        "Yolanda Mercadel": {
+            "crew_id": 1403426,
+            "job_name": "Hairstylist"
+        }
+    },
+    "distribution_metadata": {
+        "gender_dist": {
+            "by_crew": {
+                "female": 0.29,
+                "male": 0.71,
+                "other": 0
+            },
+            "by_line": {
+                "female": 0.15,
+                "male": 0.85,
+                "other": 0
+            },
+            "by_movie": {
+                "female": 0.22,
+                "male": 0.78,
+                "other": 0
+            }
+        },
+        "race_dist": {
+            "by_line": {
+                "black": 0.44,
+                "white": 0.56
+            },
+            "by_movie": {
+                "black": 0.17,
+                "white": 0.83
+            }
+        },
+        "stereotype_dist": {
+            "by_line": [
+                [
+                    "Stereotypical",
+                    0
+                ],
+                [
+                    "Not stereotypical",
+                    1
+                ]
+            ],
+            "by_movie": [
+                [
+                    "Stereotypical",
+                    0
+                ],
+                [
+                    "Not stereotypical",
+                    1
+                ]
+            ]
+        }
+    },
+    "movie_metadata": {
+        "box_office": "187000000",
+        "budget": "20000000",
+        "genres": [
+            "drama",
+            "history"
+        ],
+        "id": 76203,
+        "imdb_review_sentiment": "Positive",
+        "imdb_reviews": [
+            "Sometimes, I just have to stop my brain in the middle of a film and just admire its exceptional craftsmanship. I found myself doing that time and time again during this film. Perhaps I was more open to admiring the shot compositions and acting choices because, as I cynically told myself before the film, it's not like I needed much convincing that slavery was bad. Or perhaps it was because I was shielding myself from the honest brutalities the film convincingly portrayed. Nonetheless, I was reminded of the film \"Children of Men,\" because when I watched that, I was struck by how easily I could imagine a less engaging, more dumbed-down version of the same film. I haven't seen enough films about slavery to know this for certain, but I suspect that because many of this film's principals are British, telling a story about a free man who was forced into slavery, as opposed to one born into it, they were able to be gain some valuable distance from the subject and craft something that's both beautiful and feels true to life. And even though I thought I could not have been made to feel worse than I already did about slavery, the post-scripts on the lack of justice Solomon received for his kidnapping and the unknown causes of his death, helped keep the film from lapsing into a kind of \"triumph of the spirit\" happy ending others might have imposed.",
+            "This movie is very, very well done. Well, edited and with the proper long shots at the proper moments bringing you to the life of Solomon without remedy.\r\n\r\nAll the cast performs exceptionally well and Ejiofor is to be remembered for this film.\r\n\r\nA must to be seen.",
+            "Not in a long time have I seen a movie that brings out real emotions from my cold hearted soul. This movie brought them out in floods of tears.\r\n\r\nthe acting was superb, especially from the lead Chiwetel Ejiofor, he acted from his little toe right up to his eyes.\r\n\r\nThe style was also filmed beautifully with some (extremely) painful long shots which pulled you into Solomons nightmare.\r\n\r\nIm not sure if its a film I could watch again, purely for the emotion but I would recommend this film to everyone.",
+            "**Dreaded at the thought that human kind ACTUALLY had this kind of livelihood at some point of time..**\r\n\r\nCould not gather my thoughts to write this review at the end of the movie.Feeling really bogged down by some heaviness on my chest. Thinking about the times in history when we actually used to do these atrocities on other human beings makes me cringe.To imagine waking up one day and find me in chains just because I'm a colored man and living my life like an unwanted child of god makes me question humanity altogether. Just sitting through a little over than 2 hours and watching this movie made my heart bleed, I can't even begin to think of the people who lived their entire lives as SLAVES... 12 years a slave heart breakingly makes you feel the pain and suffering of almost the entire human kind at one point of time or other. Direction by Steve McQueen is brilliant.Chiwetel Ejiofor plays a helpless slave in Solomon Northup to the hilt and also the small but impactive role played by Brad Pitt as a man with conscience is superb.Lupita Nyong'o's Patsey too was depicted heart warmingly. You can't help but question yourself that how could MAN stoop such low and do these cruel acts and that too over such a prolonged period of time without even a single ounce of doubt in his mind for what he would have to pay for his actions.. All in all a GEM of a movie showing one of the lowest point in human history !"
+        ],
+        "imdb_url": "https://www.imdb.com/title/tt2024544",
+        "name": "12 Years a Slave",
+        "num_awards": 0,
+        "poster_image_url": "https://ia.media-imdb.com/images/M/MV5BZjFkOGNjZjAtMzZjNS00ZjI2LTkwNjEtOWQ3NzQzOTBlMDA5XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+        "rating": "7.9",
+        "release_yr": "2013",
+        "review_score": "8.1",
+        "script": "12-years-a-slave",
+        "slug": "12-years-a-slave",
+        "synopsis": "In the pre-Civil War United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. Facing cruelty as well as unexpected kindnesses Solomon struggles not only to stay alive, but to retain his dignity. In the twelfth year of his unforgettable odyssey, Solomon\u2019s chance meeting with a Canadian abolitionist will forever alter his life."
+    }
+}
