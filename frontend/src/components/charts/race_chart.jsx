@@ -170,6 +170,6 @@ export class RaceChart extends React.PureComponent {
   }
 }
 
-MetadataChart.propTypes = {
+RaceChart.propTypes = {
   movie: PropTypes.object,
 };
