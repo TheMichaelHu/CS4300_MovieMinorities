@@ -35,6 +35,16 @@ export class ScreenTimeChart extends React.PureComponent {
     // length is 2
     const len = Object.keys(jsonMod).length;
 
+    // console.log(entries);
+
+    entries.sort(function(a1, a2){
+      return a2[1] - a1[1];
+    });
+
+    // console.log(entries.slice(0, 6));
+
+    entries = entries.slice(0, 6);
+
     const svgWidth = 750;
     const svgHeight = 750;
 
@@ -131,8 +141,8 @@ export class ScreenTimeChart extends React.PureComponent {
       bars
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", d => { return interBarSpace * (entries.length + 1 ); })
-        .attr("y", d => { return 100; })
+        .attr("x", d => { return interBarSpace * (entries.length + 1 ) - 40; })
+        .attr("y", d => { return 220; })
         .attr("fill", "black")
         .style("font-size", 18);
 
@@ -140,8 +150,8 @@ export class ScreenTimeChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return pushTextX - 310 + interBarSpace * (entries.length + 1) - 15; })
-        .attr("y", d => { return pushTextY - 80 + 25 * ind - 15; })
+        .attr("x", d => { return interBarSpace * (entries.length + 1) - 70; })
+        .attr("y", d => { return 200; })
         .attr("fill", d => {return categoryColors[ind]; })
         .style("font-size", 18);
     });

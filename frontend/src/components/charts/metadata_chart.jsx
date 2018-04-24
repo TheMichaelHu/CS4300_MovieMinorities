@@ -50,8 +50,6 @@ export class MetadataChart extends React.PureComponent {
     let flag = 0;
     let bars;
 
-    // console.log("Data", jsonMod);
-
     // plot bars
     for (var ind in jsonMod) {
         var jsonData = jsonMod[ind];
