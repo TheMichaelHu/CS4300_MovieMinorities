@@ -132,7 +132,7 @@ export class ScreenTimeChart extends React.PureComponent {
 
     svg.append('g')
     .attr("id", "g_x")
-    .attr('transform', 'translate(' + (pushX - 140) + ',' + (pushY - 40) + ') scale(0.75, 0.75)')
+    .attr('transform', 'translate(' + (pushX - 140) + ',' + (pushY - 110) + ') scale(0.75, 0.75)')
     .style('font-size', 18)
     .call(yAxis);
 
@@ -141,7 +141,7 @@ export class ScreenTimeChart extends React.PureComponent {
       bars
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", d => { return interBarSpace * (entries.length + 1 ) - 40; })
+        .attr("x", d => { return interBarSpace * (entries.length + 1 ) - 70; })
         .attr("y", d => { return 220; })
         .attr("fill", "black")
         .style("font-size", 18);
