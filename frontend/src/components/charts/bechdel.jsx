@@ -45,6 +45,8 @@ export class BechdelChart extends React.PureComponent {
     const headingText = "BECHDEL TEST";
     const headingTextColor = "#00007f";
     
+    console.log(!jsonMod);
+    
     if (!jsonMod){
       return;
     }
