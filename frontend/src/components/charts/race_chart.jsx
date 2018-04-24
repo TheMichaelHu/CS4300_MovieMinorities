@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../../styles/charts/metadata_chart';
 
-export class MetadataChart extends React.PureComponent {
+export class RaceChart extends React.PureComponent {
   constructor(props){
       super(props)
       this.createChart = this.createChart.bind(this)
