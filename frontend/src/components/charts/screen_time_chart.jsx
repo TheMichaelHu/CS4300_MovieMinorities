@@ -165,9 +165,9 @@ export class ScreenTimeChart extends React.PureComponent {
       .attr("x", d => { return 200; })
       .attr("y", d => { return 50; })
       .attr("fill", d => { return headingTextColor; })
-      .style("font-family", "Bebas Neue")
+      .style("font-family", "Roboto")
       .style("font-weight", 500)
-      .style("font-size", 20);
+      .style("font-size", 30);
 
   }
 

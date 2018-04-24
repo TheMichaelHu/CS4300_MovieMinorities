@@ -43,7 +43,7 @@ export class MetadataChart extends React.PureComponent {
     .range([maxOffset, 1]);
 
     const headingText = "GENDER DISTRIBUTION";
-    const headingTextColor = "blue";
+    const headingTextColor = "#00007f";
 
     let pushX = 100;
     const pushY = 260;
@@ -155,9 +155,9 @@ export class MetadataChart extends React.PureComponent {
       .attr("x", d => { return 150; })
       .attr("y", d => { return 50; })
       .attr("fill", d => { return headingTextColor; })
-      .style("font-family", "Bebas Neue")
+      .style("font-family", "Roboto")
       .style("font-weight", 500)
-      .style("font-size", 20);
+      .style("font-size", 30);
 
   }
 
