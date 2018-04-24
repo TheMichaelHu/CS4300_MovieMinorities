@@ -32,6 +32,9 @@ export class ScreenTimeChart extends React.PureComponent {
     const categories = ["Screen Time"];
     const categoryColors = ["darkorange"];
 
+    const headingText = "SCREEN TIME";
+    const headingTextColor = "darkorange";
+
     // length is 2
     const len = Object.keys(jsonMod).length;
 
@@ -150,11 +153,22 @@ export class ScreenTimeChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return interBarSpace * (entries.length + 1) - 70; })
+        .attr("x", d => { return interBarSpace * (entries.length + 1) - 100; })
         .attr("y", d => { return 200; })
         .attr("fill", d => {return categoryColors[ind]; })
         .style("font-size", 18);
     });
+
+    bars
+      .append("text")
+      .text( d => { return headingText; })
+      .attr("x", d => { return 200; })
+      .attr("y", d => { return 50; })
+      .attr("fill", d => { return headingTextColor; })
+      .style("font-family", "Bebas Neue")
+      .style("font-weight", 500)
+      .style("font-size", 20);
+
   }
 
   render() {
