@@ -402,16 +402,16 @@
         "Austin Purnell": {
             "actor_id": "72",
             "char_name": "Bob",
-            "gender": "Female",
+            "gender": "Male",
             "race": "N/A",
             "screen_time": 0.0
         },
         "Benedict Cumberbatch": {
             "actor_id": "9",
-            "char_name": "Mrs. ford",
+            "char_name": "Ford",
             "gender": "Male",
             "race": "White",
-            "screen_time": 0.01
+            "screen_time": 0.05
         },
         "Bill Camp": {
             "actor_id": "45",
@@ -437,23 +437,16 @@
         "Cameron Zeigler": {
             "actor_id": "42",
             "char_name": "Alonzo",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.0
-        },
-        "Caroline Grace Williamson": {
-            "actor_id": "154",
-            "char_name": "Ford",
-            "gender": "Male",
-            "race": "N/A",
-            "screen_time": 0.05
         },
         "Chiwetel Ejiofor": {
             "actor_id": "6",
             "char_name": "Solomon",
             "gender": "Male",
             "race": "Black",
-            "screen_time": 0.28
+            "screen_time": 0.29
         },
         "Chris Chalk": {
             "actor_id": "46",
@@ -469,17 +462,10 @@
             "race": "N/A",
             "screen_time": 0.01
         },
-        "Craig Tate": {
-            "actor_id": "47",
-            "char_name": "John",
-            "gender": "Male",
-            "race": "N/A",
-            "screen_time": 0.01
-        },
         "Dwight Henry": {
             "actor_id": "39",
             "char_name": "Uncle abram",
-            "gender": "Female",
+            "gender": "Male",
             "race": "N/A",
             "screen_time": 0.01
         },
@@ -500,7 +486,7 @@
         "Haylie Creppel": {
             "actor_id": "127",
             "char_name": "Winslow",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.01
         },
@@ -521,7 +507,7 @@
         "Jay Huguley": {
             "actor_id": "80",
             "char_name": "Sheriff",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.02
         },
@@ -535,13 +521,13 @@
         "Kelsey Scott": {
             "actor_id": "41",
             "char_name": "Anne",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.02
         },
         "Liza J. Bennett": {
             "actor_id": "65",
-            "char_name": "Mistress shaw",
+            "char_name": "Mrs. ford",
             "gender": "Male",
             "race": "N/A",
             "screen_time": 0.01
@@ -577,7 +563,7 @@
         "Mister Mackey Jr.": {
             "actor_id": "52",
             "char_name": "Randall",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.01
         },
@@ -590,10 +576,10 @@
         },
         "Paul Dano": {
             "actor_id": "8",
-            "char_name": "Tibeats",
+            "char_name": "John",
             "gender": "Male",
             "race": "White",
-            "screen_time": 0.03
+            "screen_time": 0.01
         },
         "Paul Giamatti": {
             "actor_id": "19",
@@ -637,6 +623,13 @@
             "race": "White",
             "screen_time": 0.04
         },
+        "Scott M. Jefferson": {
+            "actor_id": "75",
+            "char_name": "Mistress shaw",
+            "gender": "Male",
+            "race": "N/A",
+            "screen_time": 0.01
+        },
         "Storm Reid": {
             "actor_id": "53",
             "char_name": "Emily",
@@ -649,7 +642,7 @@
             "char_name": "Hamilton",
             "gender": "Male",
             "race": "White",
-            "screen_time": 0.03
+            "screen_time": 0.04
         },
         "Thomas Francis Murphy": {
             "actor_id": "73",
@@ -948,20 +941,20 @@
                 "other": 0
             },
             "by_line": {
-                "female": 0.15,
-                "male": 0.85,
+                "female": 0.21,
+                "male": 0.79,
                 "other": 0
             },
             "by_movie": {
-                "female": 0.22,
-                "male": 0.78,
+                "female": 0.31,
+                "male": 0.69,
                 "other": 0
             }
         },
         "race_dist": {
             "by_line": {
-                "black": 0.44,
-                "white": 0.56
+                "black": 0.43,
+                "white": 0.57
             },
             "by_movie": {
                 "black": 0.17,

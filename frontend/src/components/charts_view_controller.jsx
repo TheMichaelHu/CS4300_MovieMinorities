@@ -12,18 +12,18 @@ export class ChartsVc extends React.PureComponent {
     return (
     <div className="contain">
       <div className="charts-wrapper row">
-        <div className="col-xs-12 col-md-5">
+        <div className="col-xs-12 col-md-6">
           <MetadataChart movie={this.props.movie} />
         </div>
-        <div className="col-xs-12 col-md-7">
+        <div className="col-xs-12 col-md-6">
           <ScreenTimeChart movie={this.props.movie} />
         </div>
       </div>
       <div className="charts-wrapper row">
-        <div className="col-xs-12 col-md-5">
+        <div className="col-xs-12 col-md-6">
           <RaceChart movie={this.props.movie} />
         </div>
-        <div className="col-xs-12 col-md-7">
+        <div className="col-xs-12 col-md-6">
           <BechdelChart movie={this.props.movie} />
         </div>
       </div>
