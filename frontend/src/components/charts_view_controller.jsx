@@ -2,12 +2,15 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { MetadataChart } from "./charts/metadata_chart";
 import { ScreenTimeChart } from "./charts/screen_time_chart";
+import { RaceChart } from "./charts/race_chart";
+import { BechdelChart } from "./charts/bechdel";
 
 // import '../styles/logo';
 
 export class ChartsVc extends React.PureComponent {
   renderMultiCol() {
     return (
+    <div className="contain">
       <div className="charts-wrapper row">
         <div className="col-xs-12 col-md-5">
           <MetadataChart movie={this.props.movie} />
@@ -16,6 +19,15 @@ export class ChartsVc extends React.PureComponent {
           <ScreenTimeChart movie={this.props.movie} />
         </div>
       </div>
+      <div className="charts-wrapper row">
+        <div className="col-xs-12 col-md-5">
+          <RaceChart movie={this.props.movie} />
+        </div>
+        <div className="col-xs-12 col-md-7">
+          <BechdelChart movie={this.props.movie} />
+        </div>
+      </div>
+    </div>
     );
   }
 
@@ -24,6 +36,8 @@ export class ChartsVc extends React.PureComponent {
       <div className="charts-wrapper" style={{overflow: "hidden"}}>
         <MetadataChart movie={this.props.movie} />
         <ScreenTimeChart movie={this.props.movie} />
+        <RaceChart movie={this.props.movie} />
+        <BechdelChart movie={this.props.movie} />
       </div>
     );
   }
