@@ -22,8 +22,8 @@ export class RaceChart extends React.PureComponent {
 
     const node = this.node;
     const jsonMod = this.props.movie.distribution_metadata.race_dist;
-    const categories = ["By movie", "By line"];
-    const categoryColors = ["#0294a5", "#0EBFE9"];
+    const categories = ["By character", "By line"];
+    const categoryColors = ["#03353e", "#0294a5", "#0EBFE9"];
 
     const len = Object.keys(jsonMod).length;
     const svgWidth = 750;
@@ -78,9 +78,9 @@ export class RaceChart extends React.PureComponent {
         bars.append("rect")
           .attr("width", barWidth)
           .attr("height", (d, i) => { return yScale(entries[i][1]); })
-          .attr("x",  (d, i) => { return pushX + 15 + interBarSpace * i; })
+          .attr("x",  (d, i) => { return pushX + 15 + interBarSpace * ctr + barWidth * i; })
           .attr("y", (d, i) => { return pushY - 40 + yScale(yMax) - yScale(entries[i][1]); })
-          .attr("fill", categoryColors[ctr])
+          .attr("fill", (d, i) => { return categoryColors[i];})
           .on("mouseover", function(d) {
 
             const rect = d3.select(this)._groups[0][0]
@@ -111,7 +111,7 @@ export class RaceChart extends React.PureComponent {
     // x-axis titles
     bars
       .append("text")
-      .text((d, i) => { console.log(entries[i][0]); return entries[i][0]; } )
+      .text((d, i) => { console.log(categories[i]); return categories[i]; } )
       .attr("x",(d, i) => { return pushX - 60 + interBarSpace * i; })
       .attr("y",(d, i) => { return pushY - 15 + yScale(yMax) + 20; })
       .attr("fill", "black")
@@ -130,10 +130,10 @@ export class RaceChart extends React.PureComponent {
     .call(yAxis);
 
     // legend
-    categories.forEach((d, ind) => {
+    entries.forEach((d, ind) => {
       bars
         .append("text")
-        .text( d => { return categories[ind]; } )
+        .text( d => { return entries[ind][0]; } )
         .attr("x", d => { return pushTextX - 300 + interBarSpace * (entries.length + 1); })
         .attr("y", d => { return pushTextY - 80 + 25 * ind; })
         .attr("fill", "black")
