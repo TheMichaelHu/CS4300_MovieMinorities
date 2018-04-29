@@ -437,7 +437,7 @@
         "Cameron Zeigler": {
             "actor_id": "42",
             "char_name": "Alonzo",
-            "gender": "Female",
+            "gender": "Male",
             "race": "N/A",
             "screen_time": 0.0
         },
@@ -465,28 +465,28 @@
         "Dwight Henry": {
             "actor_id": "39",
             "char_name": "Uncle abram",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.01
         },
         "Garret Dillahunt": {
             "actor_id": "10",
             "char_name": "Armsby",
-            "gender": "Female",
+            "gender": "Male",
             "race": "White",
             "screen_time": 0.02
         },
         "Gregory Bright": {
             "actor_id": "71",
             "char_name": "Edward",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.0
         },
         "Haylie Creppel": {
             "actor_id": "127",
             "char_name": "Winslow",
-            "gender": "Female",
+            "gender": "Male",
             "race": "N/A",
             "screen_time": 0.01
         },
@@ -507,7 +507,7 @@
         "Jay Huguley": {
             "actor_id": "80",
             "char_name": "Sheriff",
-            "gender": "Female",
+            "gender": "Male",
             "race": "N/A",
             "screen_time": 0.02
         },
@@ -521,14 +521,14 @@
         "Kelsey Scott": {
             "actor_id": "41",
             "char_name": "Anne",
-            "gender": "Female",
+            "gender": "Male",
             "race": "N/A",
             "screen_time": 0.02
         },
         "Liza J. Bennett": {
             "actor_id": "65",
             "char_name": "Mrs. ford",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.01
         },
@@ -563,14 +563,14 @@
         "Mister Mackey Jr.": {
             "actor_id": "52",
             "char_name": "Randall",
-            "gender": "Female",
+            "gender": "Male",
             "race": "N/A",
             "screen_time": 0.01
         },
         "Mustafa Harris": {
             "actor_id": "70",
             "char_name": "Sam",
-            "gender": "Male",
+            "gender": "Female",
             "race": "N/A",
             "screen_time": 0.0
         },
@@ -936,18 +936,18 @@
     "distribution_metadata": {
         "gender_dist": {
             "by_crew": {
-                "female": 0.29,
-                "male": 0.71,
+                "female": 0.28,
+                "male": 0.72,
                 "other": 0
             },
             "by_line": {
-                "female": 0.21,
-                "male": 0.79,
+                "female": 0.16,
+                "male": 0.84,
                 "other": 0
             },
             "by_movie": {
-                "female": 0.31,
-                "male": 0.69,
+                "female": 0.24,
+                "male": 0.76,
                 "other": 0
             }
         },
