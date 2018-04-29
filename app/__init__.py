@@ -42,18 +42,14 @@ def get_movie_titles():
 @app.route('/search')
 def search_movies():
     query = request.args.get('q')
-    ranking = rank_movies(query)[:10]
+    place = request.args.get('place')
+    place = int(place) if place else 0
 
-    # MH: TODO: get rid of json.loads. Only needed for editting results
-    movies = [json.loads(get_movie(slug)) for slug in ranking]
+    ranking = rank_movies(query)
+    results = ranking[place:place + 10]
+    movies = [json.loads(get_movie(slug)) for slug in results]
 
-    # MH: some result edits for funsies
-    # movies[0]["movie_metadata"]["name"] = "Definitely %s" % query
-    # movies[0]["movie_metadata"]["synopsis"] = "This is totally the movie you're looking for."
-    # for i in range(1, len(movies)):
-    #     movies[i]["movie_metadata"]["name"] = "Probably Not %s %d" % (query, i)
-
-    return jsonify({"results": movies})
+    return jsonify({"movies": movies, "loadMore": place + 10 < len(ranking)})
 
 
 @app.route('/movie_data/<movie_slug>')

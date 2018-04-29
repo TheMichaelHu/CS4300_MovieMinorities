@@ -21,7 +21,11 @@ export class BrowseCompareVc extends React.Component {
       compare: null,
       loading: true,
       showCard: false,
+      loadingMore: false,
+      loadMore: true,
     };
+
+    this.handleLoadMore = this.handleLoadMore.bind(this);
   }
 
   componentWillMount() {
@@ -38,29 +42,39 @@ export class BrowseCompareVc extends React.Component {
       .then(json => this.setState({compare: json.movie_metadata, loading: false}));
     }
 
-    if (this.props.router.location.search) {
-      fetch(`/search${this.props.router.location.search}`, {
-        method: 'GET',
-        mode: 'cors',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json'
-        }
+    const searchParams = this.props.router.location.search || "";
+    fetch(`/search${searchParams}`, {
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(json => this.setState({movies: json.movies}));
+  }
+
+  handleLoadMore() {
+    const place = this.state.movies.length;
+    const searchParams = this.props.router.location.search || "?";
+    this.setState({loadingMore: true});
+    fetch(`/search${searchParams}&place=${place}`, {
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json'
+      },
+    })
+    .then(response => response.json())
+    .then(json => {
+      this.setState({
+        movies: [...this.state.movies, ...json.movies],
+        loadingMore: false,
+        loadMore: json.loadMore,
       })
-      .then(response => response.json())
-      .then(json => this.setState({movies: json.results}));
-    } else {
-      fetch(`/search`, {
-        method: 'GET',
-        mode: 'cors',
-        credentials: 'include',
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(json => this.setState({movies: json.results}));
-    }
+    });
   }
 
   renderMovies() {
@@ -73,6 +87,25 @@ export class BrowseCompareVc extends React.Component {
     }
     return (
       <MovieCardCollection movies={this.state.movies} />
+    );
+  }
+
+  renderLoadMore() {
+    if (!this.state.loadMore || !this.state.movies) {
+      return null;
+    } else if (this.state.loading) {
+      return (
+        <div className="load-more">
+          <FlatButton disabled label="Loading..." />
+        </div>
+      );
+    }
+    return (
+      <div className="load-more-btn">
+        <FlatButton
+          label="Load More"
+          onClick={this.handleLoadMore} />
+      </div>
     );
   }
 
@@ -126,6 +159,7 @@ export class BrowseCompareVc extends React.Component {
             movies={this.state.movies}
             path={path} />
         </div>
+        {this.renderLoadMore()}
       </div>
     );
   }
