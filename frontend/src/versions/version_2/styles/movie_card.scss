@@ -1,0 +1,26 @@
+.version-2 .movie-card {
+  background-color: #222;
+
+  .poster-img {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .charts-wrapper {
+    min-height: 70vh;
+  }
+
+  .title {
+    display: inline;
+  }
+
+  .compare-btn-wrapper {
+    display: inline;
+    padding-left: 20px;
+    font-size: 25px;
+  }
+
+  .movie-card-contents {
+    padding: 20px 0;
+  }
+}

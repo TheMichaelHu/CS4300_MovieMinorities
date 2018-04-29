@@ -30,6 +30,7 @@ export class _VersionDropdown extends React.PureComponent {
         >
           <MenuItem value={0} primaryText="Default Version" />
           <MenuItem value={1} primaryText="Version 1 (P03)" />
+          <MenuItem value={2} primaryText="Version 2 (P04)" />
         </DropDownMenu>
       </div>
     );

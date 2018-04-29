@@ -21,6 +21,12 @@ import { HomeVc_1 } from "../versions/version_1/components/home_view_controller"
 import { BrowseVc_1 } from "../versions/version_1/components/browse_view_controller";
 import { MovieVc_1 } from "../versions/version_1/components/movie_view_controller";
 
+import { HomeVc_2 } from "../versions/version_2/components/home_view_controller";
+import { BrowseVc_2 } from "../versions/version_2/components/browse_view_controller";
+import { MovieVc_2 } from "../versions/version_2/components/movie_view_controller";
+import { BrowseCompareVc_2 } from "../versions/version_2/components/browse_compare_view_controller";
+import { CompareVc_2 } from "../versions/version_2/components/compare_view_controller";
+
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import {bindActionCreators} from 'redux';
@@ -43,6 +49,12 @@ export class _MovieMinoritiesApp extends React.Component {
       Movie = MovieVc_1;
       BrowseCompare = HomeVc_1;
       Compare = HomeVc_1;
+    } else if (this.props.version == 2) {
+      Home = HomeVc_2;
+      Browse = BrowseVc_2;
+      Movie = MovieVc_2;
+      BrowseCompare = BrowseCompareVc_2;
+      Compare = CompareVc_2;
     }
 
     return (
