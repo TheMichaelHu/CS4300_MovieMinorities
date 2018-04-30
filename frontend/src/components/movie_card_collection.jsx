@@ -7,7 +7,7 @@ import '../styles/movie_card_collection';
 
 export class MovieCardCollection extends React.Component {
   render() {
-    if (this.props.movies.length == 0) {
+    if (this.props.loading) {
       return (
         <div className="loading-screen" style={{height: "100vh", textAlign: "center"}}>
           <div className="fa fa-circle-notch fa-spin fa-5x" style={{paddingTop: "20vh"}} />
@@ -36,8 +36,10 @@ export class MovieCardCollection extends React.Component {
 MovieCardCollection.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   path: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 MovieCardCollection.defaultProps = {
   path: "/movie",
+  loading: true,
 }

@@ -67,7 +67,11 @@ class _BrowseCompareVc extends React.Component {
       }
     })
     .then(response => response.json())
-    .then(json => this.setState({movies: json.results}));
+    .then(json => this.setState({
+      movies: json.results,
+      loading: false,
+      loadMore: json.loadMore,
+    }));
   }
 
   handleLoadMore() {
@@ -113,15 +117,17 @@ class _BrowseCompareVc extends React.Component {
   }
 
   renderMovies() {
-    if (!this.state.movies) {
+    if (!this.state.loadMore && this.state.movies.length === 0) {
       return (
-        <p>
+        <p style={{height: "100vh"}}>
           No movies found!
         </p>
       );
     }
     return (
-      <MovieCardCollection movies={this.state.movies} />
+      <MovieCardCollection
+        movies={this.state.movies}
+        loading={this.state.movies.length === 0} />
     );
   }
 
@@ -190,9 +196,7 @@ class _BrowseCompareVc extends React.Component {
           </HeaderVc>
         </div>
         <div className="browse-content">
-          <MovieCardCollection
-            movies={this.state.movies}
-            path={path} />
+          {this.renderMovies()}
         </div>
         {this.renderLoadMore()}
       </div>

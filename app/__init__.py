@@ -69,7 +69,6 @@ def filter_ranking(ranking, args):
         movie_features = movie_features[movie_features[category] == 1]
     if gender_start != 0 or gender_end != 1:
         movie_features = movie_features[movie_features["nonmale"].between(gender_start, gender_end)]
-        print(movie_features)
     if ethnicity_start != 0 or ethnicity_end != 1:
         movie_features = movie_features[movie_features["nonwhite"].between(ethnicity_start, ethnicity_end)]
     if bechdel != -1:
