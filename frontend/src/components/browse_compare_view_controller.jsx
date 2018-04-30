@@ -58,7 +58,6 @@ class _BrowseCompareVc extends React.Component {
   handleSearch() {
     const searchParams = this.getSearchParams(this.props.router.location.search);
     const filterParams = this.getFilterParams(this.props.filters);
-    this.setState({loading: true});
     fetch(`/search?${searchParams}&${filterParams}`, {
       method: 'GET',
       mode: 'cors',
@@ -70,7 +69,6 @@ class _BrowseCompareVc extends React.Component {
     .then(response => response.json())
     .then(json => this.setState({
       movies: json.results,
-      loading: false,
       loadMore: json.loadMore,
     }));
   }
@@ -117,7 +115,7 @@ class _BrowseCompareVc extends React.Component {
     return Object.keys(filters).map(k => `${k}=${filters[k]}`).join('&');
   }
 
-  renderMovies() {
+  renderMovies(path) {
     if (!this.state.loadMore && this.state.movies.length === 0) {
       return (
         <p style={{height: "100vh"}}>
@@ -128,7 +126,8 @@ class _BrowseCompareVc extends React.Component {
     return (
       <MovieCardCollection
         movies={this.state.movies}
-        loading={this.state.movies.length === 0} />
+        loading={this.state.movies.length === 0}
+        path={path} />
     );
   }
 
@@ -197,7 +196,7 @@ class _BrowseCompareVc extends React.Component {
           </HeaderVc>
         </div>
         <div className="browse-content">
-          {this.renderMovies()}
+          {this.renderMovies(path)}
         </div>
         {this.renderLoadMore()}
       </div>

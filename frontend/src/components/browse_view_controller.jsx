@@ -40,7 +40,6 @@ class _BrowseVc extends React.Component {
   handleSearch() {
     const searchParams = this.getSearchParams(this.props.router.location.search);
     const filterParams = this.getFilterParams(this.props.filters);
-    this.setState({loading: true});
     fetch(`/search?${searchParams}&${filterParams}`, {
       method: 'GET',
       mode: 'cors',
@@ -52,7 +51,6 @@ class _BrowseVc extends React.Component {
     .then(response => response.json())
     .then(json => this.setState({
       movies: json.results,
-      loading: false,
       loadMore: json.loadMore,
     }));
   }
