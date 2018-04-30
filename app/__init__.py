@@ -10,6 +10,7 @@ from flask_socketio import SocketIO
 import json
 import boto3
 from ranker import rank_movies
+import pandas as pd
 
 # Configure app
 socketio = SocketIO()
@@ -24,6 +25,7 @@ db = SQLAlchemy(app)
 socketio.init_app(app)
 
 DATA_DIR = "./app/data"
+MOVIE_FEATURES = pd.read_csv("%s/movie_features.csv" % DATA_DIR)
 
 
 # Routes
@@ -41,16 +43,39 @@ def get_movie_titles():
 
 @app.route('/search')
 def search_movies():
-    print("we searching")
     query = request.args.get('q')
     place = request.args.get('place')
     place = int(place) if place else 0
 
     ranking = rank_movies(query)
+    ranking = filter_ranking(ranking, request.args)
     results = ranking[place:place + 10]
     movies = [json.loads(get_movie(slug)) for slug in results]
 
-    return jsonify({"movies": movies, "loadMore": place + 10 < len(ranking)})
+    return jsonify({"results": movies, "loadMore": place + 10 < len(ranking)})
+
+
+def filter_ranking(ranking, args):
+    category = args.get("category") or "-1"
+    gender_start = float(args.get("gender1") or "0") * .1
+    gender_end = float(args.get("gender2") or "10") * .1
+    ethnicity_start = float(args.get("ethnicity1") or "0") * .1
+    ethnicity_end = float(args.get("ethnicity2") or "10") * .1
+    bechdel = float(args.get("bechdel") or "-1")
+
+    movie_features = MOVIE_FEATURES.set_index("slug")
+    movie_features = movie_features.loc[ranking]
+    if category != "-1":
+        movie_features = movie_features[movie_features[category] == 1]
+    if gender_start != 0 or gender_end != 1:
+        movie_features = movie_features[movie_features["nonmale"].between(gender_start, gender_end)]
+        print(movie_features)
+    if ethnicity_start != 0 or ethnicity_end != 1:
+        movie_features = movie_features[movie_features["nonwhite"].between(ethnicity_start, ethnicity_end)]
+    if bechdel != -1:
+        movie_features = movie_features[movie_features["bechdel"] == bechdel]
+
+    return list(movie_features.index.values)
 
 
 @app.route('/movie_data/<movie_slug>')

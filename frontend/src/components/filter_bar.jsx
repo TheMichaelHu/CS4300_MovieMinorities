@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import FlatButton from 'material-ui/FlatButton';
 
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -10,10 +11,11 @@ import * as mmActions from '../actions/mm_actions';
 
 import '../styles/filter_bar';
 
-export class _FilterBar extends React.Component {
+class _FilterBar extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handleChange(filter) {
@@ -22,26 +24,12 @@ export class _FilterBar extends React.Component {
     };
   }
 
+  handleReset() {
+    this.props.mmActions.resetFilters();
+  }
+
   renderCategory() {
-    const categories = [
-      'action',
-      'adventure',
-      'animation',
-      'comedy',
-      'crime',
-      'drama',
-      'family',
-      'fantasy',
-      'history',
-      'horror',
-      'music',
-      'mystery',
-      'romance',
-      'science fiction',
-      'thriller',
-      'war',
-      'western'
-    ];
+    const categories = ['action', 'adventure', 'animation', 'comedy', 'crime', 'drama', 'family', 'fantasy', 'history', 'horror', 'music', 'mystery', 'romance', 'science fiction', 'thriller', 'war', 'western'];
 
     return (
       <div className="genre-filter filter">
@@ -62,7 +50,7 @@ export class _FilterBar extends React.Component {
   renderGender() {
     return (
       <div className="gender-filter filter">
-        Non-Male Lines:
+        Female Lines:
         <DropDownMenu
           value={this.props.gender1}
           onChange={this.handleChange("gender1")}
@@ -89,7 +77,7 @@ export class _FilterBar extends React.Component {
   renderEthnicity() {
     return (
       <div className="ethnicity-filter filter">
-        Non-Male Lines:
+        Minority Lines:
         <DropDownMenu
           value={this.props.ethnicity1}
           onChange={this.handleChange("ethnicity1")}
@@ -136,6 +124,9 @@ export class _FilterBar extends React.Component {
         {this.renderGender()}
         {this.renderEthnicity()}
         {this.renderBechdel()}
+        <div className="reset-btn">
+          <FlatButton label="Reset" onClick={this.handleReset} />
+        </div>
       </Paper>
     );
   }

@@ -8,7 +8,11 @@ import { SearchBar } from "./search_bar";
 import { FilterBar } from "./filter_bar";
 import { VersionDropdown } from "./version_dropdown";
 
-export class HeaderVc extends React.Component {
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as mmActions from '../actions/mm_actions';
+
+class _HeaderVc extends React.Component {
   renderTitle() {
     if (!this.props.search) {
       return null;
@@ -32,7 +36,9 @@ export class HeaderVc extends React.Component {
         </div>
         <div className="col-xs-6">
           <Link to={this.props.path} style={{float: "right"}}>
-            <FlatButton label="Browse All" />
+            <FlatButton
+              label="Browse All"
+              onClick={this.props.mmActions.resetFilters} />
           </Link>
         </div>
       </div>
@@ -67,14 +73,29 @@ export class HeaderVc extends React.Component {
   }
 }
 
-HeaderVc.propTypes = {
+_HeaderVc.propTypes = {
   search: PropTypes.bool,
   filter: PropTypes.bool,
   path: PropTypes.string,
 };
 
-HeaderVc.defaultProps = {
+_HeaderVc.defaultProps = {
   search: false,
   filter: false,
   path: "/movies",
 };
+
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    mmActions: bindActionCreators(mmActions, dispatch)
+  };
+}
+
+export const HeaderVc = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_HeaderVc);

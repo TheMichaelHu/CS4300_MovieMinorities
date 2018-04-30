@@ -1,4 +1,4 @@
-import {SET_SEARCH, FETCH_TITLES, SET_VERSION, SET_FILTERS} from '../actions/action_types';
+import {SET_SEARCH, FETCH_TITLES, SET_VERSION, SET_FILTERS, RESET_FILTERS} from '../actions/action_types';
 
 const defaultState = {
   search: "",
@@ -29,6 +29,10 @@ export default function mmReducer(state = defaultState, action) {
     case SET_FILTERS:
       newState =  Object.assign({}, state, {});
       newState.filters = Object.assign({}, newState.filters, action.data);
+      return newState;
+    case RESET_FILTERS:
+      newState =  Object.assign({}, state, {});
+      newState.filters = defaultState.filters;
       return newState;
     default:
       return state;
