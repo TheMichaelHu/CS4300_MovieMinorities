@@ -16,6 +16,7 @@
     "webpack-cli": "^2.0.12"
   },
   "dependencies": {
+    "file-loader": "^1.1.11",
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

@@ -14,7 +14,7 @@ export class HomeVc extends React.Component {
     return (
       <div className="home-vc">
         <div className="logo-wrapper">
-          <HeaderVc />
+          <HeaderVc style={{backgroundColor: "black", opacity: .9}} />
         </div>
         <div className="home-content">
           <Paper className="hero">

@@ -19,5 +19,8 @@
   },
   "scripts": {
     "postinstall": "cd frontend && yarn install && yarn build"
+  },
+  "dependencies": {
+    "file-loader": "^1.1.11"
   }
 }

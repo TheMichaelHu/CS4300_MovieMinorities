@@ -9,11 +9,12 @@
   .hero {
     height: 100vh;
     background-color: grey;
+    background-image: url("../images/movie_minorities.jpg");
 
     .hero-text {
       margin: 0;
       padding-top: 20vh;
-      text-align: center;
+      padding-left: 7vw;
 
       h1 {
         font-size: 50px;
@@ -26,7 +27,7 @@
 
     .search-wrapper {
       padding-top: 7vh;
-      text-align: center;
+      padding-left: 7vw;
     }
   }
 }

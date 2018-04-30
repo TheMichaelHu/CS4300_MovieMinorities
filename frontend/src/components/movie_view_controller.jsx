@@ -64,7 +64,7 @@ export class MovieVc extends React.Component {
             <li><span className="fa fa-star" /> <b>Rating</b>: {metadata.rating}</li>
             <li><span className="fa fa-calendar-check" /> <b>Released</b>: {metadata.release_yr}</li>
             <li><span className="fa fa-dollar-sign" /> <b>Budget</b>: ${metadata.budget}</li>
-            <li><span className="fa fa-trophy" /> <b>Awards</b>: {metadata.num_awards}</li>
+            <li><span className="fa fa-comments" /> <b>Review Sentiment</b>: {metadata.imdb_review_sentiment}</li>
             <li><span className="fa fa-link" /> <b>IMDB link</b>: <a href={metadata.imdb_url}>{metadata.imdb_url}</a></li>
           </ul>
         </Section>

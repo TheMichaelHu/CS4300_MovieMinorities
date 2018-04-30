@@ -63,6 +63,7 @@ class _HeaderVc extends React.Component {
           iconStyleLeft={{margin: 0, paddingRight: 20}}
           iconStyleRight={{margin: 0, paddingTop: 13}}
           zDepth={0}
+          style={this.props.style}
         />
         {this.props.children}
         <div className="filters-wrapper">
@@ -77,6 +78,7 @@ _HeaderVc.propTypes = {
   search: PropTypes.bool,
   filter: PropTypes.bool,
   path: PropTypes.string,
+  style: PropTypes.object,
 };
 
 _HeaderVc.defaultProps = {
