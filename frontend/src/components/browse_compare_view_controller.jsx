@@ -17,7 +17,7 @@ import * as mmActions from '../actions/mm_actions';
 
 import '../styles/browse_compare_view_controller';
 
-export class _BrowseCompareVc extends React.Component {
+class _BrowseCompareVc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,9 +46,19 @@ export class _BrowseCompareVc extends React.Component {
       .then(json => this.setState({compare: json.movie_metadata, loading: false}));
     }
 
-    const searchParams = this.props.router.location.search || "?";
+    this.handleSearch();
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.filters != this.props.filters) {
+      this.handleSearch();
+    }
+  }
+
+  handleSearch() {
+    const searchParams = this.getSearchParams(this.props.router.location.search);
     const filterParams = this.getFilterParams(this.props.filters);
-    fetch(`/search${searchParams}&${filterParams}`, {
+    fetch(`/search?${searchParams}&${filterParams}`, {
       method: 'GET',
       mode: 'cors',
       credentials: 'include',
@@ -57,15 +67,18 @@ export class _BrowseCompareVc extends React.Component {
       }
     })
     .then(response => response.json())
-    .then(json => this.setState({movies: json.movies}));
+    .then(json => this.setState({
+      movies: json.results,
+      loadMore: json.loadMore,
+    }));
   }
 
   handleLoadMore() {
     const place = this.state.movies.length;
-    const searchParams = this.props.router.location.search || "?";
+    const searchParams = this.getSearchParams(this.props.router.location.search);
     const filterParams = this.getFilterParams(this.props.filters);
     this.setState({loading: true});
-    fetch(`/search${searchParams}&place=${place}&${filterParams}`, {
+    fetch(`/search?${searchParams}&place=${place}&${filterParams}`, {
       method: 'GET',
       mode: 'cors',
       credentials: 'include',
@@ -76,27 +89,45 @@ export class _BrowseCompareVc extends React.Component {
     .then(response => response.json())
     .then(json => {
       this.setState({
-        movies: [...this.state.movies, ...json.movies],
+        movies: [...this.state.movies, ...json.results],
         loadingMore: false,
         loadMore: json.loadMore,
       })
     });
   }
 
+  getSearchParams(search) {
+    if (!search) {
+      return "";
+    }
+    let hashes = search.slice(search.indexOf('?') + 1).split('&')
+    let query = ""
+    hashes.forEach(hash => {
+      let [key, val] = hash.split('=')
+      if (key === "q") {
+        query = hash;
+      }
+    });
+    return query;
+  }
+
   getFilterParams(filters) {
     return Object.keys(filters).map(k => `${k}=${filters[k]}`).join('&');
   }
 
-  renderMovies() {
-    if (!this.state.movies) {
+  renderMovies(path) {
+    if (!this.state.loadMore && this.state.movies.length === 0) {
       return (
-        <p>
+        <p style={{height: "100vh"}}>
           No movies found!
         </p>
       );
     }
     return (
-      <MovieCardCollection movies={this.state.movies} />
+      <MovieCardCollection
+        movies={this.state.movies}
+        loading={this.state.movies.length === 0}
+        path={path} />
     );
   }
 
@@ -165,9 +196,7 @@ export class _BrowseCompareVc extends React.Component {
           </HeaderVc>
         </div>
         <div className="browse-content">
-          <MovieCardCollection
-            movies={this.state.movies}
-            path={path} />
+          {this.renderMovies(path)}
         </div>
         {this.renderLoadMore()}
       </div>
@@ -177,15 +206,12 @@ export class _BrowseCompareVc extends React.Component {
 
 _BrowseCompareVc.propTypes = {
   router: PropTypes.objectOf(PropTypes.object),
+  mmActions: PropTypes.object,
+  filters: PropTypes.object,
 };
 
 _BrowseCompareVc.defaultProps = {
   router: {},
-};
-
-_BrowseCompareVc.propTypes = {
-  mmActions: PropTypes.object,
-  filters: PropTypes.object,
 };
 
 function mapStateToProps(state) {

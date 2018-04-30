@@ -55,10 +55,10 @@ export class CompareVc extends React.Component {
     return (
       <div className="row row-no-padding">
         <div className="col-xs-6">
-          <MovieCard movie={this.state.movie1.movie_metadata} />
+          <MovieCard movie={this.state.movie1.movie_metadata} clickable />
         </div>
         <div className="col-xs-6">
-          <MovieCard movie={this.state.movie2.movie_metadata} />
+          <MovieCard movie={this.state.movie2.movie_metadata} clickable />
         </div>
       </div>
     );

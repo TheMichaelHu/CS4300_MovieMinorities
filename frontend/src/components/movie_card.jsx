@@ -107,5 +107,5 @@ MovieCard.defaultProps = {
   graphs: false,
   clickable: false,
   comparable: false,
-  path: "/movies",
+  path: "/movie",
 }

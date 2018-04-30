@@ -52,11 +52,22 @@ export class MovieVc extends React.Component {
       );
     }
 
+    const metadata = this.state.movie.movie_metadata;
     return (
       <div className="movie-content">
         <Paper className="hero">
           {this.renderMovieCard()}
         </Paper>
+        <Section title="Additional Info">
+          <ul className="info-list">
+            <li><span className="fa fa-list-ul" /> <b>Genres</b>: {metadata.genres.join(", ")}</li>
+            <li><span className="fa fa-star" /> <b>Rating</b>: {metadata.rating}</li>
+            <li><span className="fa fa-calendar-check" /> <b>Released</b>: {metadata.release_yr}</li>
+            <li><span className="fa fa-dollar-sign" /> <b>Budget</b>: ${metadata.budget}</li>
+            <li><span className="fa fa-trophy" /> <b>Awards</b>: {metadata.num_awards}</li>
+            <li><span className="fa fa-link" /> <b>IMDB link</b>: <a href={metadata.imdb_url}>{metadata.imdb_url}</a></li>
+          </ul>
+        </Section>
         <Section title="Charts">
           <ChartsVc movie={this.state.movie} />
         </Section>

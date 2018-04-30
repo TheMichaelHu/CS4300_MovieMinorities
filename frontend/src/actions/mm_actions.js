@@ -30,3 +30,7 @@ export function setVersion(version) {
 export function setFilters(data) {
   return {type: types.SET_FILTERS, data};
 }
+
+export function resetFilters() {
+  return {type: types.RESET_FILTERS};
+}
