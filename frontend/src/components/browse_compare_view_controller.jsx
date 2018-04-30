@@ -11,9 +11,13 @@ import { MovieCard } from "./movie_card";
 
 import { grey900 } from 'material-ui/styles/colors';
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as mmActions from '../actions/mm_actions';
+
 import '../styles/browse_compare_view_controller';
 
-export class BrowseCompareVc extends React.Component {
+export class _BrowseCompareVc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,8 +46,9 @@ export class BrowseCompareVc extends React.Component {
       .then(json => this.setState({compare: json.movie_metadata, loading: false}));
     }
 
-    const searchParams = this.props.router.location.search || "";
-    fetch(`/search${searchParams}`, {
+    const searchParams = this.props.router.location.search || "?";
+    const filterParams = this.getFilterParams(this.props.filters);
+    fetch(`/search${searchParams}&${filterParams}`, {
       method: 'GET',
       mode: 'cors',
       credentials: 'include',
@@ -58,8 +63,9 @@ export class BrowseCompareVc extends React.Component {
   handleLoadMore() {
     const place = this.state.movies.length;
     const searchParams = this.props.router.location.search || "?";
-    this.setState({loadingMore: true});
-    fetch(`/search${searchParams}&place=${place}`, {
+    const filterParams = this.getFilterParams(this.props.filters);
+    this.setState({loading: true});
+    fetch(`/search${searchParams}&place=${place}&${filterParams}`, {
       method: 'GET',
       mode: 'cors',
       credentials: 'include',
@@ -75,6 +81,10 @@ export class BrowseCompareVc extends React.Component {
         loadMore: json.loadMore,
       })
     });
+  }
+
+  getFilterParams(filters) {
+    return Object.keys(filters).map(k => `${k}=${filters[k]}`).join('&');
   }
 
   renderMovies() {
@@ -165,10 +175,32 @@ export class BrowseCompareVc extends React.Component {
   }
 }
 
-BrowseCompareVc.propTypes = {
+_BrowseCompareVc.propTypes = {
   router: PropTypes.objectOf(PropTypes.object),
 };
 
-BrowseCompareVc.defaultProps = {
+_BrowseCompareVc.defaultProps = {
   router: {},
 };
+
+_BrowseCompareVc.propTypes = {
+  mmActions: PropTypes.object,
+  filters: PropTypes.object,
+};
+
+function mapStateToProps(state) {
+  return {
+    filters: state.filters,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    mmActions: bindActionCreators(mmActions, dispatch)
+  };
+}
+
+export const BrowseCompareVc = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(_BrowseCompareVc);

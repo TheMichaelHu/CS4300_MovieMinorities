@@ -26,3 +26,7 @@ export function setSearch(search) {
 export function setVersion(version) {
   return {type: types.SET_VERSION, version};
 }
+
+export function setFilters(data) {
+  return {type: types.SET_FILTERS, data};
+}

@@ -41,6 +41,7 @@ def get_movie_titles():
 
 @app.route('/search')
 def search_movies():
+    print("we searching")
     query = request.args.get('q')
     place = request.args.get('place')
     place = int(place) if place else 0
