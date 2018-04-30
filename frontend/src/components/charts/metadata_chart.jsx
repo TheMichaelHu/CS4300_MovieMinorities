@@ -77,18 +77,19 @@ export class MetadataChart extends React.PureComponent {
         // tool tip
         bars.append("rect")
           .attr("width", barWidth)
-          .attr("height", (d, i) => { return yScale(entries[i][1]); })
+          .attr("height", (d, i) => { return yScale(entries[i][1]) * 0.75; })
           .attr("x",  (d, i) => { return pushX + 15 + interBarSpace * ctr + barWidth * i; })
-          .attr("y", (d, i) => { return pushY - 110 + yScale(yMax) - yScale(entries[i][1]); })
+          .attr("y", (d, i) => { return pushY - 267 + maxOffset - yScale(entries[i][1]) * .75; })
           .attr("fill", (d, i) => { return categoryColors[i];})
           .on("mouseover", function(d) {
 
-            const rect = d3.select(this)._groups[0][0]
+            var rect = d3.select(this)._groups[0][0]
             const rectX = Number(rect.attributes["x"].nodeValue);
             const rectY = Number(rect.attributes["y"].nodeValue);
             div.transition()
               .duration(200)
               .style("opacity", .9);
+            svg.select(".rect").style("opacity", .5);
             div.html(Math.round(Number(d[1] * 100) * 100) / 100 + "%")
               .style("left", rectX + "px")
               .style("top", rectY - 10 + "px")
@@ -112,8 +113,8 @@ export class MetadataChart extends React.PureComponent {
     bars
       .append("text")
       .text((d, i) => { console.log(categories[i]); return categories[i]; } )
-      .attr("x",(d, i) => { return pushX - 60 + interBarSpace * i; })
-      .attr("y",(d, i) => { return pushY - 100 + yScale(yMax) + 20; })
+      .attr("x",(d, i) => { return pushX - 60 + interBarSpace * i + i * i * i * 8; })
+      .attr("y",(d, i) => { return pushY - 260 + maxOffset + 20; })
       .attr("fill", "black")
       .style("font-size", 18);
 
@@ -121,7 +122,7 @@ export class MetadataChart extends React.PureComponent {
     const pushTextY = 300;
     const legendBarSize = 20;
 
-    const yAxis = d3.axisRight(yScaleCopy);
+    const yAxis = d3.axisLeft(yScaleCopy);
 
     svg.append('g')
     .attr("id", "g_x")
@@ -134,7 +135,7 @@ export class MetadataChart extends React.PureComponent {
       bars
         .append("text")
         .text( d => { return entries[ind][0]; } )
-        .attr("x", d => { return pushTextX - 300 + interBarSpace * (entries.length + 1); })
+        .attr("x", d => { return pushTextX - 300 + interBarSpace * (entries.length + 1) + 60; })
         .attr("y", d => { return pushTextY - 80 + 25 * ind; })
         .attr("fill", "black")
         .style("font-size", 18);
@@ -143,7 +144,7 @@ export class MetadataChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return pushTextX - 310 + interBarSpace * (entries.length + 1) - 15; })
+        .attr("x", d => { return pushTextX - 310 + interBarSpace * (entries.length + 1) - 15 + 60; })
         .attr("y", d => { return pushTextY - 80 + 25 * ind - 15; })
         .attr("fill", d => {return categoryColors[ind]; })
         .style("font-size", 18);
