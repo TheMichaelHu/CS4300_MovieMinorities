@@ -77,7 +77,7 @@ export class BrowseVc extends React.Component {
       return null;
     } else if (this.state.loading) {
       return (
-        <div className="load-more">
+        <div className="load-more-btn">
           <FlatButton disabled label="Loading..." />
         </div>
       );
