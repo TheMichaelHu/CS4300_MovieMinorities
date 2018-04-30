@@ -23,7 +23,7 @@ export class RaceChart extends React.PureComponent {
     const node = this.node;
     const jsonMod = this.props.movie.distribution_metadata.race_dist;
     const categories = ["By character", "By line"];
-    const categoryColors = ["#03353e", "#0294a5", "#0EBFE9"];
+    const categoryColors = ["#DFCFFC", "#997DCA", "#633FA2", "#300D6E"];
 
     const len = Object.keys(jsonMod).length;
     const svgWidth = 750;
@@ -58,8 +58,6 @@ export class RaceChart extends React.PureComponent {
         var jsonData = jsonMod[ind];
         var entries = Object.entries(jsonData);
 
-    // console.log(entries);
-
         if (flag == 0) {
             var yMax = d3.max(entries, (d, i) => { return d[1]; });
             flag++;
@@ -77,9 +75,9 @@ export class RaceChart extends React.PureComponent {
         // tool tip
         bars.append("rect")
           .attr("width", barWidth)
-          .attr("height", (d, i) => { return yScale(entries[i][1]); })
+          .attr("height", (d, i) => { return yScale(entries[i][1]) * .75; })
           .attr("x",  (d, i) => { return pushX + 15 + interBarSpace * ctr + barWidth * i; })
-          .attr("y", (d, i) => { return pushY - 40 + yScale(yMax) - yScale(entries[i][1]); })
+          .attr("y", (d, i) => { return pushY - 267 + maxOffset - yScale(entries[i][1]) * .75; })
           .attr("fill", (d, i) => { return categoryColors[i];})
           .on("mouseover", function(d) {
 
@@ -109,11 +107,12 @@ export class RaceChart extends React.PureComponent {
     };
 
     // x-axis titles
+    
     bars
       .append("text")
-      .text((d, i) => { console.log(categories[i]); return categories[i]; } )
-      .attr("x",(d, i) => { return pushX - 60 + interBarSpace * i; })
-      .attr("y",(d, i) => { return pushY - 15 + yScale(yMax) + 20; })
+      .text((d, i) => { console.log(i); console.log(categories[i]); return categories[i]; } )
+      .attr("x",(d, i) => { return pushX - 50 + (interBarSpace + 53) * i; })
+      .attr("y",(d, i) => { return pushY - 260 + maxOffset + 20; })
       .attr("fill", "black")
       .style("font-size", 18);
 
@@ -134,7 +133,7 @@ export class RaceChart extends React.PureComponent {
       bars
         .append("text")
         .text( d => { return entries[ind][0]; } )
-        .attr("x", d => { return pushTextX - 300 + interBarSpace * (entries.length + 1); })
+        .attr("x", d => { return pushTextX - 300 + interBarSpace * 4; })
         .attr("y", d => { return pushTextY - 80 + 25 * ind; })
         .attr("fill", "black")
         .style("font-size", 18);
@@ -143,7 +142,7 @@ export class RaceChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", d => { return pushTextX - 310 + interBarSpace * (entries.length + 1) - 15; })
+        .attr("x", d => { return pushTextX - 310 + interBarSpace * 4 - 15; })
         .attr("y", d => { return pushTextY - 80 + 25 * ind - 15; })
         .attr("fill", d => {return categoryColors[ind]; })
         .style("font-size", 18);
@@ -173,3 +172,4 @@ export class RaceChart extends React.PureComponent {
 RaceChart.propTypes = {
   movie: PropTypes.object,
 };
+
