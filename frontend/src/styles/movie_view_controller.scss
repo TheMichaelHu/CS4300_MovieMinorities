@@ -9,4 +9,16 @@
     background-color: grey;
     padding-top: 100px;
   }
+
+  .info-list {
+    list-style-type: none;
+
+    b {
+      padding-left: 10px;
+    }
+
+    li {
+      padding-bottom: 5px;
+    }
+  }
 }

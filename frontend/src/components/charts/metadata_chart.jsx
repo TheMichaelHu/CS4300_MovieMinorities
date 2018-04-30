@@ -54,7 +54,7 @@ export class MetadataChart extends React.PureComponent {
     let bars;
 
     // plot bars
-    for (var ind in jsonMod) {
+    for (var ind of ["by_crew", "by_movie", "by_line"]) {
         var jsonData = jsonMod[ind];
         var entries = Object.entries(jsonData);
 
