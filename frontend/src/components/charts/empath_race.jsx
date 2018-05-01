@@ -56,8 +56,10 @@ export class EmpathRaceChart extends React.PureComponent {
 
     jsonMod3 = {}
 
-
-    const len = Object.keys(jsonMod).length;
+    let len = 0;
+    if (jsonMod) {
+      len = Object.keys(jsonMod).length;
+    }
     const svgWidth = 750;
     const svgHeight = 750;
     const barHeight = 40;
