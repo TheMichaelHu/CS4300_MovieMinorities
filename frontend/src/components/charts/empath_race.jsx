@@ -109,11 +109,13 @@ export class EmpathRaceChart extends React.PureComponent {
     .style("font-size", 18)
     .call(xAxis);
 
-    svg.append('g')
-    .attr("id", "g_x2")
-    .attr('transform', 'translate(' + 25 + ',' + (95 + (barHeight + 5) * ctr) + ')')
-    .style("font-size", 18)
-    .call(xAxis2);
+    if (categories.length >= 2){
+      svg.append('g')
+      .attr("id", "g_x2")
+      .attr('transform', 'translate(' + 25 + ',' + (95 + (barHeight + 5) * ctr) + ')')
+      .style("font-size", 18)
+      .call(xAxis2);
+    };
 
     // legend
     categories.forEach((d, ind) => {
@@ -144,8 +146,6 @@ export class EmpathRaceChart extends React.PureComponent {
       .style("font-family", "Roboto")
       .style("font-weight", 500)
       .style("font-size", 30);
-
-  }
 
   }
 
