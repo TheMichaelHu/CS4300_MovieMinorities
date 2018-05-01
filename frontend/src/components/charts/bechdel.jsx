@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 import '../../styles/charts/metadata_chart';
+import thumbUp from "../../images/thumb-up.png";
+import thumbDown from "../../images/thumb-down.png";
 
 export class BechdelChart extends React.PureComponent {
   constructor(props){
@@ -57,7 +59,7 @@ export class BechdelChart extends React.PureComponent {
       .attr('y', - imageHeight)
       .attr('width', imageWidth)
       .attr('height', imageHeight)
-      .attr("xlink:href", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ987IyzCyYCukTrS0Ajo4gTzsy1LdHewT4pOTZcfCXgUC-68DX")
+      .attr("xlink:href", thumbUp)
       .attr("class", "bechdel");
 
       pic.transition().duration(1000)
@@ -69,7 +71,7 @@ export class BechdelChart extends React.PureComponent {
       .attr('y', - imageHeight)
       .attr('width', imageWidth)
       .attr('height', imageHeight)
-      .attr("xlink:href", "http://www.iconsplace.com/icons/preview/red/thumbs-down-256.png")
+      .attr("xlink:href", thumbDown)
       .attr("class", "bechdel");
 
       pic.transition().duration(1000)

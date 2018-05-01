@@ -6,6 +6,7 @@ vagrant/site.retry
 vagrant/a4keypair.pem
 app/data/movies/*.json
 app/static/*.jpg
+app/static/*.png
 
 yarn-error.log
 node_modules
