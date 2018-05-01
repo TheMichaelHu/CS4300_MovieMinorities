@@ -122,7 +122,7 @@ export class EmpathRaceChart extends React.PureComponent {
       svg
         .append("text")
         .text( d => { return categories[ind]; } )
-        .attr("x", 675)
+        .attr("x", 625)
         .attr("y", d => { return 190 + 25 * ind; })
         .attr("fill", "black")
         .style("font-size", 18);
@@ -131,7 +131,7 @@ export class EmpathRaceChart extends React.PureComponent {
         .append("rect")
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
-        .attr("x", 650)
+        .attr("x", 600)
         .attr("y", d => { return 175 + 25 * ind; })
         .attr("fill", d => {return categoryColors[Object.keys(races).indexOf(categories[ind])]; })
         .style("font-size", 18);
