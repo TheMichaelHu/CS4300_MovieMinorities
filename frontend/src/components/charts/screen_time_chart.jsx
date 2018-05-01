@@ -82,9 +82,9 @@ export class ScreenTimeChart extends React.PureComponent {
     // tool tip
     bars.append("rect")
       .attr("width", barWidth)
-      .attr("height", (d, i) => {return yScale(entries[i][1]); })
+      .attr("height", (d, i) => {return yScale(entries[i][1]) * .75; })
       .attr("x", (d, i) => { return pushX + interBarSpace * i; })
-      .attr("y", (d, i) => { return pushY + 150 + yScale(yMax) - yScale(entries[i][1]); })
+      .attr("y", (d, i) => { return maxOffset - yScale(entries[i][1]) * .75; })
       .attr("fill", categoryColors[ctr])
       .on("mouseover", function(d) {
           var rect = d3.select(this)._groups[0][0];
@@ -117,7 +117,7 @@ export class ScreenTimeChart extends React.PureComponent {
     bars
       .append("text")
       .text( (d, i) => { return entries[i][0]; } )
-      .attr("x", (d, i) => { return pushX + interBarSpace * i - 70; })
+      .attr("x", (d, i) => { return pushX + interBarSpace * i - 20; })
       .attr("y", (d, i) => { return pushY + 130 + yScale(yMax) - yScale(entries[i][1]) - 10; })
       .attr("transform", (d, i) => {
           var x = pushX + interBarSpace * i - 70;
@@ -131,7 +131,7 @@ export class ScreenTimeChart extends React.PureComponent {
     const pushTextY = pushY;
     const legendBarSize = 20;
 
-    const yAxis = d3.axisRight(yScaleCopy);
+    const yAxis = d3.axisLeft(yScaleCopy);
 
     svg.append('g')
     .attr("id", "g_x")
@@ -165,9 +165,9 @@ export class ScreenTimeChart extends React.PureComponent {
       .attr("x", d => { return 200; })
       .attr("y", d => { return 50; })
       .attr("fill", d => { return headingTextColor; })
-      .style("font-family", "Roboto")
+      .style("font-family", "Bebas Neue")
       .style("font-weight", 500)
-      .style("font-size", 30);
+      .style("font-size", 20);
 
   }
 
