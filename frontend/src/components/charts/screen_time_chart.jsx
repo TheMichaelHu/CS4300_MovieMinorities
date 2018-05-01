@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../../styles/charts/metadata_chart';
+import '../../styles/charts/screen_time_chart';
 
 export class ScreenTimeChart extends React.PureComponent {
   constructor(props){
@@ -117,12 +117,12 @@ export class ScreenTimeChart extends React.PureComponent {
     bars
       .append("text")
       .text( (d, i) => { return entries[i][0]; } )
-      .attr("x", (d, i) => { return pushX + interBarSpace * i - 20; })
-      .attr("y", (d, i) => { return pushY + 130 + yScale(yMax) - yScale(entries[i][1]) - 10; })
+      .attr("x", (d, i) => { return 0; })
+      .attr("y", (d, i) => { return 0; })
       .attr("transform", (d, i) => {
-          var x = pushX + interBarSpace * i - 70;
-          var y = pushY + 130 + yScale(yMax) - yScale(entries[i][1]) - 10;
-          return "rotate(-90," + x + "," + y + ")";
+          var y = pushX + interBarSpace * i - 70;
+          var x = maxOffset - yScale(entries[i][1]) *  .75 - 10;
+          return "rotate(-90) translate(" + (-x) + "," + (y) + ")";
       })
       .attr("fill", "black")
       .style("font-size", 18);
@@ -173,9 +173,8 @@ export class ScreenTimeChart extends React.PureComponent {
 
   render() {
     return (
-      <div className="chart">
+      <div className="screen-time-chart">
         <svg ref={node => this.node = node} />
-        <p className="description"><b>Screen time</b>: percentage of lines spoken by an actor</p>
       </div>
     );
   }
@@ -184,3 +183,4 @@ export class ScreenTimeChart extends React.PureComponent {
 ScreenTimeChart.propTypes = {
   movie: PropTypes.object,
 };
+
