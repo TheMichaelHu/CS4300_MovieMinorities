@@ -120,7 +120,7 @@ export class RaceChart extends React.PureComponent {
     const pushTextY = 300;
     const legendBarSize = 20;
 
-    const yAxis = d3.axisRight(yScaleCopy);
+    const yAxis = d3.axisLeft(yScaleCopy);
 
     svg.append('g')
     .attr("id", "g_x")
