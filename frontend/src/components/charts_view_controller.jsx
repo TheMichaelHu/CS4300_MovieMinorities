@@ -16,19 +16,19 @@ export class ChartsVc extends React.PureComponent {
           <MetadataChart movie={this.props.movie} />
         </div>
         <div className="col-xs-12 col-md-6">
-          <ScreenTimeChart movie={this.props.movie} />
+          <EmpathGenderChart movie={this.props.movie} />
         </div>
         <div className="col-xs-12 col-md-6">
           <RaceChart movie={this.props.movie} />
         </div>
         <div className="col-xs-12 col-md-6">
-          <BechdelChart movie={this.props.movie} />
-        </div>
-        <div className="col-xs-12 col-md-6">
-          <EmpathGenderChart movie={this.props.movie} />
-        </div>
-        <div className="col-xs-12 col-md-6">
           <EmpathRaceChart movie={this.props.movie} />
+        </div>
+        <div className="col-xs-12 col-md-6">
+          <ScreenTimeChart movie={this.props.movie} />
+        </div>
+        <div className="col-xs-12 col-md-6">
+          <BechdelChart movie={this.props.movie} />
         </div>
       </div>
     </div>
