@@ -35,7 +35,7 @@ export class EmpathRaceChart extends React.PureComponent {
 
     const jsonMod = this.props.movie.empath_metadata.race_emotion_metadata[categories[0]];
     const jsonMod2 = this.props.movie.empath_metadata.race_emotion_metadata[categories[1]];
-    
+
     var legendBarSize = 20;
 
     const headingText = "EMOTION OF LINES BY RACE";
@@ -98,7 +98,7 @@ export class EmpathRaceChart extends React.PureComponent {
 
     }
 
-    
+
 
     var xAxis = d3.axisBottom(barScale);
     var xAxis2 = d3.axisBottom(barScale2)
@@ -140,8 +140,8 @@ export class EmpathRaceChart extends React.PureComponent {
     svg
     .append("text")
       .text(headingText)
-      .attr("x", 350)
-      .attr("y", 25)
+      .attr("x", 180)
+      .attr("y", 50)
       .attr("fill", headingTextColor)
       .style("font-family", "Roboto")
       .style("font-weight", 500)
@@ -151,8 +151,9 @@ export class EmpathRaceChart extends React.PureComponent {
 
   render() {
     return (
-      <div className="metadata-chart" id="empath-gender">
+      <div className="chart" id="empath-race">
         <svg ref={node => this.node = node} />
+        <p className="description">Emotions by how pervasive they are in lines from a race</p>
       </div>
     );
   }

@@ -7,33 +7,27 @@ import { BechdelChart } from "./charts/bechdel";
 import { EmpathGenderChart } from "./charts/empath_gender";
 import { EmpathRaceChart } from "./charts/empath_race";
 
-// import '../styles/logo';
-
 export class ChartsVc extends React.PureComponent {
   renderMultiCol() {
     return (
     <div className="contain">
       <div className="charts-wrapper row">
-        <div className="col-xs-12 col-md-5">
+        <div className="col-xs-12 col-md-6">
           <MetadataChart movie={this.props.movie} />
         </div>
-        <div className="col-xs-12 col-md-7">
+        <div className="col-xs-12 col-md-6">
           <ScreenTimeChart movie={this.props.movie} />
         </div>
-      </div>
-      <div className="charts-wrapper row">
-        <div className="col-xs-12 col-md-5">
+        <div className="col-xs-12 col-md-6">
           <RaceChart movie={this.props.movie} />
         </div>
-        <div className="col-xs-12 col-md-7">
+        <div className="col-xs-12 col-md-6">
           <BechdelChart movie={this.props.movie} />
         </div>
-      </div>
-      <div className="charts-wrapper row">
-        <div className="col-xs-12 col-md-5">
+        <div className="col-xs-12 col-md-6">
           <EmpathGenderChart movie={this.props.movie} />
         </div>
-        <div className="col-xs-12 col-md-7">
+        <div className="col-xs-12 col-md-6">
           <EmpathRaceChart movie={this.props.movie} />
         </div>
       </div>
