@@ -43,7 +43,7 @@ export class MetadataChart extends React.PureComponent {
     .range([maxOffset, 1]);
 
     const headingText = "GENDER DISTRIBUTION";
-    const headingTextColor = "#00007f";
+    const headingTextColor = "#03353e";
 
     let pushX = 100;
     const pushY = 260;

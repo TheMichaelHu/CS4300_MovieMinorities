@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../../styles/charts/screen_time_chart';
+import '../../styles/charts/metadata_chart';
 
 export class ScreenTimeChart extends React.PureComponent {
   constructor(props){
@@ -165,16 +165,17 @@ export class ScreenTimeChart extends React.PureComponent {
       .attr("x", d => { return 200; })
       .attr("y", d => { return 50; })
       .attr("fill", d => { return headingTextColor; })
-      .style("font-family", "Bebas Neue")
+      .style("font-family", "Roboto")
       .style("font-weight", 500)
-      .style("font-size", 20);
+      .style("font-size", 30);
 
   }
 
   render() {
     return (
-      <div className="screen-time-chart">
+      <div className="chart">
         <svg ref={node => this.node = node} />
+        <p className="description"><b>Screen time</b>: percentage of lines spoken by an actor</p>
       </div>
     );
   }
@@ -183,4 +184,3 @@ export class ScreenTimeChart extends React.PureComponent {
 ScreenTimeChart.propTypes = {
   movie: PropTypes.object,
 };
-
