@@ -25,11 +25,11 @@ export class EmpathRaceChart extends React.PureComponent {
 
     const races = this.props.movie.distribution_metadata.race_dist.by_line;
 
-    const categories = Object.keys(j).sort(function(a, b) {
+     var categories = Object.keys(j).sort(function(a, b) {
         return races[b] - races[a];
     });
 
-    const categories = categories.slice(0,2);
+    categories = categories.slice(0,2);
 
     const categoryColors = ["#DFCFFC", "#997DCA", "#633FA2", "#300D6E"];
 
@@ -38,9 +38,16 @@ export class EmpathRaceChart extends React.PureComponent {
     
     var legendBarSize = 20;
 
+    const headingText = "EMOTION OF LINES BY RACE";
+    const headingTextColor = "#00007f";
+
     var jsonMod3 = {}
     for (var ind in jsonMod){
-        jsonMod3[ind] = jsonMod2[ind] - jsonMod[ind] / (jsonMod2[ind] + 0.000001);
+      if (jsonMod2){
+        jsonMod3[ind] = jsonMod2[ind] - jsonMod[ind] / (jsonMod2[ind]+0.00001);
+      } else {
+        jsonMod3[ind] = 1
+      }
     }
 
     var result = Object.keys(jsonMod3).sort(function(a, b) {
@@ -49,7 +56,6 @@ export class EmpathRaceChart extends React.PureComponent {
 
     jsonMod3 = {}
 
-    console.log(result);
 
     const len = Object.keys(jsonMod).length;
     const svgWidth = 750;
@@ -64,23 +70,21 @@ export class EmpathRaceChart extends React.PureComponent {
     var barScale2 = d3.scaleLinear().domain([0,1]).range([350,0]);
     var ctr = 0;
 
-    console.log(barScale(.5))
-
     for (var key in result){
-
         svg.append("rect")
             .attr("width", barScale(jsonMod[result[key]]))
             .attr("height", barHeight)
             .attr("x", svgWidth / 2)
             .attr("y", 100 + (barHeight + 5) * ctr )
-            .attr("fill", categoryColors[0]);
-
-        svg.append("rect")
-            .attr("width", barScale(jsonMod2[result[key]]))
-            .attr("height", barHeight)
-            .attr("x", svgWidth / 2 - barScale(jsonMod2[result[key]]))
-            .attr("y", 100 + (barHeight + 5) * ctr)
-            .attr("fill", categoryColors[1]);
+            .attr("fill", categoryColors[Object.keys(races).indexOf(categories[0])]);
+        if (categories.length >= 2){
+          svg.append("rect")
+              .attr("width", barScale(jsonMod2[result[key]]))
+              .attr("height", barHeight)
+              .attr("x", svgWidth / 2 - barScale(jsonMod2[result[key]]))
+              .attr("y", 100 + (barHeight + 5) * ctr)
+              .attr("fill", categoryColors[Object.keys(races).indexOf(categories[1])]);
+        }
 
         svg
                     .append("text")
@@ -93,6 +97,8 @@ export class EmpathRaceChart extends React.PureComponent {
         ctr++;
 
     }
+
+    
 
     var xAxis = d3.axisBottom(barScale);
     var xAxis2 = d3.axisBottom(barScale2)
@@ -113,7 +119,7 @@ export class EmpathRaceChart extends React.PureComponent {
     categories.forEach((d, ind) => {
       svg
         .append("text")
-        .text( d => { console.log(categories[ind]); return categories[ind]; } )
+        .text( d => { return categories[ind]; } )
         .attr("x", 675)
         .attr("y", d => { return 190 + 25 * ind; })
         .attr("fill", "black")
@@ -125,9 +131,21 @@ export class EmpathRaceChart extends React.PureComponent {
         .attr("height", legendBarSize)
         .attr("x", 650)
         .attr("y", d => { return 175 + 25 * ind; })
-        .attr("fill", d => {return Object.keys(races).indexOf(categories[ind]); })
+        .attr("fill", d => {return categoryColors[Object.keys(races).indexOf(categories[ind])]; })
         .style("font-size", 18);
     });
+
+    svg
+    .append("text")
+      .text(headingText)
+      .attr("x", 350)
+      .attr("y", 25)
+      .attr("fill", headingTextColor)
+      .style("font-family", "Roboto")
+      .style("font-weight", 500)
+      .style("font-size", 30);
+
+  }
 
   }
 
@@ -140,6 +158,6 @@ export class EmpathRaceChart extends React.PureComponent {
   }
 }
 
-RaceChart.propTypes = {
+EmpathRaceChart.propTypes = {
   movie: PropTypes.object,
 };
