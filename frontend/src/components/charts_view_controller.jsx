@@ -5,6 +5,7 @@ import { ScreenTimeChart } from "./charts/screen_time_chart";
 import { RaceChart } from "./charts/race_chart";
 import { BechdelChart } from "./charts/bechdel";
 import { EmpathGenderChart } from "./charts/empath_gender";
+import { EmpathRaceChart } from "./charts/empath_race";
 
 // import '../styles/logo';
 
@@ -32,6 +33,9 @@ export class ChartsVc extends React.PureComponent {
         <div className="col-xs-12 col-md-5">
           <EmpathGenderChart movie={this.props.movie} />
         </div>
+        <div className="col-xs-12 col-md-7">
+          <EmpathRaceChart movie={this.props.movie} />
+        </div>
       </div>
     </div>
     );
@@ -45,6 +49,7 @@ export class ChartsVc extends React.PureComponent {
         <RaceChart movie={this.props.movie} />
         <BechdelChart movie={this.props.movie} />
         <EmpathGenderChart movie={this.props.movie} />
+        <EmpathRaceChart movie={this.props.movie} />
       </div>
     );
   }
