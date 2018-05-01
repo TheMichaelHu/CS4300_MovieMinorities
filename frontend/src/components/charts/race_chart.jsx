@@ -107,7 +107,7 @@ export class RaceChart extends React.PureComponent {
     };
 
     // x-axis titles
-    
+
     bars
       .append("text")
       .text((d, i) => { console.log(i); console.log(categories[i]); return categories[i]; } )
@@ -162,8 +162,12 @@ export class RaceChart extends React.PureComponent {
 
   render() {
     return (
-      <div className="metadata-chart">
+      <div className="chart">
         <svg ref={node => this.node = node} />
+        <p className="description">
+          <b>By character</b>: percentage of characters of a race<br />
+          <b>By line</b>: percentage of lines spoken by a race<br />
+        </p>
       </div>
     );
   }
@@ -172,4 +176,3 @@ export class RaceChart extends React.PureComponent {
 RaceChart.propTypes = {
   movie: PropTypes.object,
 };
-

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import '../../styles/charts/screen_time_chart';
+import '../../styles/charts/metadata_chart';
 
 export class ScreenTimeChart extends React.PureComponent {
   constructor(props){
@@ -173,8 +173,9 @@ export class ScreenTimeChart extends React.PureComponent {
 
   render() {
     return (
-      <div className="screen-time-chart">
+      <div className="chart">
         <svg ref={node => this.node = node} />
+        <p className="description"><b>Screen time</b>: percentage of lines spoken by an actor</p>
       </div>
     );
   }

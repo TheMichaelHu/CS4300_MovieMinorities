@@ -22,7 +22,7 @@ export class BechdelChart extends React.PureComponent {
 
     const node = this.node;
     const jsonMod = this.props.movie.bechdel_metadata;
-    
+
     const svgWidth = 750;
     const svgHeight = 750;
     const imageWidth = 300;
@@ -44,9 +44,9 @@ export class BechdelChart extends React.PureComponent {
 
     const headingText = "BECHDEL TEST";
     const headingTextColor = "#00007f";
-    
+
     console.log(!jsonMod);
-    
+
     if (!jsonMod){
       return;
     }
@@ -61,7 +61,7 @@ export class BechdelChart extends React.PureComponent {
       .attr("class", "bechdel");
 
       pic.transition().duration(1000)
-      .attr("y", svgHeight / 2 - imageHeight / 2);
+      .attr("y", (svgHeight - imageHeight) / 3);
     }
     else {
       var pic = svg.append("svg:image")
@@ -73,7 +73,7 @@ export class BechdelChart extends React.PureComponent {
       .attr("class", "bechdel");
 
       pic.transition().duration(1000)
-      .attr("y", svgHeight / 2 - imageHeight / 2);
+      .attr("y", (svgHeight - imageHeight) / 3);
     }
 
     svg
@@ -88,10 +88,26 @@ export class BechdelChart extends React.PureComponent {
 
   }
 
+  renderConversation() {
+    const data = this.props.movie.bechdel_metadata;
+    if (!data.passes) {
+      return null;
+    }
+
+    return (
+      <p className="conversation">
+        <i>{data.conversation[0].speaker}</i>: {data.conversation[0].utterance}<br />
+        <i>{data.conversation[1].speaker}</i>: {data.conversation[1].utterance}
+      </p>
+    );
+  }
+
   render() {
     return (
-      <div className="metadata-chart">
+      <div className="chart">
         <svg ref={node => this.node = node} />
+        {this.renderConversation()}
+        <p className="description">A movie passes the Bechdel test if it has a conversation between two named female characters talking about something other than a man.<br/><i>Disclaimer: May not be accurate</i></p>
       </div>
     );
   }

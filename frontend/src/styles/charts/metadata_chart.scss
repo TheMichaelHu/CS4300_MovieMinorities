@@ -1,8 +1,27 @@
-.version-0 .metadata-chart {
-  background-color: #eee;
-  font-size: 8;
+.version-0 .chart {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
+  padding-bottom: 40px;
+
+  svg {
+    background-color: #eee;
+  }
+
+  p {
+    font-size: 18px;
+    position: absolute;
+    color: black;
+    width: 650px;
+    left: 50px;
+  }
+
+  .description {
+    bottom: 100px;
+  }
+
+  .conversation {
+    bottom: 225px;
+  }
 
   .tooltip {
     position: absolute;

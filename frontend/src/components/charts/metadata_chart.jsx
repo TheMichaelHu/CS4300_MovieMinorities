@@ -164,8 +164,13 @@ export class MetadataChart extends React.PureComponent {
 
   render() {
     return (
-      <div className="metadata-chart">
+      <div className="chart">
         <svg ref={node => this.node = node} />
+        <p className="description">
+          <b>By crew</b>: percentage of crew members of a gender<br />
+          <b>By character</b>: percentage of characters of a gender<br />
+          <b>By line</b>: percentage of lines spoken by a gender<br />
+        </p>
       </div>
     );
   }
