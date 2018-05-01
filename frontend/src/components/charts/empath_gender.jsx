@@ -109,7 +109,7 @@ export class EmpathGenderChart extends React.PureComponent {
         .append("text")
         .text( d => { console.log(categories[ind]); return categories[ind]; } )
         .attr("x", 675)
-        .attr("y", d => { return 190 + 25 * ind; })
+        .attr("y", d => { return 30 + 25 * ind; })
         .attr("fill", "black")
         .style("font-size", 18);
 
@@ -118,7 +118,7 @@ export class EmpathGenderChart extends React.PureComponent {
         .attr("width", legendBarSize)
         .attr("height", legendBarSize)
         .attr("x", 650)
-        .attr("y", d => { return 175 + 25 * ind; })
+        .attr("y", d => { return 15 + 25 * ind; })
         .attr("fill", d => {return categoryColors[ind]; })
         .style("font-size", 18);
     });
