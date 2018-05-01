@@ -40,7 +40,7 @@ export class EmpathRaceChart extends React.PureComponent {
 
     var jsonMod3 = {}
     for (var ind in jsonMod){
-        jsonMod3[ind] = jsonMod2[ind] - jsonMod[ind] / jsonMod2[ind];
+        jsonMod3[ind] = jsonMod2[ind] - jsonMod[ind] / (jsonMod2[ind] + 0.000001);
     }
 
     var result = Object.keys(jsonMod3).sort(function(a, b) {
