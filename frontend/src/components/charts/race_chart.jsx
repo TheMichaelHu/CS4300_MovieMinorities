@@ -127,6 +127,16 @@ export class RaceChart extends React.PureComponent {
     .attr('transform', 'translate(' + (pushX - 120) + ',' + (pushY - 135) + ') scale(0.75, 0.75)')
     .style('font-size', 18)
     .call(yAxis);
+    
+    if (Object.keys(jsonMod.by_line).length == 1){
+      bars
+      .append("text")
+      .text((d, i) => { return categories[1]; } )
+      .attr("x",(d, i) => { return pushX - 50 + (interBarSpace + 53) * 1; })
+      .attr("y",(d, i) => { return pushY - 260 + maxOffset + 20; })
+      .attr("fill", "black")
+      .style("font-size", 18);
+    }
 
     // legend
     entries.forEach((d, ind) => {
