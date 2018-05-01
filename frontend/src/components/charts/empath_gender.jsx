@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import '../../styles/charts/metadata_chart';
 
-export class RaceChart extends React.PureComponent {
+export class EmpathGenderChart extends React.PureComponent {
   constructor(props){
       super(props)
       this.createChart = this.createChart.bind(this)
@@ -126,8 +126,8 @@ export class RaceChart extends React.PureComponent {
     svg
     .append("text")
       .text(headingText)
-      .attr("x", 350)
-      .attr("y", 25)
+      .attr("x", 150)
+      .attr("y", 50)
       .attr("fill", headingTextColor)
       .style("font-family", "Roboto")
       .style("font-weight", 500)
@@ -137,13 +137,14 @@ export class RaceChart extends React.PureComponent {
 
   render() {
     return (
-      <div className="metadata-chart" id="empath-gender">
+      <div className="chart" id="empath-gender">
         <svg ref={node => this.node = node} />
+        <p className="description">Emotions by how pervasive they are in lines from a gender</p>
       </div>
     );
   }
 }
 
-RaceChart.propTypes = {
+EmpathGenderChart.propTypes = {
   movie: PropTypes.object,
 };

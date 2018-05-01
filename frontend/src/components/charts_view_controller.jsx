@@ -32,9 +32,6 @@ export class ChartsVc extends React.PureComponent {
         <div className="col-xs-12 col-md-5">
           <EmpathGenderChart movie={this.props.movie} />
         </div>
-        <div className="col-xs-12 col-md-7">
-          <EmpathGenderChart movie={this.props.movie} />
-        </div>
       </div>
     </div>
     );
@@ -47,7 +44,6 @@ export class ChartsVc extends React.PureComponent {
         <ScreenTimeChart movie={this.props.movie} />
         <RaceChart movie={this.props.movie} />
         <BechdelChart movie={this.props.movie} />
-        <EmpathGenderChart movie={this.props.movie} />
         <EmpathGenderChart movie={this.props.movie} />
       </div>
     );
