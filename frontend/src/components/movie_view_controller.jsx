@@ -7,6 +7,7 @@ import { HeaderVc } from "./header_view_controller";
 import { Section } from "./section";
 import { MovieCard } from "./movie_card";
 import { ChartsVc } from "./charts_view_controller";
+import { Review } from "./review";
 
 import '../styles/movie_view_controller';
 
@@ -64,8 +65,8 @@ export class MovieVc extends React.Component {
             <li><span className="fa fa-star" /> <b>Rating</b>: {metadata.rating}</li>
             <li><span className="fa fa-calendar-check" /> <b>Released</b>: {metadata.release_yr}</li>
             <li><span className="fa fa-dollar-sign" /> <b>Budget</b>: ${metadata.budget}</li>
-            <li><span className="fa fa-comments" /> <b>Review Sentiment</b>: {metadata.imdb_review_sentiment}</li>
             <li><span className="fa fa-link" /> <b>IMDB link</b>: <a href={metadata.imdb_url}>{metadata.imdb_url}</a></li>
+            <li><Review movie={metadata} /></li>
           </ul>
         </Section>
         <Section title="Charts">

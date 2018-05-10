@@ -39,11 +39,11 @@ export class ChartsVc extends React.PureComponent {
     return (
       <div className="charts-wrapper" style={{overflow: "hidden"}}>
         <MetadataChart movie={this.props.movie} />
-        <ScreenTimeChart movie={this.props.movie} />
-        <RaceChart movie={this.props.movie} />
-        <BechdelChart movie={this.props.movie} />
         <EmpathGenderChart movie={this.props.movie} />
+        <RaceChart movie={this.props.movie} />
         <EmpathRaceChart movie={this.props.movie} />
+        <ScreenTimeChart movie={this.props.movie} />
+        <BechdelChart movie={this.props.movie} />
       </div>
     );
   }
