@@ -6,6 +6,7 @@ import { RaceChart } from "./charts/race_chart";
 import { BechdelChart } from "./charts/bechdel";
 import { EmpathGenderChart } from "./charts/empath_gender";
 import { EmpathRaceChart } from "./charts/empath_race";
+import { GenderTopicsChart } from "./charts/gender_topics";
 
 export class ChartsVc extends React.PureComponent {
   renderMultiCol() {
@@ -30,6 +31,9 @@ export class ChartsVc extends React.PureComponent {
         <div className="col-xs-12 col-md-6">
           <BechdelChart movie={this.props.movie} />
         </div>
+        <div className="col-xs-12 col-md-6">
+          <GenderTopicsChart movie={this.props.movie} />
+        </div>
       </div>
     </div>
     );
@@ -44,6 +48,7 @@ export class ChartsVc extends React.PureComponent {
         <EmpathRaceChart movie={this.props.movie} />
         <ScreenTimeChart movie={this.props.movie} />
         <BechdelChart movie={this.props.movie} />
+        <GenderTopicsChart movie={this.props.movie} />
       </div>
     );
   }
