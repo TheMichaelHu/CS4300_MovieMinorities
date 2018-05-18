@@ -382,28 +382,28 @@
             "actor_id": "22",
             "char_name": "Eliza",
             "gender": "Female",
-            "race": "N/A",
-            "screen_time": 0.02
+            "race": "White",
+            "screen_time": 0.03
         },
         "Alfre Woodard": {
             "actor_id": "21",
-            "char_name": "Master shaw",
+            "char_name": "Mistress shaw",
             "gender": "Female",
-            "race": "N/A",
-            "screen_time": 0.0
+            "race": "White",
+            "screen_time": 0.02
         },
         "Andy Dylan": {
             "actor_id": "68",
             "char_name": "Treach",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.03
         },
         "Austin Purnell": {
             "actor_id": "72",
             "char_name": "Bob",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.0
         },
         "Benedict Cumberbatch": {
@@ -417,7 +417,7 @@
             "actor_id": "45",
             "char_name": "Radburn",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.01
         },
         "Brad Pitt": {
@@ -425,7 +425,7 @@
             "char_name": "Bass",
             "gender": "Male",
             "race": "White",
-            "screen_time": 0.04
+            "screen_time": 0.05
         },
         "Bryan Batt": {
             "actor_id": "24",
@@ -438,7 +438,7 @@
             "actor_id": "42",
             "char_name": "Alonzo",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.0
         },
         "Chiwetel Ejiofor": {
@@ -446,27 +446,27 @@
             "char_name": "Solomon",
             "gender": "Male",
             "race": "Black",
-            "screen_time": 0.29
+            "screen_time": 0.31
         },
         "Chris Chalk": {
             "actor_id": "46",
             "char_name": "Clemens",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.01
         },
         "Christopher Berry": {
             "actor_id": "44",
             "char_name": "Burch",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.01
         },
         "Dwight Henry": {
             "actor_id": "39",
             "char_name": "Uncle abram",
-            "gender": "Female",
-            "race": "N/A",
+            "gender": "Male",
+            "race": "White",
             "screen_time": 0.01
         },
         "Garret Dillahunt": {
@@ -479,71 +479,57 @@
         "Gregory Bright": {
             "actor_id": "71",
             "char_name": "Edward",
-            "gender": "Female",
-            "race": "N/A",
-            "screen_time": 0.0
-        },
-        "Haylie Creppel": {
-            "actor_id": "127",
-            "char_name": "Winslow",
             "gender": "Male",
-            "race": "N/A",
-            "screen_time": 0.01
+            "race": "White",
+            "screen_time": 0.0
         },
         "J.D. Evermore": {
             "actor_id": "67",
             "char_name": "Chapin",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.02
         },
         "James C. Victor": {
             "actor_id": "64",
             "char_name": "Buyer",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.0
         },
         "Jay Huguley": {
             "actor_id": "80",
             "char_name": "Sheriff",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.02
         },
         "John McConnell": {
             "actor_id": "59",
-            "char_name": "Clemens ray",
+            "char_name": "Ray",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.01
         },
         "Kelsey Scott": {
             "actor_id": "41",
             "char_name": "Anne",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.02
-        },
-        "Liza J. Bennett": {
-            "actor_id": "65",
-            "char_name": "Mrs. ford",
-            "gender": "Female",
-            "race": "N/A",
-            "screen_time": 0.01
         },
         "Lupita Nyong'o": {
             "actor_id": "25",
             "char_name": "Patsey",
             "gender": "Female",
-            "race": "N/A",
-            "screen_time": 0.03
+            "race": "White",
+            "screen_time": 0.04
         },
         "Marc Macaulay": {
             "actor_id": "57",
             "char_name": "Captain",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.01
         },
         "Michael Fassbender": {
@@ -551,28 +537,28 @@
             "char_name": "Epps",
             "gender": "Male",
             "race": "White",
-            "screen_time": 0.13
+            "screen_time": 0.14
         },
         "Michael Kenneth Williams": {
             "actor_id": "7",
             "char_name": "Robert",
             "gender": "Male",
-            "race": "N/A",
+            "race": "Black",
             "screen_time": 0.0
         },
         "Mister Mackey Jr.": {
             "actor_id": "52",
             "char_name": "Randall",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.01
         },
         "Mustafa Harris": {
             "actor_id": "70",
             "char_name": "Sam",
-            "gender": "Female",
-            "race": "N/A",
-            "screen_time": 0.0
+            "gender": "Male",
+            "race": "Black",
+            "screen_time": 0.01
         },
         "Paul Dano": {
             "actor_id": "8",
@@ -592,29 +578,22 @@
             "actor_id": "28",
             "char_name": "Margaret",
             "gender": "Female",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.01
         },
         "Richard Holden": {
             "actor_id": "61",
             "char_name": "Fitzgerald",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.0
         },
         "Rob Steinberg": {
             "actor_id": "62",
             "char_name": "Parker",
             "gender": "Male",
-            "race": "N/A",
-            "screen_time": 0.02
-        },
-        "Sarah Paulson": {
-            "actor_id": "12",
-            "char_name": "Mistress epps",
-            "gender": "Female",
             "race": "White",
-            "screen_time": 0.04
+            "screen_time": 0.02
         },
         "Scoot McNairy": {
             "actor_id": "13",
@@ -625,10 +604,10 @@
         },
         "Scott M. Jefferson": {
             "actor_id": "75",
-            "char_name": "Mistress shaw",
+            "char_name": "Master shaw",
             "gender": "Male",
-            "race": "N/A",
-            "screen_time": 0.01
+            "race": "Black",
+            "screen_time": 0.0
         },
         "Storm Reid": {
             "actor_id": "53",
@@ -640,7 +619,7 @@
         "Taran Killam": {
             "actor_id": "26",
             "char_name": "Hamilton",
-            "gender": "Male",
+            "gender": "Female",
             "race": "White",
             "screen_time": 0.04
         },
@@ -648,15 +627,22 @@
             "actor_id": "73",
             "char_name": "Patroller",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.0
         },
         "Tony Bentley": {
             "actor_id": "43",
             "char_name": "Mr. moon",
             "gender": "Male",
-            "race": "N/A",
+            "race": "White",
             "screen_time": 0.0
+        },
+        "Wayne P\u00e9re": {
+            "actor_id": "142",
+            "char_name": "Winslow",
+            "gender": "Female",
+            "race": "White",
+            "screen_time": 0.01
         }
     },
     "crew_metadata": {
@@ -936,29 +922,29 @@
     "distribution_metadata": {
         "gender_dist": {
             "by_crew": {
-                "female": 0.28,
-                "male": 0.72,
+                "female": 0.31,
+                "male": 0.69,
                 "other": 0
             },
             "by_line": {
-                "female": 0.16,
-                "male": 0.84,
+                "female": 0.2,
+                "male": 0.8,
                 "other": 0
             },
             "by_movie": {
-                "female": 0.24,
-                "male": 0.76,
+                "female": 0.22,
+                "male": 0.78,
                 "other": 0
             }
         },
         "race_dist": {
             "by_line": {
-                "black": 0.43,
-                "white": 0.57
+                "black": 0.32,
+                "white": 0.68
             },
             "by_movie": {
-                "black": 0.17,
-                "white": 0.83
+                "black": 0.13,
+                "white": 0.87
             }
         },
         "stereotype_dist": {
@@ -987,64 +973,64 @@
     "empath_metadata": {
         "gender_category_metadata": {
             "female/female": [
-                "speaking",
-                "swearing_terms",
-                "party",
+                "emotion",
+                "friends",
+                "disappointment",
+                "shame",
                 "happiness",
-                "trust",
-                "love",
-                "fear",
-                "plant",
-                "disgust",
-                "sadness"
+                "negative_emotion",
+                "speaking",
+                "deception",
+                "home",
+                "feminine"
             ],
             "male/female": [
                 "trust",
                 "negative_emotion",
                 "communication",
-                "giving",
-                "love",
-                "speaking",
-                "writing",
-                "suffering",
                 "positive_emotion",
-                "death"
+                "speaking",
+                "giving",
+                "body",
+                "pain",
+                "traveling",
+                "violence"
             ],
             "male/male": [
                 "trust",
                 "speaking",
-                "love",
                 "communication",
                 "giving",
-                "positive_emotion",
-                "negative_emotion",
                 "money",
-                "body",
+                "negative_emotion",
+                "positive_emotion",
+                "listen",
+                "children",
                 "business"
             ]
         },
         "gender_emotion_metadata": {
             "female": {
-                "anger": 0.09375,
-                "disgust": 0.21875,
-                "envy": 0.0,
-                "fear": 0.09375,
-                "joy": 0.0625,
-                "love": 0.4375,
-                "sadness": 0.09375,
-                "shame": 0.0,
-                "surprise": 0.0
+                "anger": 0.16666666666666666,
+                "disgust": 0.16666666666666666,
+                "envy": 0.05555555555555555,
+                "fear": 0.25,
+                "joy": 0.05555555555555555,
+                "love": 0.027777777777777776,
+                "sadness": 0.16666666666666666,
+                "shame": 0.05555555555555555,
+                "surprise": 0.05555555555555555
             },
             "male": {
-                "anger": 0.10377358490566038,
-                "disgust": 0.08018867924528301,
-                "envy": 0.0330188679245283,
-                "fear": 0.12735849056603774,
-                "joy": 0.07547169811320754,
-                "love": 0.42452830188679247,
-                "sadness": 0.09433962264150944,
-                "shame": 0.04716981132075472,
-                "surprise": 0.014150943396226415
+                "anger": 0.1623931623931624,
+                "disgust": 0.15384615384615385,
+                "envy": 0.042735042735042736,
+                "fear": 0.1794871794871795,
+                "joy": 0.13675213675213677,
+                "love": 0.10256410256410256,
+                "sadness": 0.1452991452991453,
+                "shame": 0.06837606837606838,
+                "surprise": 0.008547008547008548
             },
             "other": {
                 "anger": 0.0,
@@ -1062,50 +1048,50 @@
             "black": [
                 "communication",
                 "trust",
-                "love",
                 "speaking",
                 "positive_emotion",
                 "writing",
                 "family",
                 "death",
                 "messaging",
+                "wedding",
                 "strength"
             ],
             "white": [
                 "trust",
-                "love",
                 "speaking",
                 "giving",
+                "money",
                 "negative_emotion",
                 "communication",
                 "positive_emotion",
-                "listen",
                 "business",
-                "money"
+                "party",
+                "listen"
             ]
         },
         "race_emotion_metadata": {
             "black": {
-                "anger": 0.09259259259259259,
-                "disgust": 0.1111111111111111,
-                "envy": 0.018518518518518517,
-                "fear": 0.1111111111111111,
-                "joy": 0.1111111111111111,
-                "love": 0.4074074074074074,
-                "sadness": 0.1111111111111111,
-                "shame": 0.037037037037037035,
+                "anger": 0.14285714285714285,
+                "disgust": 0.17142857142857143,
+                "envy": 0.02857142857142857,
+                "fear": 0.17142857142857143,
+                "joy": 0.17142857142857143,
+                "love": 0.08571428571428572,
+                "sadness": 0.17142857142857143,
+                "shame": 0.05714285714285714,
                 "surprise": 0.0
             },
             "white": {
-                "anger": 0.09900990099009901,
-                "disgust": 0.06930693069306931,
-                "envy": 0.039603960396039604,
-                "fear": 0.10891089108910891,
-                "joy": 0.0594059405940594,
-                "love": 0.48514851485148514,
-                "sadness": 0.06930693069306931,
-                "shame": 0.04950495049504951,
-                "surprise": 0.019801980198019802
+                "anger": 0.16279069767441862,
+                "disgust": 0.13953488372093023,
+                "envy": 0.05813953488372093,
+                "fear": 0.18604651162790697,
+                "joy": 0.10465116279069768,
+                "love": 0.11627906976744186,
+                "sadness": 0.12790697674418605,
+                "shame": 0.09302325581395349,
+                "surprise": 0.011627906976744186
             }
         }
     },
@@ -1117,20 +1103,15 @@
             "history"
         ],
         "id": 76203,
-        "imdb_review_sentiment": "Positive",
-        "imdb_reviews": [
-            "Sometimes, I just have to stop my brain in the middle of a film and just admire its exceptional craftsmanship. I found myself doing that time and time again during this film. Perhaps I was more open to admiring the shot compositions and acting choices because, as I cynically told myself before the film, it's not like I needed much convincing that slavery was bad. Or perhaps it was because I was shielding myself from the honest brutalities the film convincingly portrayed. Nonetheless, I was reminded of the film \"Children of Men,\" because when I watched that, I was struck by how easily I could imagine a less engaging, more dumbed-down version of the same film. I haven't seen enough films about slavery to know this for certain, but I suspect that because many of this film's principals are British, telling a story about a free man who was forced into slavery, as opposed to one born into it, they were able to be gain some valuable distance from the subject and craft something that's both beautiful and feels true to life. And even though I thought I could not have been made to feel worse than I already did about slavery, the post-scripts on the lack of justice Solomon received for his kidnapping and the unknown causes of his death, helped keep the film from lapsing into a kind of \"triumph of the spirit\" happy ending others might have imposed.",
-            "This movie is very, very well done. Well, edited and with the proper long shots at the proper moments bringing you to the life of Solomon without remedy.\r\n\r\nAll the cast performs exceptionally well and Ejiofor is to be remembered for this film.\r\n\r\nA must to be seen.",
-            "Not in a long time have I seen a movie that brings out real emotions from my cold hearted soul. This movie brought them out in floods of tears.\r\n\r\nthe acting was superb, especially from the lead Chiwetel Ejiofor, he acted from his little toe right up to his eyes.\r\n\r\nThe style was also filmed beautifully with some (extremely) painful long shots which pulled you into Solomons nightmare.\r\n\r\nIm not sure if its a film I could watch again, purely for the emotion but I would recommend this film to everyone.",
-            "**Dreaded at the thought that human kind ACTUALLY had this kind of livelihood at some point of time..**\r\n\r\nCould not gather my thoughts to write this review at the end of the movie.Feeling really bogged down by some heaviness on my chest. Thinking about the times in history when we actually used to do these atrocities on other human beings makes me cringe.To imagine waking up one day and find me in chains just because I'm a colored man and living my life like an unwanted child of god makes me question humanity altogether. Just sitting through a little over than 2 hours and watching this movie made my heart bleed, I can't even begin to think of the people who lived their entire lives as SLAVES... 12 years a slave heart breakingly makes you feel the pain and suffering of almost the entire human kind at one point of time or other. Direction by Steve McQueen is brilliant.Chiwetel Ejiofor plays a helpless slave in Solomon Northup to the hilt and also the small but impactive role played by Brad Pitt as a man with conscience is superb.Lupita Nyong'o's Patsey too was depicted heart warmingly. You can't help but question yourself that how could MAN stoop such low and do these cruel acts and that too over such a prolonged period of time without even a single ounce of doubt in his mind for what he would have to pay for his actions.. All in all a GEM of a movie showing one of the lowest point in human history !"
-        ],
+        "imdb_review_sentiment": "Neutral",
+        "imdb_reviews": "['Sometimes, I just have to stop my brain in the middle of a film and just admire its exceptional craftsmanship. I found myself doing that time and time again during this film. Perhaps I was more open to admiring the shot compositions and acting choices because, as I cynically told myself before the film, it\\'s not like I needed much convincing that slavery was bad. Or perhaps it was because I was shielding myself from the honest brutalities the film convincingly portrayed. Nonetheless, I was reminded of the film \"Children of Men,\" because when I watched that, I was struck by how easily I could imagine a less engaging, more dumbed-down version of the same film. I haven\\'t seen enough films about slavery to know this for certain, but I suspect that because many of this film\\'s principals are British, telling a story about a free man who was forced into slavery, as opposed to one born into it, they were able to be gain some valuable distance from the subject and craft something that\\'s both beautiful and feels true to life. And even though I thought I could not have been made to feel worse than I already did about slavery, the post-scripts on the lack of justice Solomon received for his kidnapping and the unknown causes of his death, helped keep the film from lapsing into a kind of \"triumph of the spirit\" happy ending others might have imposed.', 'This movie is very, very well done. Well, edited and with the proper long shots at the proper moments bringing you to the life of Solomon without remedy.\\r\\n\\r\\nAll the cast performs exceptionally well and Ejiofor is to be remembered for this film.\\r\\n\\r\\nA must to be seen.', 'Not in a long time have I seen a movie that brings out real emotions from my cold hearted soul. This movie brought them out in floods of tears.\\r\\n\\r\\nthe acting was superb, especially from the lead Chiwetel Ejiofor, he acted from his little toe right up to his eyes.\\r\\n\\r\\nThe style was also filmed beautifully with some (extremely) painful long shots which pulled you into Solomons nightmare.\\r\\n\\r\\nIm not sure if its a film I could watch again, purely for the emotion but I would recommend this film to everyone.', \"**Dreaded at the thought that human kind ACTUALLY had this kind of livelihood at some point of time..**\\r\\n\\r\\nCould not gather my thoughts to write this review at the end of the movie.Feeling really bogged down by some heaviness on my chest. Thinking about the times in history when we actually used to do these atrocities on other human beings makes me cringe.To imagine waking up one day and find me in chains just because I'm a colored man and living my life like an unwanted child of god makes me question humanity altogether. Just sitting through a little over than 2 hours and watching this movie made my heart bleed, I can't even begin to think of the people who lived their entire lives as SLAVES... 12 years a slave heart breakingly makes you feel the pain and suffering of almost the entire human kind at one point of time or other. Direction by Steve McQueen is brilliant.Chiwetel Ejiofor plays a helpless slave in Solomon Northup to the hilt and also the small but impactive role played by Brad Pitt as a man with conscience is superb.Lupita Nyong'o's Patsey too was depicted heart warmingly. You can't help but question yourself that how could MAN stoop such low and do these cruel acts and that too over such a prolonged period of time without even a single ounce of doubt in his mind for what he would have to pay for his actions.. All in all a GEM of a movie showing one of the lowest point in human history !\"]",
         "imdb_url": "https://www.imdb.com/title/tt2024544",
         "name": "12 Years a Slave",
         "num_awards": 0,
         "poster_image_url": "https://ia.media-imdb.com/images/M/MV5BZjFkOGNjZjAtMzZjNS00ZjI2LTkwNjEtOWQ3NzQzOTBlMDA5XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
         "rating": "7.9",
         "release_yr": "2013",
-        "review_score": "8.1",
+        "review_score": 8.1,
         "script": "12-years-a-slave",
         "slug": "12-years-a-slave",
         "synopsis": "In the pre-Civil War United States, Solomon Northup, a free black man from upstate New York, is abducted and sold into slavery. Facing cruelty as well as unexpected kindnesses Solomon struggles not only to stay alive, but to retain his dignity. In the twelfth year of his unforgettable odyssey, Solomon\u2019s chance meeting with a Canadian abolitionist will forever alter his life."
